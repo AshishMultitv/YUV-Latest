@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1611" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="gTV-IL-0wX" customClass="MyAppCollectionViewCell" customModule="Dollywood_Play" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="157" height="141"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="157" height="141"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W1a-Th-OvL">
+                        <rect key="frame" x="0.0" y="0.0" width="157" height="141"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Placehoder" translatesAutoresizingMaskIntoConstraints="NO" id="O6D-m6-eZI">
+                                <rect key="frame" x="0.0" y="0.0" width="157" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="hlQ-v7-gYo"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cellbottom" translatesAutoresizingMaskIntoConstraints="NO" id="lPE-lq-2x7">
+                                <rect key="frame" x="0.0" y="99" width="157" height="42"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1q8-u3-c40">
+                                <rect key="frame" x="8" y="100" width="141" height="14.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="12"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1lw-CM-J84">
+                                <rect key="frame" x="8" y="114.5" width="141" height="13"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
+                                <color key="textColor" red="0.43137254899999999" green="0.43137254899999999" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RvL-cT-LHs">
+                                <rect key="frame" x="130" y="128" width="25" height="12"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
+                                <color key="textColor" red="0.43137254899999999" green="0.43137254899999999" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qFc-HO-XYP">
+                                <rect key="frame" x="8" y="128" width="25" height="12"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
+                                <color key="textColor" red="0.43137254899999999" green="0.43137254899999999" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lPE-lq-2x7" firstAttribute="leading" secondItem="W1a-Th-OvL" secondAttribute="leading" id="1nk-hT-H3Z"/>
+                            <constraint firstItem="1lw-CM-J84" firstAttribute="leading" secondItem="1q8-u3-c40" secondAttribute="leading" id="3BJ-fm-8FX"/>
+                            <constraint firstItem="qFc-HO-XYP" firstAttribute="top" secondItem="RvL-cT-LHs" secondAttribute="top" id="79z-2X-e3a"/>
+                            <constraint firstAttribute="trailing" secondItem="RvL-cT-LHs" secondAttribute="trailing" constant="2" id="8U5-DJ-I4p"/>
+                            <constraint firstItem="1q8-u3-c40" firstAttribute="top" secondItem="O6D-m6-eZI" secondAttribute="bottom" id="9IE-Y9-cf1"/>
+                            <constraint firstAttribute="trailing" secondItem="lPE-lq-2x7" secondAttribute="trailing" id="Aw3-Ci-fKd"/>
+                            <constraint firstItem="1lw-CM-J84" firstAttribute="trailing" secondItem="1q8-u3-c40" secondAttribute="trailing" id="JDs-bi-Oev"/>
+                            <constraint firstItem="1q8-u3-c40" firstAttribute="leading" secondItem="W1a-Th-OvL" secondAttribute="leading" constant="8" id="Jcd-1C-5GQ"/>
+                            <constraint firstAttribute="bottom" secondItem="RvL-cT-LHs" secondAttribute="bottom" constant="1" id="MmM-ea-auf"/>
+                            <constraint firstItem="1lw-CM-J84" firstAttribute="top" secondItem="1q8-u3-c40" secondAttribute="bottom" id="Qed-h6-BcI"/>
+                            <constraint firstItem="lPE-lq-2x7" firstAttribute="top" secondItem="O6D-m6-eZI" secondAttribute="bottom" constant="-1" id="SIy-Ow-fr1"/>
+                            <constraint firstAttribute="trailing" secondItem="O6D-m6-eZI" secondAttribute="trailing" id="TFh-b2-Ujz"/>
+                            <constraint firstItem="O6D-m6-eZI" firstAttribute="leading" secondItem="W1a-Th-OvL" secondAttribute="leading" id="W4K-83-8Gu"/>
+                            <constraint firstAttribute="trailing" secondItem="1q8-u3-c40" secondAttribute="trailing" constant="8" id="Yb7-Oh-QQN"/>
+                            <constraint firstItem="qFc-HO-XYP" firstAttribute="leading" secondItem="1lw-CM-J84" secondAttribute="leading" id="efd-xq-ZhB"/>
+                            <constraint firstAttribute="bottom" secondItem="lPE-lq-2x7" secondAttribute="bottom" id="oCK-yK-KY4"/>
+                            <constraint firstItem="O6D-m6-eZI" firstAttribute="top" secondItem="W1a-Th-OvL" secondAttribute="top" id="qci-eB-rx4"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="W1a-Th-OvL" secondAttribute="trailing" id="WHe-Nx-CvQ"/>
+                <constraint firstItem="W1a-Th-OvL" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="dgZ-ZL-kPP"/>
+                <constraint firstAttribute="bottom" secondItem="W1a-Th-OvL" secondAttribute="bottom" id="hHf-Xl-JWl"/>
+                <constraint firstItem="W1a-Th-OvL" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ws6-cO-HlO"/>
+            </constraints>
+            <size key="customSize" width="239" height="155"/>
+            <connections>
+                <outlet property="Descriptionlabel" destination="1lw-CM-J84" id="bvV-4L-roq"/>
+                <outlet property="bannerimaheview" destination="O6D-m6-eZI" id="467-rv-QOR"/>
+                <outlet property="titilelabel" destination="1q8-u3-c40" id="TT7-ux-sEi"/>
+                <outlet property="uploaddatelabel" destination="RvL-cT-LHs" id="Iln-bZ-YH3"/>
+                <outlet property="viewlabel" destination="qFc-HO-XYP" id="SDj-h1-qKI"/>
+            </connections>
+            <point key="canvasLocation" x="37.5" y="24.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="Placehoder" width="90" height="133"/>
+        <image name="cellbottom" width="231" height="66"/>
+    </resources>
+</document>

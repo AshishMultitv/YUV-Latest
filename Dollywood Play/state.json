@@ -1,0 +1,192 @@
+{
+  "state": [
+            
+   
+            {
+            "code": "33",
+            "name": "TAMIL NADU"
+            },
+   
+            {
+            "code": "28",
+            "name": "ANDHRA PRADESH(BEFORE DIVISION)"
+            },
+       
+            {
+            "code": "37",
+            "name": "ANDHRA PRADESH (NEW)"
+            },
+    
+            {
+            "code": "36",
+            "name": "TELANGANA"
+            },
+            
+            {
+            "code": "32",
+            "name": "KERALA"
+            },
+            
+            {
+            "code": "12",
+            "name": "ARUNACHAL PRADESH"
+            },
+            
+            
+            {
+            "code": "35",
+            "name": "ANDAMAN AND NICOBAR ISLANDS"
+            },
+            
+            {
+            "code": "18",
+            "name": "ASSAM"
+            },
+            
+            {
+            "code": "10",
+            "name": "BIHAR"
+            },
+            
+            {
+            "code": "4",
+            "name": "CHANDIGARH"
+            },
+            
+            {
+            "code": "22",
+            "name": "CHATTISGARH"
+            },
+            
+            {
+            "code": "7",
+            "name": "DELHI"
+            },
+            
+            {
+            "code": "25",
+            "name": "DAMAN AND DIU"
+            },
+            
+            {
+            "code": "26",
+            "name": "DADRA AND NAGAR HAVELI"
+            },
+            
+            {
+            "code": "24",
+            "name": "GUJARAT"
+            },
+            
+            {
+            "code": "30",
+            "name": "GOA"
+            },
+            
+            {
+            "code": "6",
+            "name": "HARYANA"
+            },
+            
+            {
+            "code": "2",
+            "name": "HIMACHAL PRADESH"
+            },
+            
+            {
+            "code": "20",
+            "name": "JHARKHAND"
+            },
+            {
+            "code": "1",
+            "name": "JAMMU AND KASHMIR"
+            },
+            
+            {
+            "code": "29",
+            "name": "KARNATAKA"
+            },
+            
+            {
+            "code": "31",
+            "name": "LAKSHWADEEP"
+            },
+            
+            {
+            "code": "14",
+            "name": "MANIPUR"
+            },
+            
+            {
+            "code": "15",
+            "name": "MIZORAM"
+            },
+            
+            {
+            "code": "23",
+            "name": "MADHYA PRADESH"
+            },
+            
+            {
+            "code": "17",
+            "name": "MEGHLAYA"
+            },
+            
+            {
+            "code": "27",
+            "name": "MAHARASHTRA"
+            },
+            
+            {
+            "code": "13",
+            "name": "NAGALAND"
+            },
+            
+            {
+            "code": "21",
+            "name": "ODISHA"
+            },
+            
+            {
+            "code": "3",
+            "name": "PUNJAB"
+            },
+            
+            {
+            "code": "34",
+            "name": "PUDUCHERRY"
+            },
+            
+            {
+            "code": "8",
+            "name": "RAJASTHAN"
+            },
+            
+            {
+            "code": "11",
+            "name": "SIKKIM"
+            },
+            
+            {
+            "code": "16",
+            "name": "TRIPURA"
+            },
+            
+            {
+            "code": "9",
+            "name": "UTTAR  PRADESH"
+            },
+
+            {
+            "code": "5",
+            "name": "UTTARAKHAND"
+            },
+
+            {
+            "code": "19",
+            "name": "WEST BENGAL"
+            }
+ 
+  
+  ]
+}

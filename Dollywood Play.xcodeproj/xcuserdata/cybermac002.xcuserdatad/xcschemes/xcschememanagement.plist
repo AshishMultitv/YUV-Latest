@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>Dollywood Play.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+		<key>OneSignalNotificationServiceExtension.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>OneSingleNotification.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>31</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>22C9BEE51ED6C5F0003A45EB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>37421BFE1FCDB47200A48946</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>375DF96F1FB9EDFE001598FD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>37F70F7A1FB3422E0007B0DC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>
