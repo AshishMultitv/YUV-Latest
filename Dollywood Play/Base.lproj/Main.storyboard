@@ -1460,7 +1460,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ifh-Pc-jiL">
-                                        <rect key="frame" x="138" y="44" width="100" height="21"/>
+                                        <rect key="frame" x="137.5" y="44" width="100" height="21"/>
                                         <fontDescription key="fontDescription" name="Ubuntu-Medium" family="Ubuntu" pointSize="18"/>
                                         <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1732,44 +1732,26 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QoL-KU-vsQ">
                                                 <rect key="frame" x="16" y="529" width="339" height="100"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nkm-6A-y4g">
-                                                        <rect key="frame" x="7" y="7" width="0.0" height="0.0"/>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4EE-e6-u6Y">
-                                                        <rect key="frame" x="7" y="17" width="0.0" height="0.0"/>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EIS-kS-rby">
-                                                        <rect key="frame" x="7" y="27" width="0.0" height="0.0"/>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C2C-1e-jgV">
-                                                        <rect key="frame" x="282" y="0.0" width="49" height="30"/>
-                                                        <state key="normal" title="Invoice">
-                                                            <color key="titleColor" red="0.45098039220000002" green="0.45098039220000002" blue="0.45098039220000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </state>
+                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hDT-84-zqR">
+                                                        <rect key="frame" x="0.0" y="0.0" width="339" height="100"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <view key="tableFooterView" contentMode="scaleToFill" id="whq-Eg-BD4">
+                                                            <rect key="frame" x="0.0" y="0.0" width="339" height="2"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </view>
                                                         <connections>
-                                                            <action selector="Taptoinvoice:" destination="bM4-04-Rrr" eventType="touchUpInside" id="EG3-74-N8Z"/>
+                                                            <outlet property="dataSource" destination="bM4-04-Rrr" id="3md-5Z-FvY"/>
+                                                            <outlet property="delegate" destination="bM4-04-Rrr" id="QO6-Ty-zVV"/>
                                                         </connections>
-                                                    </button>
+                                                    </tableView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstItem="4EE-e6-u6Y" firstAttribute="top" secondItem="Nkm-6A-y4g" secondAttribute="bottom" constant="10" id="A71-2H-8UM"/>
-                                                    <constraint firstItem="4EE-e6-u6Y" firstAttribute="leading" secondItem="Nkm-6A-y4g" secondAttribute="leading" id="DLn-Pb-jHL"/>
-                                                    <constraint firstAttribute="trailing" secondItem="C2C-1e-jgV" secondAttribute="trailing" constant="8" id="EjL-ru-Ft5"/>
-                                                    <constraint firstItem="EIS-kS-rby" firstAttribute="top" secondItem="4EE-e6-u6Y" secondAttribute="bottom" constant="10" id="HHB-fj-Nmf"/>
-                                                    <constraint firstItem="Nkm-6A-y4g" firstAttribute="leading" secondItem="QoL-KU-vsQ" secondAttribute="leading" constant="7" id="MyP-9C-Z0N"/>
-                                                    <constraint firstItem="Nkm-6A-y4g" firstAttribute="top" secondItem="QoL-KU-vsQ" secondAttribute="top" constant="7" id="Onh-py-jDr"/>
-                                                    <constraint firstItem="EIS-kS-rby" firstAttribute="leading" secondItem="4EE-e6-u6Y" secondAttribute="leading" id="Vsu-0k-5cr"/>
-                                                    <constraint firstItem="C2C-1e-jgV" firstAttribute="top" secondItem="QoL-KU-vsQ" secondAttribute="top" id="bAP-xG-spt"/>
+                                                    <constraint firstItem="hDT-84-zqR" firstAttribute="top" secondItem="QoL-KU-vsQ" secondAttribute="top" id="0HE-Hb-dTQ"/>
+                                                    <constraint firstAttribute="trailing" secondItem="hDT-84-zqR" secondAttribute="trailing" id="b5M-Y1-9e9"/>
+                                                    <constraint firstAttribute="bottom" secondItem="hDT-84-zqR" secondAttribute="bottom" id="e2E-XB-Rrc"/>
+                                                    <constraint firstItem="hDT-84-zqR" firstAttribute="leading" secondItem="QoL-KU-vsQ" secondAttribute="leading" id="k5W-AH-Ats"/>
                                                     <constraint firstAttribute="height" constant="100" id="sbE-RW-Uet"/>
                                                 </constraints>
                                             </view>
@@ -1873,9 +1855,6 @@
                     </view>
                     <size key="freeformSize" width="375" height="720"/>
                     <connections>
-                        <outlet property="SubscriptionPkgname" destination="Nkm-6A-y4g" id="HsL-63-kNm"/>
-                        <outlet property="Subscriptionamount" destination="4EE-e6-u6Y" id="re4-GF-1I9"/>
-                        <outlet property="Subscriptionexpdate" destination="EIS-kS-rby" id="pBc-iX-TR4"/>
                         <outlet property="Subscriptionview" destination="QoL-KU-vsQ" id="eCd-LI-4Kj"/>
                         <outlet property="UserIntresetedlabel" destination="enD-vn-2lJ" id="IPv-IU-xmf"/>
                         <outlet property="Zonarbutton" destination="OeR-Dy-WTI" id="2Hw-im-m92"/>
@@ -1884,13 +1863,14 @@
                         <outlet property="email_txfiled" destination="M8H-u3-WOL" id="m3P-wS-lmP"/>
                         <outlet property="freesubscriptionlabel" destination="Ghc-Q2-JKK" id="ruU-J5-oqP"/>
                         <outlet property="gender_txfiled" destination="qZe-rl-yBc" id="sSb-vr-dQu"/>
-                        <outlet property="invoicebutton" destination="C2C-1e-jgV" id="NQG-4M-aPT"/>
                         <outlet property="location_tx" destination="A5M-h5-YlH" id="DP6-3F-cb2"/>
                         <outlet property="myprofileimageview" destination="Vyv-0h-tkg" id="kbz-MJ-eyd"/>
                         <outlet property="myscroolview" destination="ywV-Wg-exn" id="cX0-WB-6pm"/>
                         <outlet property="name_txfield" destination="Ln4-7S-o17" id="ZkG-dY-CkB"/>
+                        <outlet property="scrollviewhghtcntrnt" destination="gam-om-vCD" id="q4H-3S-T0C"/>
                         <outlet property="subscriptionheaderlabel" destination="q90-BO-kSD" id="Hi5-8G-W4z"/>
                         <outlet property="subscriptionheightcnstrnt" destination="sbE-RW-Uet" id="GeD-aN-TDp"/>
+                        <outlet property="subscriptiontableview" destination="hDT-84-zqR" id="vTe-UV-ee1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O7s-td-CMY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2068,7 +2048,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ySu-Dl-OsH">
-                                        <rect key="frame" x="137.5" y="22" width="100" height="21"/>
+                                        <rect key="frame" x="138" y="22" width="100" height="21"/>
                                         <fontDescription key="fontDescription" name="Ubuntu-Medium" family="Ubuntu" pointSize="18"/>
                                         <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -2110,7 +2090,7 @@
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ashish" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Af4-6D-iRj">
-                                                        <rect key="frame" x="158.5" y="108" width="59.5" height="23"/>
+                                                        <rect key="frame" x="158" y="108" width="59.5" height="23"/>
                                                         <fontDescription key="fontDescription" name="Ubuntu" family="Ubuntu" pointSize="20"/>
                                                         <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -3317,7 +3297,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Intreset" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2NL-bA-lNa">
-                                        <rect key="frame" x="133" y="22" width="109.5" height="21"/>
+                                        <rect key="frame" x="133.5" y="22" width="109.5" height="21"/>
                                         <fontDescription key="fontDescription" name="Ubuntu-Medium" family="Ubuntu" pointSize="18"/>
                                         <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -3388,7 +3368,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="84"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verified OTP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jFQ-og-NYD">
-                                        <rect key="frame" x="139" y="40" width="98" height="20"/>
+                                        <rect key="frame" x="138.5" y="40" width="98" height="20"/>
                                         <fontDescription key="fontDescription" name="Ubuntu" family="Ubuntu" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -5539,6 +5519,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="Redeemgiftrefreellabel" destination="TIO-S2-O5i" id="Xrh-BJ-VTz"/>
                         <outlet property="ScroolviewHeightcntrant" destination="CvQ-vq-gbi" id="Yiw-cX-3nO"/>
                         <outlet property="Subscriptiontableview" destination="5Hs-Uj-mAq" id="FOL-hn-Gnj"/>
                         <outlet property="giftView" destination="wGS-yK-QHw" id="sQ7-cQ-p0R"/>
@@ -5826,7 +5807,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="84"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="INVITE A FRIEND" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yRu-Gx-02q">
-                                        <rect key="frame" x="123" y="42" width="130" height="20"/>
+                                        <rect key="frame" x="122.5" y="42" width="130" height="20"/>
                                         <fontDescription key="fontDescription" name="Ubuntu" family="Ubuntu" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>

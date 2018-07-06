@@ -40,7 +40,8 @@ class AddLoderViewController: UIViewController,IMAAdsLoaderDelegate, IMAAdsManag
         NotificationCenter.default.addObserver(self, selector: #selector(self.audioRouteChangeListener), name: .AVAudioSessionRouteChange, object: nil)
         AppUtility.lockOrientation(.landscapeRight)
         // Playerview.frame = self.view.frame
-        Dfp_url = "https://googleads.g.doubleclick.net/pagead/ads?ad_type=video&client=ca-video-pub-5621004189462935&description_url=http%3A%2F%2Fwww.dinamalar.com%2F&videoad_start_delay=0&hl=en&max_ad_duration=30000"
+        //Dfp_url = "https://googleads.g.doubleclick.net/pagead/ads?ad_type=video&client=ca-video-pub-5621004189462935&description_url=http%3A%2F%2Fwww.dinamalar.com%2F&videoad_start_delay=0&hl=en&max_ad_duration=30000"
+       Dfp_url =  "https://pubads.g.doubleclick.net/gampad/ads?iu=/21626385645/Video-PreRoll-New&description_url=[placeholder]&env=vp&impl=s&correlator=&tfcd=0&npa=0&gdfp_req=1&output=vast&sz=640x480&ciu_szs=480x320&max_ad_duration=30000&unviewed_position_start=1"
         
         self.loadVideo()
         
@@ -50,8 +51,14 @@ class AddLoderViewController: UIViewController,IMAAdsLoaderDelegate, IMAAdsManag
     }
     
     
+    override func viewWillAppear(_ animated: Bool) {
+         AppUtility.lockOrientation(.landscapeRight)
+    }
     
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        AppUtility.lockOrientation(.portrait)
+
+    }
     override func viewDidLayoutSubviews()
     {
         super.viewDidLayoutSubviews()
@@ -143,8 +150,9 @@ class AddLoderViewController: UIViewController,IMAAdsLoaderDelegate, IMAAdsManag
             adsManager = nil
         }
         
-        AppUtility.lockOrientation(.portrait)
+       AppUtility.lockOrientation(.portrait)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+       
         self.dismiss(animated: true, completion: nil)
         
     }
@@ -190,7 +198,9 @@ class AddLoderViewController: UIViewController,IMAAdsLoaderDelegate, IMAAdsManag
     
     func playerDidFinishPlaying(note: NSNotification)
     {
+        AppUtility.lockOrientation(.portrait)
         self.dismissview()
+        
     }
     
     func Showerroralert()

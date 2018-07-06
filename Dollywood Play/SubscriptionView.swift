@@ -26,6 +26,7 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
     @IBOutlet weak var tabelviewhghtcontrant: NSLayoutConstraint!
     @IBOutlet weak var giftView: UIView!
     
+    @IBOutlet weak var Redeemgiftrefreellabel: UILabel!
     
     
     
@@ -53,11 +54,10 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
             ScroolviewHeightcntrant.constant = tabelviewhghtcontrant.constant + 50.0
         }
 
-        if(!Common.isuserseletedlocality()) {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let selectCountryViewController = storyboard.instantiateViewController(withIdentifier: "SelectCountryViewController") as! SelectCountryViewController
-            self.present(selectCountryViewController, animated: true, completion: nil)
-        }
+       
+        
+        
+        
 
         // Do any additional setup after loading the view.
     }
@@ -66,17 +66,51 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
-        AppUtility.lockOrientation(.portrait)
+        let value = UIInterfaceOrientation.portrait.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
         print(LoginCredentials.UserPakegeList)
         self.Subscriptiontableview.reloadData()
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if(!Common.isuserseletedlocality()) {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let selectCountryViewController = storyboard.instantiateViewController(withIdentifier: "SelectCountryViewController") as! SelectCountryViewController
+            self.present(selectCountryViewController, animated: true, completion: nil)
+        }
+        else
+        {
+            
+            
+            if(LoginCredentials.Regiontype == "2")
+            {
+            Redeemgiftrefreellabel.text = "Redeem Referral"
+            }
+            else
+            {
+               Redeemgiftrefreellabel.text = "Redeem Gift / Referral"
+            }
+            
+            
+            if(Common.Isuserhavefreedayssubscription(Userdetails: self))
+            {
+                tabelviewhghtcontrant.constant = CGFloat(LoginCredentials.UserPakegeList.count) * 113.0
+                ScroolviewHeightcntrant.constant = tabelviewhghtcontrant.constant + 50.0
+            }
+            else
+            {
+                tabelviewhghtcontrant.constant = CGFloat(LoginCredentials.UserPakegeList.count) * 113.0
+                ScroolviewHeightcntrant.constant = tabelviewhghtcontrant.constant + 50.0
+            }
+             self.Subscriptiontableview.reloadData()
+        }
         
     }
     
     
     func willResignActive(_ notification: Notification) {
-        
         self.Subscriptiontableview.reloadData()
-        
     }
     
     
@@ -93,12 +127,33 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
         //            return
         //        }
         
-        let alert = UIAlertController(title: "Redeem Gift / Referral", message: "Please Select an Option", preferredStyle: .actionSheet)
+       var title = String()
+        
+        if(LoginCredentials.Regiontype == "2")
+        {
+            title = "Redeem Referral"
+        }
+        else
+        {
+            title = "Redeem Gift / Referral"
+        }
+        
+        
+        let alert = UIAlertController(title: title, message: "Please Select an Option", preferredStyle: .actionSheet)
+        
+        
+        if(LoginCredentials.Regiontype == "2")
+        {
+            
+        }
+        else
+        {
         
         alert.addAction(UIAlertAction(title: "Redeem Gift", style: .default , handler:{ (UIAlertAction)in
             print("User click Approve button")
             self.showredeemgiftalert()
         }))
+        }
         
         alert.addAction(UIAlertAction(title: "Redeem Referral", style: .default , handler:{ (UIAlertAction)in
             print("User click Edit button")
@@ -126,12 +181,12 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
         
         
         
-        if(Common.Isuserissubscribenew(Userdetails: self))
-        {
-            EZAlertController.alert(title: "You are already subcribed")
-            return
-        }
-        
+//        if(Common.Isuserissubscribenew(Userdetails: self))
+//        {
+//            EZAlertController.alert(title: "You are already subcribed")
+//            return
+//        }
+//
         let alertController = UIAlertController(title: "Redeem Gift", message: "", preferredStyle: .alert)
         alertController.addTextField { (textField : UITextField!) -> Void in
             textField.placeholder = "Enter Gift Code"
@@ -163,9 +218,6 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
     
     func showredeemrefreemcodealert() {
         
-        
-        
-        
         let alertController = UIAlertController(title: "Redeem Referral", message: "", preferredStyle: .alert)
         alertController.addTextField { (textField : UITextField!) -> Void in
             textField.placeholder = "Enter Referral Code"
@@ -190,16 +242,9 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
         alertController.addAction(saveAction)
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
-        
-        
     }
     
-    
-    
-    
-    
-    
-    
+
     
     func redeemreferrelcode(referralcode:String)
     {
@@ -308,6 +353,8 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
         {
             if(Common.Isuserhavefreedayssubscription(Userdetails: self))
             {
+                tabelviewhghtcontrant.constant = CGFloat(LoginCredentials.UserPakegeList.count-1) * 113.0
+                ScroolviewHeightcntrant.constant = tabelviewhghtcontrant.constant + 50.0
                 return 0.0
             }
         }
@@ -338,7 +385,7 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
             Common.getRounduiview(view: cell.subscriptionview, radius: 10.0)
             cell.subscriptionname.textAlignment = .center
             cell.subscriptionname.text =  "Or"
-            cell.subscriptionprice.text = "Watch Our Video And Get One Day Subscription"
+            cell.subscriptionprice.text = "Watch ad and get ONE day full Subscription"
             cell.subscriptionprice.textColor = UIColor.green
             let issubcribed = ((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "is_subscriber") as! String
             if(issubcribed == "1") {
@@ -449,10 +496,10 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
         if(Common.Islogin())
         {
             
-            if(!Common.Isuserissubscribenew(Userdetails: self as AnyObject))
-            {
-                
-                
+//            if(!Common.Isuserissubscribenew(Userdetails: self as AnyObject))
+//            {
+//
+            
                 let selectedCell:Custometablecell = tableView.cellForRow(at: indexPath)! as! Custometablecell
                 selectedCell.issubscribebutton.setImage(#imageLiteral(resourceName: "Selectcircle"), for: .normal)
                 let pakeagename = ((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "p_name") as! String
@@ -487,11 +534,11 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
                         self.showsubcriptionalert(titile: Subscriptionpakagename, description: "")
                     }
                 }
-            }
-            else
-            {
-                EZAlertController.alert(title: "You are already subscribed")
-            }
+//            }
+//            else
+//            {
+//                EZAlertController.alert(title: "You are already subscribed")
+//            }
         }
         else
         {
@@ -888,8 +935,7 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
                             self.ScroolviewHeightcntrant.constant = self.tabelviewhghtcontrant.constant + 50.0
                         }
                         self.dismiss(animated: true, completion: nil)
-                        
-                    }
+                     }
                     
                     
                     
@@ -931,7 +977,9 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
             if (responseObject as? [String: AnyObject]) != nil {
                 let dict = responseObject as! NSDictionary
                 print(dict)
-                let number = dict.value(forKey: "code") as! NSNumber
+                
+                 AppUtility.lockOrientation(.portrait)
+                 let number = dict.value(forKey: "code") as! NSNumber
                 if(number == 0)
                 {
                     
@@ -950,6 +998,10 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
     }
 
     @IBAction func TapToCancel(_ sender: UIButton) {
+        if(!Common.Isuserissubscribenew(Userdetails: self))
+        {
+            LoginCredentials.Regiontype = ""
+        }
         self.dismiss(animated: true, completion: nil)
     }
     

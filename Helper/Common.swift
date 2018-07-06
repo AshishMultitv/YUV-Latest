@@ -394,11 +394,27 @@ class Common: NSObject {
                 //                return false
                 
                 
-                if(Common.isuserseletedlocality()) {
+            //    if(Common.isuserseletedlocality()) {
                     
                     let alert = UIAlertController(title: "", message: "Please Subscribe to watch our great video", preferredStyle: UIAlertControllerStyle.alert)
                     alert.addAction(UIAlertAction(title: "Subscribe", style: UIAlertActionStyle.default, handler: { (action) in
+                        
+                        
+                        
                         Common.PresentSubscription(Viewcontroller: viewcontrolerl)
+                        
+//                        if(!Common.isuserseletedlocality()) {
+//
+//                     //  let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                     //  let leftViewController = storyboard.instantiateViewController(withIdentifier: "LeftViewController") as! LeftViewController
+//                            Common.showuserlocationpopup(viewcontrooler: viewcontrolerl)
+//
+//                        }
+//                        else
+//                        {
+//
+//                        Common.PresentSubscription(Viewcontroller: viewcontrolerl)
+//                        }
                     }))
                     alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: { (action) in
                         
@@ -406,16 +422,16 @@ class Common: NSObject {
                     viewcontrolerl.present(alert, animated: true, completion: nil)
                     return false
                     
-                }
+            //    }
                     
-                else
-                {
-                    // let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    //   let leftViewController = storyboard.instantiateViewController(withIdentifier: "LeftViewController") as! LeftViewController
-                    Common.showuserlocationpopup(viewcontrooler: viewcontrolerl)
-                    return false
-                }
-                
+//                else
+//                {
+//                    // let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                    //   let leftViewController = storyboard.instantiateViewController(withIdentifier: "LeftViewController") as! LeftViewController
+//                    Common.showuserlocationpopup(viewcontrooler: viewcontrolerl)
+//                    return false
+//                }
+//
                 
                 
             }

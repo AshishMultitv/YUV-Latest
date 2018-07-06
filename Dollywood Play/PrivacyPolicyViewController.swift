@@ -38,6 +38,10 @@ class PrivacyPolicyViewController: UIViewController,UIWebViewDelegate {
         {
             webview.loadHTMLString("<html><head><style>body {background:clear} p {color:white;}</style></head><body><p>\(LoginCredentials.About)<p></body></html>", baseURL: nil)
         }
+        else if(LoginCredentials.headerlabeltext == "FAQ" )
+        {
+            webview.loadHTMLString("<html><head><style>body {background:clear} p {color:white;}</style></head><body><p>\(LoginCredentials.Faq)<p></body></html>", baseURL: nil)
+        }
         Common.startloder(view: self.view)
         UIApplication.shared.endIgnoringInteractionEvents();
         

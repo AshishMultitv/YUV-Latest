@@ -94,8 +94,6 @@ class MyAccountViewController: UIViewController,MXSegmentedPagerDataSource,MXSeg
     {
         
         let inputView = UIView(frame: CGRect.init(x:0, y:0, width:self.view.frame.width, height:240))
-        
-        
         datePickerView  = UIDatePicker(frame: CGRect.init(x:0, y:40, width:0, height:0))
         datePickerView.datePickerMode = UIDatePickerMode.date
         inputView.addSubview(datePickerView) // add date picker to UIView

@@ -17,6 +17,7 @@ enum LeftMenu: Int {
     case eight
     case nine
     case ten
+    case eleven
  }
 
 protocol LeftMenuProtocol : class {
@@ -163,6 +164,10 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
             if(str1 == "about")
             {
                 LoginCredentials.About = (array.object(at: i) as! NSDictionary).value(forKey: "page_description") as! String
+            }
+            if(str1 == "faq")
+            {
+                LoginCredentials.Faq = (array.object(at: i) as! NSDictionary).value(forKey: "page_description") as! String
             }
             
             
@@ -316,7 +321,10 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
             self.loginlogoutaction()
         case .ten:
             self.loginlogoutaction()
+        case .eleven:
+            self.loginlogoutaction()
           }
+        
         
     }
 }
@@ -325,7 +333,7 @@ extension LeftViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if let menu = LeftMenu(rawValue: indexPath.row) {
             switch menu {
-            case .main, .First, .Second, .Third, .Fourth, .fifth, .Six, .Seven, .eight, .nine, .ten:
+            case .main, .First, .Second, .Third, .Fourth, .fifth, .Six, .Seven, .eight, .nine, .ten, .eleven:
                 return BaseTableViewCell.height()
             }
         }
@@ -408,7 +416,6 @@ extension LeftViewController : UITableViewDelegate {
         case "subscription":
             if(Common.Islogin())
             {
-             
                // Common.PresentSubscription(Viewcontroller: self)
                  let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let subscriptionViewController = storyboard.instantiateViewController(withIdentifier: "SubscriptionView") as! SubscriptionView
@@ -433,6 +440,10 @@ extension LeftViewController : UITableViewDelegate {
             break
         case "tc":
             LoginCredentials.headerlabeltext = "Terms"
+            self.slideMenuController()?.changeMainViewController(self.PrivacyPolicyViewController, close: true)
+            break
+        case "faq":
+            LoginCredentials.headerlabeltext = "FAQ"
             self.slideMenuController()?.changeMainViewController(self.PrivacyPolicyViewController, close: true)
             break
         case "privacy":
@@ -481,7 +492,7 @@ extension LeftViewController : UITableViewDataSource {
         
         if let menu = LeftMenu(rawValue: indexPath.row) {
             switch menu {
-            case .main, .First, .Second, .Third, .Fourth, .fifth, .Six, .Seven, .eight, .nine, .ten:
+            case .main, .First, .Second, .Third, .Fourth, .fifth, .Six, .Seven, .eight, .nine, .ten, .eleven:
                 let cell = BaseTableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: BaseTableViewCell.identifier)
                 cell.setData(menus[indexPath.row])
                 let lastRowIndex = tableView.numberOfRows(inSection: tableView.numberOfSections-1)

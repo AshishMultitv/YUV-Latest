@@ -473,9 +473,7 @@ class MoreViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     
     //MARK:collection View delegate method
-    
-    
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
         return self.dataarray.count

@@ -189,6 +189,20 @@ class LoginCredentials: NSObject {
         }
     }
     
+    static var Faq: String {
+        get {
+            
+            if let faq = UserDefaults.standard.object(forKey: "faq") as? String {
+                return faq
+            }
+            return String()
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "faq")
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
     
     static var Flag_Home: String {
         get {
@@ -1825,5 +1839,20 @@ class LoginCredentials: NSObject {
         }
     }
 
+    
+    static var OnesinglePlayerid: String {
+        get {
+            
+            if let onesinglePlayerid = UserDefaults.standard.object(forKey: "onesinglePlayerid") as? String
+            {
+                return onesinglePlayerid
+            }
+            return String()
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "onesinglePlayerid")
+            UserDefaults.standard.synchronize()
+        }
+    }
     
      }

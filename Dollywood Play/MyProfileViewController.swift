@@ -18,7 +18,7 @@ import PTPopupWebView
 
 
 
-class MyProfileViewController: UIViewController,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+class MyProfileViewController: UIViewController,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITableViewDelegate,UITableViewDataSource {
     
     @IBOutlet var myprofileimageview: UIImageView!
     @IBOutlet var name_txfield: UITextField!
@@ -29,17 +29,12 @@ class MyProfileViewController: UIViewController,UITextFieldDelegate,UIImagePicke
     @IBOutlet var contact_numbertx: UITextField!
     @IBOutlet var location_tx: UITextField!
     
-    @IBOutlet weak var invoicebutton: UIButton!
-    
+ 
     @IBOutlet weak var subscriptionheaderlabel: UILabel!
     @IBOutlet weak var Subscriptionview: UIView!
-    @IBOutlet weak var SubscriptionPkgname: UILabel!
-    
-    @IBOutlet weak var Subscriptionexpdate: UILabel!
-    
-    @IBOutlet weak var Subscriptionamount: UILabel!
-    
     @IBOutlet weak var freesubscriptionlabel: UILabel!
+    
+    @IBOutlet weak var scrollviewhghtcntrnt: NSLayoutConstraint!
     @IBOutlet weak var subscriptionheightcnstrnt: NSLayoutConstraint!
     var toolbar = FormToolbar()
     @IBOutlet var myscroolview: UIScrollView!
@@ -54,6 +49,7 @@ class MyProfileViewController: UIViewController,UITextFieldDelegate,UIImagePicke
     @IBOutlet var UserIntresetedlabel: JCTagListView!
     let GoogleMapsAPIServerKey = "AIzaSyAG4YEhCbm63GjZyU_94vHsq8DBP4SWU_M"
     
+    @IBOutlet weak var subscriptiontableview: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(setprofiledata), name: NSNotification.Name(rawValue: "Updateprofiledata"), object: nil)
@@ -91,18 +87,21 @@ class MyProfileViewController: UIViewController,UITextFieldDelegate,UIImagePicke
     }
     
     
-    @IBAction func Taptoinvoice(_ sender: UIButton) {
+    func Taptoinvoice(invoicebutton:UIButton) {
         
         let popupvc = PTPopupWebViewController()
-        let subscription_dict = LoginCredentials.UserSubscriptiondetail.object(at: 0) as! NSDictionary
-        let url = (subscription_dict.value(forKey: "invoice_url") as! String).url
-        popupvc.popupView.URL(url)
-        popupvc.show()
+        let subscription_dict = LoginCredentials.UserSubscriptiondetail.object(at: invoicebutton.tag) as! NSDictionary
         
-        
-        //     .popupAppearStyle(slideSlide(.Bottom, 0.4, true))
-        //  .popupDisappearStyle(.Slide(.Bottom, 0.4, true))
-        //
+        if let _  = subscription_dict.value(forKey: "invoice_url") {
+            if(Common.isNotNull(object: subscription_dict.value(forKey: "invoice_url") as AnyObject)) {
+                     let url = (subscription_dict.value(forKey: "invoice_url") as! String).url
+                     popupvc.popupView.URL(url)
+                     popupvc.show()
+                
+            }
+            
+        }
+ 
     }
     
     @IBAction func Taptoagegroup(_ sender: UIButton)
@@ -125,7 +124,7 @@ class MyProfileViewController: UIViewController,UITextFieldDelegate,UIImagePicke
     
     override func viewWillAppear(_ animated: Bool) {
         
-        self.setinvoicebutton()
+       
         self.navigationController?.isNavigationBarHidden = true
         if(!isprofilemakeupdate)
         {
@@ -137,34 +136,7 @@ class MyProfileViewController: UIViewController,UITextFieldDelegate,UIImagePicke
         
     }
     
-    func setinvoicebutton() {
-        if(LoginCredentials.UserSubscriptiondetail.count>0)
-        {
-            let subscription_dict = LoginCredentials.UserSubscriptiondetail.object(at: 0) as! NSDictionary
-            if(Common.isNotNull(object: (subscription_dict.value(forKey: "invoice_url") as! String as AnyObject))) {
-                let url = (subscription_dict.value(forKey: "invoice_url") as! String)
-                if(url == "")
-                {
-                    invoicebutton.isHidden = true
-                }
-                else
-                {
-                    invoicebutton.isHidden = false
-                }
-                
-            }
-            else
-            {
-                invoicebutton.isHidden = true
-            }
-            
-        }
-        else
-        {
-            invoicebutton.isHidden = true
-        }
-    }
-    
+  
     func setprofiledata()
     {
         
@@ -300,6 +272,8 @@ class MyProfileViewController: UIViewController,UITextFieldDelegate,UIImagePicke
         freesubscriptionlabel.isHidden = true
         hideallsubscriptiondetail()
         
+      scrollviewhghtcntrnt.constant =  650
+        
         
         if(LoginCredentials.Allusersubscriptiondetail.count>0)
         {
@@ -329,19 +303,11 @@ class MyProfileViewController: UIViewController,UITextFieldDelegate,UIImagePicke
         if(LoginCredentials.UserSubscriptiondetail.count>0)
         {
             let subscription_dict = LoginCredentials.UserSubscriptiondetail.object(at: 0) as! NSDictionary
-            self.Subscriptionamount.text = subscription_dict.value(forKey: "price") as? String
-            self.SubscriptionPkgname.text = subscription_dict.value(forKey: "description") as? String
-            
-            if(subscription_dict.value(forKey: "package_type") as? String == "0") {
-                self.Subscriptionexpdate.text = ""
-            }
-            else{
-                self.Subscriptionexpdate.text = "\("Valid upto ") \(subscription_dict.value(forKey: "subscription_end") as! String)"
-            }
-            
             Subscriptionview.isHidden = false
             subscriptionheaderlabel.isHidden = false
-            subscriptionheightcnstrnt.constant = 100.0
+            subscriptionheightcnstrnt.constant = CGFloat(100 * LoginCredentials.UserSubscriptiondetail.count)
+            scrollviewhghtcntrnt.constant =  650 + CGFloat(100 * LoginCredentials.UserSubscriptiondetail.count)
+            subscriptiontableview.reloadData()
             
         }
         
@@ -355,10 +321,7 @@ class MyProfileViewController: UIViewController,UITextFieldDelegate,UIImagePicke
     func hideallsubscriptiondetail()
     {
         Subscriptionview.isHidden = true
-        self.Subscriptionamount.text = ""
-        self.SubscriptionPkgname.text = ""
-        self.Subscriptionexpdate.text = ""
-        subscriptionheaderlabel.isHidden = true
+       subscriptionheaderlabel.isHidden = true
         subscriptionheightcnstrnt.constant = 0.0
         
     }
@@ -485,10 +448,7 @@ class MyProfileViewController: UIViewController,UITextFieldDelegate,UIImagePicke
     {
         dob_tx.resignFirstResponder() // To resign the inputView on clicking done.
     }
-    
-    
-    
-    
+ 
     func updateprofiledata()
     {
 
@@ -633,6 +593,76 @@ class MyProfileViewController: UIViewController,UITextFieldDelegate,UIImagePicke
         dateFormatter.dateFormat = "yyyy-MM-dd"
         dob_tx.text = dateFormatter.string(from: sender.date)
     }
+    
+
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+         return 100
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+         return LoginCredentials.UserSubscriptiondetail.count
+    }
+    // cell height
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+       print(indexPath.row)
+        let SimpleTableIdentifier:NSString = "cell"
+        var cell:Custometablecell! = tableView.dequeueReusableCell(withIdentifier: SimpleTableIdentifier as String) as? Custometablecell
+        cell = Bundle.main.loadNibNamed("Custometablecell", owner: self, options: nil)?[5] as! Custometablecell
+        cell.selectionStyle = .none
+        
+        
+        let subscription_dict = LoginCredentials.UserSubscriptiondetail.object(at: indexPath.row) as! NSDictionary
+        cell.profileSubscriptionPkgname.text = (subscription_dict.value(forKey: "title") as! String)
+         cell.profileSubscriptionamount.text =  "\("@ ")\(subscription_dict.value(forKey: "currency") as! String) \(" ")\(subscription_dict.value(forKey: "price") as! String)"
+         if(subscription_dict.value(forKey: "package_type") as? String == "0") {
+            cell.profileSubscriptionexpdate.text = ""
+        }
+        else{
+             cell.profileSubscriptionexpdate.text = "\("Valid upto ") \(subscription_dict.value(forKey: "subscription_end") as! String)"
+        }
+        
+        
+        Common.setuiviewdborderwidth(View: cell.profilesubscriptioncellview, borderwidth: 1.0)
+        Common.getRounduibutton(button: cell.profileSubscriptioninvoicebutton, radius: 5.0)
+        Common.setbuttonborderwidth(button: cell.profileSubscriptioninvoicebutton, borderwidth: 1.0)
+        
+         if(Common.isNotNull(object: (subscription_dict.value(forKey: "invoice_url") as! String as AnyObject))) {
+            let url = (subscription_dict.value(forKey: "invoice_url") as! String)
+            if(url == "")
+            {
+                cell.profileSubscriptioninvoicebutton.isHidden = true
+            }
+            else
+            {
+                cell.profileSubscriptioninvoicebutton.isHidden = false
+        
+               
+            }
+            
+        }
+        else
+        {
+            cell.profileSubscriptioninvoicebutton.isHidden = true
+        }
+        cell.profileSubscriptioninvoicebutton.tag = indexPath.row
+        
+        if let _  = subscription_dict.value(forKey: "invoice_url") {
+            if(Common.isNotNull(object: subscription_dict.value(forKey: "invoice_url") as AnyObject)) {
+                let url = subscription_dict.value(forKey: "invoice_url") as! String
+                cell.profileSubscriptioninvoicebutton.addTarget(self, action: #selector(Taptoinvoice(invoicebutton:)), for: .touchUpInside)
+             }
+            
+        }
+        
+        return cell
+        
+    }
+    
+
     
     @objc func keyboardWillShow(_ notification: Notification) {
         let userInfo: NSDictionary = notification.userInfo! as NSDictionary

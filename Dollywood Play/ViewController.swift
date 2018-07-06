@@ -124,8 +124,7 @@ class ViewController: UIViewController,MXSegmentedPagerDataSource,MXSegmentedPag
         self.miniMediaControlsViewController = castContext.createMiniMediaControlsViewController()
         self.miniMediaControlsViewController.delegate = self
         self.updateControlBarsVisibility()
-
-        
+      
         
     }
     
@@ -149,6 +148,8 @@ class ViewController: UIViewController,MXSegmentedPagerDataSource,MXSegmentedPag
     }
     //MARK:- viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
+        
+      
         self.navigationController?.isNavigationBarHidden = true
         self.chekcUsersubscription()
         self.getUsersubscriptiondetail()

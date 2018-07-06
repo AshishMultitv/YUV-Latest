@@ -46,9 +46,19 @@ class Custometablecell: UITableViewCell {
     
     @IBOutlet weak var freetrailouterview: UIView!
     
-    
-    //////Autosuggstion in searchview outlate
+     //////Autosuggstion in searchview outlate
     @IBOutlet weak var Autosuggestontitle: UILabel!
+    
+    
+    /////Subscription Package Call
+    
+    @IBOutlet weak var profileSubscriptionPkgname: UILabel!
+    @IBOutlet weak var profileSubscriptionexpdate: UILabel!
+    @IBOutlet weak var profileSubscriptionamount: UILabel!
+    @IBOutlet weak var profileSubscriptioninvoicebutton: UIButton!
+    
+    @IBOutlet weak var profilesubscriptioncellview: UIView!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

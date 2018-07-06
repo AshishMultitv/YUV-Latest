@@ -254,9 +254,7 @@ class SignUpViewController: UIViewController,CLLocationManagerDelegate,Countries
                        "devicedetail":Common.convertdictinyijasondata(data: devicedetailss),
                        "device_other_detail":Common.convertdictinyijasondata(data: dictionaryOtherDetail)
         ]
-        
-        
-        
+ 
         let url = String(format: "%@%@", LoginCredentials.AddAPi,Apptoken)
         let manager = AFHTTPSessionManager()
         manager.post(url, parameters: parameters, progress: nil, success: { (task: URLSessionDataTask, responseObject: Any?) in

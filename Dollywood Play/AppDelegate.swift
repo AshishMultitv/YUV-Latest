@@ -181,9 +181,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "Setprofiledata"), object: nil, userInfo: nil)
          dataBase.deletedataentity(entityname: "Downloadvideoid")
          Common.stopHeartbeat()
-        
-        
-        print("User Logout From aPp")
+         print("User Logout From aPp")
        let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
 //        let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
 //        self.window?.rootViewController = loginViewController
@@ -200,9 +198,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         self.window?.backgroundColor = UIColor(red: 236.0, green: 238.0, blue: 241.0, alpha: 1.0)
         self.window?.rootViewController = slideMenuController
         self.window?.makeKeyAndVisible()
-        
-        
-    }
+     }
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -256,8 +252,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         let notificationOpenedBlock: OSHandleNotificationActionBlock = { result in
             // This block gets called when the user reacts to a notification received
             let payload: OSNotificationPayload? = result?.notification.payload
-            
             if let additionalData = result!.notification.payload!.additionalData {
+                if let _ = additionalData["type"]
+                {
+                let type = additionalData["type"] as! String
+                if(type == "SESSION_EXPIRY")
+                {
+                    if(Common.Islogin())
+                    {
+                        Common.appLogout()
+                        return
+                    }
+                    else
+                    {
+                      return
+                    }
+                }
+                }
+                
+                
+                
+                let notifytype = additionalData["type"] as! String
+                if(notifytype == "notify") {
+                
                 print(additionalData["id"] as! String)
                 self.catid = additionalData["id"] as! String
                 print(self.catid)
@@ -275,6 +292,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
                 self.window?.backgroundColor = UIColor(red: 236.0, green: 238.0, blue: 241.0, alpha: 1.0)
                 self.window?.rootViewController = slideMenuController
                 self.window?.makeKeyAndVisible()
+                }
                 
                  // DEEP LINK and open url in RedViewController
                 // Send notification with Additional Data > example key: "OpenURL" example value: "https://google.com"
@@ -299,19 +317,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         // Replace 'YOUR_APP_ID' with your OneSignal App ID.
         OneSignal.add(self as OSSubscriptionObserver)
         // OneSignal.initWithLaunchOptions(launchOptions, appId: "2662a68c-d7cc-4d92-bc47-2de7d0b5965c", handleNotificationReceived: notificationReceivedBlock, handleNotificationAction: notificationOpenedBlock, settings: onesignalInitSettings)
-       OneSignal.initWithLaunchOptions(launchOptions, appId: "16b95c8e-6fd7-46cc-a1c4-a5ccde92da78", handleNotificationReceived: notificationReceivedBlock, handleNotificationAction: notificationOpenedBlock, settings: onesignalInitSettings)
+        //16b95c8e-6fd7-46cc-a1c4-a5ccde92da78 /// Ye kis app
+       OneSignal.initWithLaunchOptions(launchOptions, appId: "2662a68c-d7cc-4d92-bc47-2de7d0b5965c", handleNotificationReceived: notificationReceivedBlock, handleNotificationAction: notificationOpenedBlock, settings: onesignalInitSettings)
         
         OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification;
         OneSignal.promptForPushNotifications(userResponse: { accepted in
             print("User accepted notifications: \(accepted)")
-    
-            
-            
+  
         })
-        
-        
-        
-        
+
         
         //       // let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false, kOSSettingsKeyInAppLaunchURL: true, ]
         //          let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false]
@@ -402,8 +416,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         //The player id is inside stateChanges. But be careful, this value can be nil if the user has not granted you permission to send notifications.
         if let playerId = stateChanges.to.userId {
             print("Current playerId \(playerId)")
-            self.Refreshtoken(playerid: playerId)
-            
+            LoginCredentials.OnesinglePlayerid = playerId
+            self.Refreshtoken(playerid: LoginCredentials.OnesinglePlayerid)
         }
     }
 
@@ -413,6 +427,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     {
          print("Recived: \(userInfo)")
          completionHandler(.newData)
+        if let _ = userInfo["custom"] {
+            
+           if let _  = (userInfo["custom"] as! NSDictionary).value(forKey: "a")
+           {
+            let dict  = (userInfo["custom"] as! NSDictionary).value(forKey: "a") as! NSDictionary
+            let type = dict.value(forKey: "type") as! String
+            if(type == "SESSION_EXPIRY")
+            {
+                if(Common.Islogin())
+                {
+                    Common.appLogout()
+                }
+            }
+            
+            }
+            
+            
+        }
+        
+        
         if let _ = userInfo["type"]
         {
         let typeStr = userInfo["type"] as! String
@@ -464,7 +498,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
             print("SESSION_INACTIVE")
             if(Common.Islogin())
             {
-                 Common.Pushback()
+              Common.Pushback()
             }
         }
         
@@ -1078,7 +1112,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
          let Clearwatchapiarra : [String] = Clearwatchapi.components(separatedBy: "|,")
          LoginCredentials.Clearwatchapi = Clearwatchapiarra[1]
                     
-                    
+                    self.Refreshtoken(playerid: LoginCredentials.OnesinglePlayerid)
                     self.checkContantUpdate()
                     if(!self.Isdeeplinking)
                     {
@@ -1106,8 +1140,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     func Refreshtoken(playerid:String)
     {
         
-      
-        
+ 
          let uuid = UIDevice.current.identifierForVendor!.uuidString
         let parameters = ["device_type":"app",
                           "device_unique_id": uuid,
@@ -1322,8 +1355,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         {
             json = ["device":"ios","u_id":"","c_id":LoginCredentials.Videoid ,"type": "2","buff_d":"0","dod":Common.convertdictinyijasondata(data: dictionaryOtherDetail),"dd":Common.convertdictinyijasondata(data: devicedetailss),"pd":LoginCredentials.VideoPlayingtime,"token":Apptoken]
         }
-        print("App analytics json >>",json)
         
+        print("App analytics json >>",json)
         let url = String(format: "%@%@", LoginCredentials.Analyticsappapi,Apptoken)
         print(url)
         let manager = AFHTTPSessionManager()

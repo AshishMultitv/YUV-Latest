@@ -60,7 +60,7 @@ class FavouriteViewController: UIViewController,UITableViewDataSource,UITableVie
             "type": "liked",
             "current_offset":display_offset
         ]
-        // let url = String(format: "%@%@/device/ios/user_id/%@/max_counter/20/type/liked/current_offset/%@", LoginCredentials.Userrelatedapi,Apptoken,(dict.value(forKey: "id") as! NSNumber).stringValue,display_offset)
+        // let url = String(format: "%@%@/device/cat_idios/user_id/%@/max_counter/20/type/liked/current_offset/%@", LoginCredentials.Userrelatedapi,Apptoken,(dict.value(forKey: "id") as! NSNumber).stringValue,display_offset)
         let url = String(format: "%@%@/device/ios/current_version/0.0/max_counter/20/current_offset/%@/user_id/%@/type/favorite", LoginCredentials.Userrelatedapi,Apptoken,display_offset,(dict.value(forKey: "id") as! NSNumber).stringValue)
         
         
@@ -307,13 +307,84 @@ class FavouriteViewController: UIViewController,UITableViewDataSource,UITableVie
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm:ss"
         let videotime = (self.dataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "created") as? String
+         cell.uploaddatelabel.text = self.compatedate(date: videotime!)
         
-        cell.uploaddatelabel.text = self.compatedate(date: videotime!)
         
-        
+        let unfavbutton = UIButton.init(frame: CGRect.init(x: cell.frame.size.width-40, y: 10, width: 30, height: 30))
+         unfavbutton.setImage(#imageLiteral(resourceName: "favremove"), for: .normal)
+        unfavbutton.tag = indexPath.row
+         unfavbutton.addTarget(self, action: #selector(taptounfav(button:)), for: .touchUpInside)
+        cell.contentView.addSubview(unfavbutton)
         return cell
     }
     
+    
+    
+    func taptounfav(button: UIButton) {
+        
+        print(button.tag)
+        
+       let cat_id = (dataarray.object(at: button.tag) as! NSDictionary).value(forKey: "id") as! String
+        
+        
+        if(!Common.isInternetAvailable())
+        {
+            EZAlertController.alert(title: "No Internet connection")
+            return
+        }
+        
+        
+        let dict = dataBase.getDatabaseresponseinentity(entityname: "Logindata", key: "logindatadict")
+        if (dict.count>0)
+        {
+           Common.startloder(view: self.view)
+            var parameters = [String:String]()
+            parameters = [
+                    "device": "ios",
+                    "type": "video",
+                    "content_id":cat_id,
+                    "user_id":(dict.value(forKey: "id") as! NSNumber).stringValue,
+                    "favorite":"0",
+                    "content_type":"video",
+                     ]
+        
+            JYToast.init().isShow("Removed from favorite videos")
+            
+ 
+//                if let window = appDelegate?.window {
+//                    Toast.displayMessage("Removed from favorite videos",
+//                                         for: 1, in: window)
+//                }
+             let url = String(format: "%@%@", LoginCredentials.Favrioutapi,Apptoken)
+            print(url)
+            let manager = AFHTTPSessionManager()
+            manager.post(url, parameters: parameters, progress: nil, success: { (task: URLSessionDataTask, responseObject: Any?) in
+                if (responseObject as? [String: AnyObject]) != nil {
+                    let dict = responseObject as! NSDictionary
+                    print(dict)
+                    self.display_offset = "0"
+                    self.dataarray.removeAllObjects()
+                    self.Getlikedlist()
+                    
+                    
+                 }
+            }) { (task: URLSessionDataTask?, error: Error) in
+                print("POST fails with error \(error)")
+                Common.stoploder(view: self.view)
+            }
+            
+        }
+        else
+        {
+            Common.Showloginalert(view: self, text: "Please login to access this section")
+ 
+            
+        }
+        
+        
+        
+        
+    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {

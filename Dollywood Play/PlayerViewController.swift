@@ -1812,7 +1812,6 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
                                 
                             }
                             
-                            
                             if((dict.value(forKey: "behaviour") as! NSDictionary).value(forKey: "favorite") as! NSString == "0")
                             {
                                 
@@ -4287,23 +4286,17 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
                
                 self.Favroutbutton.setImage(UIImage.init(named: "favriout"), for: .normal)
                 self.isfav = false
-                if let window = appDelegate?.window {
-                Toast.displayMessage("Removed from favorite videos",
-                                     for: 3, in: window)
-                }
-               // toast.isShow("Removed from favorite videos")
-                
+                JYToast.init().isShow("Removed from favorite videos")
+
+               
                 
             }
             else
             {
                 self.Favroutbutton.setImage(UIImage.init(named: "favriout1"), for: .normal)
                 self.isfav = true
-                 if let window = appDelegate?.window {
-                Toast.displayMessage("Added to favorite videos",
-                                     for: 3, in: window)
-                }
-               // toast.isShow("Added to favorite videos")
+                JYToast.init().isShow("Added to favorite videos")
+ 
              }
             
  
@@ -4425,10 +4418,7 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
                 if (responseObject as? [String: AnyObject]) != nil {
                     let dict = responseObject as! NSDictionary
                     print(dict)
-                    
-                    
-                    
-                    
+       
                 }
             }) { (task: URLSessionDataTask?, error: Error) in
                 print("POST fails with error \(error)")
@@ -5149,7 +5139,7 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
             }
         }
         
-        
+        stopanimatedownliadbutton()
         Common.callappanalytics()
         
         

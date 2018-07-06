@@ -505,11 +505,7 @@ class LoginViewController: UIViewController,GIDSignInDelegate,GIDSignInUIDelegat
         
     }
     
-    
-    
-    
-    
-    
+ 
     
     @IBAction func BackButton_action(_ sender: UIButton) {
         

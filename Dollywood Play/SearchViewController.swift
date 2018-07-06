@@ -620,7 +620,6 @@ class SearchViewController: UIViewController,UISearchBarDelegate,UITableViewData
             
             if(timeDifference.day != 0)
             {
-                
                 uploadtime =  "\(timeDifference.day!.toString())\(" Days ago")"
                 return uploadtime
                 
@@ -634,13 +633,10 @@ class SearchViewController: UIViewController,UISearchBarDelegate,UITableViewData
             }
             else if(timeDifference.minute != 0)
             {
-                
                 uploadtime =  "\(timeDifference.minute!.toString())\(" Minut ago")"
                 return uploadtime
             }
-            
-            
-            
+  
         }
         
         return uploadtime
