@@ -76,7 +76,6 @@ open class BaseTableViewCell : UITableViewCell {
     
     open func setmenuimage(_ data: Any?) {
         // self.backgroundColor = UIColor(hex: "F1F8E9")
-        
          if let imageurl = data as? String {
                var iurl = imageurl
             iurl = iurl.replacingOccurrences(of: " ", with: "%20")
@@ -98,7 +97,7 @@ open class BaseTableViewCell : UITableViewCell {
     
     override open func setHighlighted(_ highlighted: Bool, animated: Bool) {
         if highlighted {
-            self.alpha = 1.0
+            self.alpha = 0.3
         } else {
             self.alpha = 1.0
         }

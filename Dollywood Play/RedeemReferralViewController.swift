@@ -49,7 +49,11 @@ class RedeemReferralViewController: UIViewController,UITextFieldDelegate {
             "c_id": (dict.value(forKey: "id") as! NSNumber).stringValue
         ]
         print(parameters)
-        var url = String(format: "%@/subscriptionapi/v6/subscription/redeem_refferal/token/%@/device/ios", SubscriptionBaseUrl,Apptoken)
+   
+        
+        var url = String(format: "%@%@/device/ios", LoginCredentials.Redeemrefferalapi,Apptoken)
+
+        
         url =  url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         print(url.url)
         let manager = AFHTTPSessionManager()
@@ -92,7 +96,7 @@ class RedeemReferralViewController: UIViewController,UITextFieldDelegate {
         if(Common.Islogin()) {
             let dict = dataBase.getDatabaseresponseinentity(entityname: "Logindata", key: "logindatadict")
             print(dict.value(forKey: "id") as! NSNumber)
-            var url = String(format: "%@/subscriptionapi/v6/spackage/user_packages/token/%@/device/ios/uid/%@",SubscriptionBaseUrl,Apptoken,(dict.value(forKey: "id") as! NSNumber).stringValue)
+            var url = String(format: "%@%@/device/ios/uid/%@",LoginCredentials.Userpackagesapi,Apptoken,(dict.value(forKey: "id") as! NSNumber).stringValue)
             url = url.trimmingCharacters(in: .whitespaces)
             print(url)
             let manager = AFHTTPSessionManager()

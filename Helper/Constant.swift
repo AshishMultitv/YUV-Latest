@@ -124,7 +124,10 @@ class Constant: NSObject {
     static let threemonthautorenewsubscription = "ThreeMonthAutoRenewable"
     static let sixmonthautorenewsubscription = "SixMonthAutoRenewable"
     static let oneyearautorenewsubscription = "OneYearAutoRenewable"
-
+    
+    ///////////// nonrenews Internatinal subscription /////////
+    static let onemonthInternationalnonrenewsubscription = "YuvInternationalOneMonthNonRenewing"
+    static let oneyearInternationalnonrenewsubscription =  "YuvInternationalOneYearNonRenewing"
 
     
     static let iapsecreatKey = "91020750d82b4a93bde3dcd19645abd3"
@@ -133,12 +136,27 @@ class Constant: NSObject {
 
     
     
-    static func getsubscriptionid(subscriptiontype:String,subscriptionname:String) -> String
+static func getsubscriptionid(subscriptiontype:String,subscriptionname:String,regiontype:String) -> String
     {
         
        
         
-        if(subscriptiontype == "AutoRenewable") {
+       if(regiontype == "2")
+       {
+        
+        switch subscriptionname {
+         case "1 month":
+            return Constant.onemonthInternationalnonrenewsubscription
+         case "1 year":
+            return Constant.oneyearInternationalnonrenewsubscription
+        default:
+            return ""
+        }
+        
+        }
+        else
+       {
+         if(subscriptiontype == "AutoRenewable") {
             switch subscriptionname {
             case "1 month":
                 return Constant.onemonthautorenewsubscription
@@ -174,7 +192,7 @@ class Constant: NSObject {
          return ""
      
     }
-    
+    }
     
     
 }

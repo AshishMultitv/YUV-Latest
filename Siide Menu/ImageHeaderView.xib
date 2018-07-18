@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1611" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -30,12 +30,12 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AxC-gn-yeR">
-                    <rect key="frame" x="150" y="170" width="0.0" height="0.0"/>
+                    <rect key="frame" x="125" y="170" width="0.0" height="0.0"/>
                     <fontDescription key="fontDescription" name="Ubuntu" family="Ubuntu" pointSize="13"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bfa-dQ-mB0">
-                    <rect key="frame" x="150" y="170" width="0.0" height="0.0"/>
+                    <rect key="frame" x="125" y="170" width="0.0" height="0.0"/>
                     <fontDescription key="fontDescription" name="Ubuntu" family="Ubuntu" pointSize="12"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -47,7 +47,7 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nDZ-xg-dUX">
-                    <rect key="frame" x="150" y="150" width="164" height="20"/>
+                    <rect key="frame" x="125" y="150" width="189" height="20"/>
                     <fontDescription key="fontDescription" name="Ubuntu" family="Ubuntu" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -80,7 +80,7 @@
                 <constraint firstItem="crj-Qs-Xeq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="S4z-uS-qaB"/>
                 <constraint firstAttribute="trailing" secondItem="cEv-Cs-imp" secondAttribute="trailing" constant="22" id="Tkh-7t-GYq"/>
                 <constraint firstItem="AxC-gn-yeR" firstAttribute="top" secondItem="nDZ-xg-dUX" secondAttribute="bottom" id="XL1-6C-EgK"/>
-                <constraint firstItem="nDZ-xg-dUX" firstAttribute="leading" secondItem="KsU-S4-hhE" secondAttribute="trailing" constant="50" id="ZNk-EC-pBb"/>
+                <constraint firstItem="nDZ-xg-dUX" firstAttribute="leading" secondItem="KsU-S4-hhE" secondAttribute="trailing" constant="25" id="ZNk-EC-pBb"/>
                 <constraint firstItem="KsU-S4-hhE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="40" id="cn0-Hd-iVZ"/>
                 <constraint firstItem="AvT-wU-CqL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="nd2-wC-KEX"/>
                 <constraint firstAttribute="bottom" secondItem="AvT-wU-CqL" secondAttribute="bottom" id="rrS-oU-8vS"/>
@@ -97,7 +97,7 @@
     </objects>
     <resources>
         <image name="Menuloguot" width="37" height="37"/>
-        <image name="menuprofilebackground" width="1014" height="651"/>
+        <image name="menuprofilebackground" width="306" height="196"/>
         <image name="userprofile" width="60" height="60"/>
     </resources>
 </document>

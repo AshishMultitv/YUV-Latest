@@ -804,7 +804,8 @@ class ChanneldetailViewController: UIViewController,MXSegmentedPagerDataSource,M
             var discriptiontext = (self.videodata.object(at: indexPath.row) as! NSDictionary).value(forKey: "des") as? String
             discriptiontext = discriptiontext?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
             cell.Descriptionlabel.text = discriptiontext
-            cell.viewlabel.text = "\((self.videodata.object(at: indexPath.row) as! NSDictionary).value(forKey: "watch") as! String)\(" view")"
+             cell.viewlabel.text = ""
+           // cell.viewlabel.text = "\((self.videodata.object(at: indexPath.row) as! NSDictionary).value(forKey: "watch") as! String)\(" view")"
             
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "HH:mm:ss"

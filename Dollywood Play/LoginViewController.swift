@@ -199,13 +199,11 @@ class LoginViewController: UIViewController,GIDSignInDelegate,GIDSignInUIDelegat
                 LoginCredentials.Issociallogin = false
                 
             }
-            
             //
             let jsonData = try JSONSerialization.data(withJSONObject: parameters,options: [])
             let otherDetailString = NSString(data: jsonData, encoding: String.Encoding.utf8.rawValue)! as String
             print(url)
             print(otherDetailString)
-            
             let manager = AFHTTPSessionManager()
             manager.post(url, parameters: parameters, progress: nil, success: { (task: URLSessionDataTask, responseObject: Any?) in
                 if (responseObject as? [String: AnyObject]) != nil {
@@ -592,7 +590,7 @@ class LoginViewController: UIViewController,GIDSignInDelegate,GIDSignInUIDelegat
         if(Common.Islogin()) {
             let dict = dataBase.getDatabaseresponseinentity(entityname: "Logindata", key: "logindatadict")
             print(dict.value(forKey: "id") as! NSNumber)
-            var url = String(format: "%@/subscriptionapi/v6/spackage/user_packages/token/%@/device/ios/uid/%@",SubscriptionBaseUrl,Apptoken,(dict.value(forKey: "id") as! NSNumber).stringValue)
+            var url = String(format: "%@%@/device/ios/uid/%@",LoginCredentials.Userpackagesapi,Apptoken,(dict.value(forKey: "id") as! NSNumber).stringValue)
             url = url.trimmingCharacters(in: .whitespaces)
             print(url)
             let manager = AFHTTPSessionManager()
@@ -604,12 +602,10 @@ class LoginViewController: UIViewController,GIDSignInDelegate,GIDSignInUIDelegat
                     if(number == 0)
                     {
                         
-                        
                     }
                     else
                     {
-                        
-                        
+      
                         if let _  = dict.value(forKey: "result")
                         {
                             LoginCredentials.Allusersubscriptiondetail = dict.value(forKey: "result") as! NSDictionary
@@ -625,6 +621,25 @@ class LoginViewController: UIViewController,GIDSignInDelegate,GIDSignInUIDelegat
                                     if(!Common.Isuserissubscribe(Userdetails: self))
                                     {
                                         LoginCredentials.Regiontype = ""
+                                    }
+                                    else
+                                    {
+                                        LoginCredentials.Regiontype = ((LoginCredentials.UserSubscriptiondetail.object(at: 0) as! NSDictionary).value(forKey: "region_type") as! NSNumber).stringValue
+                                        if(LoginCredentials.Regiontype == "2")
+                                        {
+                                            
+                                        }
+                                        else
+                                        {
+                                            LoginCredentials.CreateorderRegiontype = (LoginCredentials.UserSubscriptiondetail.object(at: 0) as! NSDictionary).value(forKey: "local_user") as! String
+                                            
+                                            var dict  =  [String:String]()
+                                             dict = ["code":(LoginCredentials.UserSubscriptiondetail.object(at: 0) as! NSDictionary).value(forKey: "state_code") as! String]
+                                            print(dict)
+                                            LoginCredentials.SelectedUserCountry = dict as NSDictionary
+                                            print(LoginCredentials.SelectedUserCountry)
+                                            
+                                        }
                                     }
                                     
                                     

@@ -26,7 +26,7 @@ class PrivacyPolicyViewController: UIViewController,UIWebViewDelegate {
         if LoginCredentials.headerlabeltext == "Privacy" {
             webview.loadHTMLString("<html><head><style>body {background:clear} p {color:white;}</style></head><body><p>\(LoginCredentials.Privacypolcy)<p></body></html>", baseURL: nil)
         }
-        else if(LoginCredentials.headerlabeltext == "Terms" )
+        else if(LoginCredentials.headerlabeltext == "Terms & Privacy" )
         {
             webview.loadHTMLString("<html><head><style>body {background:clear} p {color:white;}</style></head><body><p>\(LoginCredentials.Termsanduse)<p></body></html>", baseURL: nil)
         }

@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Dollywood Play/PlayerViewController.swift"
-            timestampString = "552573570.699172"
+            filePath = "Dollywood Play/LoginViewController.swift"
+            timestampString = "553584827.055769"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2017"
-            endingLineNumber = "2017"
-            landmarkName = "Chekvideoisdownloading()"
+            startingLineNumber = "600"
+            endingLineNumber = "600"
+            landmarkName = "getUsersubscriptiondetail()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Dollywood Play/PlayerViewController.swift"
-            timestampString = "552573570.699537"
+            filePath = "Dollywood Play/LoginViewController.swift"
+            timestampString = "553584827.056275"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2022"
-            endingLineNumber = "2022"
-            landmarkName = "Chekvideoisdownloading()"
+            startingLineNumber = "627"
+            endingLineNumber = "627"
+            landmarkName = "getUsersubscriptiondetail()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,13 +41,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Dollywood Play/PlayerViewController.swift"
-            timestampString = "552573570.699615"
+            filePath = "Dollywood Play/LoginViewController.swift"
+            timestampString = "553584827.056615"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2046"
-            endingLineNumber = "2046"
-            landmarkName = "stopanimatedownliadbutton()"
+            startingLineNumber = "623"
+            endingLineNumber = "623"
+            landmarkName = "getUsersubscriptiondetail()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -57,13 +57,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Dollywood Play/PlayerViewController.swift"
-            timestampString = "552573570.699681"
+            filePath = "Dollywood Play/ViewController.swift"
+            timestampString = "553584827.056937"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2048"
-            endingLineNumber = "2048"
-            landmarkName = "stopanimatedownliadbutton()"
+            startingLineNumber = "285"
+            endingLineNumber = "285"
+            landmarkName = "getUsersubscriptiondetail()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -73,13 +73,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Dollywood Play/PlayerViewController.swift"
-            timestampString = "552573570.699744"
+            filePath = "Dollywood Play/LoginViewController.swift"
+            timestampString = "553584827.056996"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2045"
-            endingLineNumber = "2045"
-            landmarkName = "stopanimatedownliadbutton()"
+            startingLineNumber = "640"
+            endingLineNumber = "640"
+            landmarkName = "getUsersubscriptiondetail()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -89,29 +89,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Dollywood Play/PlayerViewController.swift"
-            timestampString = "552573570.699805"
+            filePath = "Dollywood Play/LoginViewController.swift"
+            timestampString = "553584827.0573"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2050"
-            endingLineNumber = "2050"
-            landmarkName = "stopanimatedownliadbutton()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Dollywood Play/PlayerViewController.swift"
-            timestampString = "552573570.699877"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2042"
-            endingLineNumber = "2042"
-            landmarkName = "stopanimatedownliadbutton()"
+            startingLineNumber = "638"
+            endingLineNumber = "638"
+            landmarkName = "getUsersubscriptiondetail()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

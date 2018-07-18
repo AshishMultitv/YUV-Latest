@@ -38,9 +38,7 @@ class LoginCredentials: NSObject {
         }
     }
     
-
-    
-    
+ 
     static var Logindata: NSDictionary {
         get {
 
@@ -1780,6 +1778,8 @@ class LoginCredentials: NSObject {
     }
     
     
+  
+    
     static var SelectedUserCountry: NSDictionary {
         get {
             
@@ -1854,5 +1854,183 @@ class LoginCredentials: NSObject {
             UserDefaults.standard.synchronize()
         }
     }
+    
+    
+    
+    static var Isselectuserback: Bool {
+        get {
+            
+            if let isselectuserback = UserDefaults.standard.object(forKey: "isselectuserback") as? Bool
+            {
+                return  isselectuserback
+            }
+            return Bool()
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "isselectuserback")
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
+    
+    static var Tredingcontent: NSMutableArray {
+        get {
+            
+            let data = UserDefaults.standard.object(forKey: "tredingcontent") as! NSData
+            if let tredingcontent = NSKeyedUnarchiver.unarchiveObject(with: data as Data) as? NSMutableArray {
+                return tredingcontent
+            }
+            return NSMutableArray()
+        }
+        set {
+            let data = NSKeyedArchiver.archivedData(withRootObject: newValue)
+            UserDefaults.standard.set(data, forKey: "tredingcontent")
+            UserDefaults.standard.synchronize()
+            
+        }
+    }
+    
+    
+    static var Redeemrefferalapi: String {
+        get {
+            
+            if let redeemrefferalapi = UserDefaults.standard.object(forKey: "redeemrefferalapi") as? String
+            {
+                return redeemrefferalapi
+            }
+            return String()
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "redeemrefferalapi")
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
+    static var Redeemcouponapi: String {
+        get {
+            
+            if let redeemcouponapi = UserDefaults.standard.object(forKey: "redeemcouponapi") as? String
+            {
+                return redeemcouponapi
+            }
+            return String()
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "redeemcouponapi")
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
+    static var Onetimecreateorderapi: String {
+        get {
+            
+            if let onetimecreateorder = UserDefaults.standard.object(forKey: "onetimecreateorder") as? String
+            {
+                return onetimecreateorder
+            }
+            return String()
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "onetimecreateorder")
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
+    
+    static var Createorderapi: String {
+        get {
+            
+            if let createorder = UserDefaults.standard.object(forKey: "createorder") as? String
+            {
+                return createorder
+            }
+            return String()
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "createorder")
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
+    static var Onetimecompleteorderapi: String {
+        get {
+            
+            if let onetimecompleteorder = UserDefaults.standard.object(forKey: "onetimecompleteorder") as? String
+            {
+                return onetimecompleteorder
+            }
+            return String()
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "onetimecompleteorder")
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
+    static var Completeorderapi: String {
+        get {
+            
+            if let completeorder = UserDefaults.standard.object(forKey: "completeorder") as? String
+            {
+                return completeorder
+            }
+            return String()
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "completeorder")
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
+    
+    
+    static var Subscriptionpackageapi: String {
+        get {
+            
+            if let subscriptionapi = UserDefaults.standard.object(forKey: "subscriptionapi") as? String
+            {
+                return subscriptionapi
+            }
+            return String()
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "subscriptionapi")
+            UserDefaults.standard.synchronize()
+        }
+    }
+ 
+    
+    static var Userpackagesapi: String {
+        get {
+            
+            if let userpackages = UserDefaults.standard.object(forKey: "userpackages") as? String
+            {
+                return userpackages
+            }
+            return String()
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "userpackages")
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
+    
+    static var Freesubscriptionapi: String {
+        get {
+            
+            if let freesubscriptionapi = UserDefaults.standard.object(forKey: "freesubscriptionapi") as? String
+            {
+                return freesubscriptionapi
+            }
+            return String()
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "freesubscriptionapi")
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
+    
     
      }

@@ -66,7 +66,6 @@ class WatchListViewController: UIViewController,UICollectionViewDataSource, UICo
         let parameters = [
                 "user_id": (dict.value(forKey: "id") as! NSNumber).stringValue
         ]
-        
         let manager = AFHTTPSessionManager()
         Common.startloder(view: self.view)
         manager.post(url, parameters: parameters, progress: nil, success: { (task: URLSessionDataTask, responseObject: Any?) in
@@ -75,7 +74,6 @@ class WatchListViewController: UIViewController,UICollectionViewDataSource, UICo
                 
                 let number = dict.value(forKey: "code") as! NSNumber
                 Common.stoploder(view: self.view)
-                
                 if(number == 0)
                 {
                     EZAlertController.alert(title: "Something went wrong.")
@@ -83,9 +81,8 @@ class WatchListViewController: UIViewController,UICollectionViewDataSource, UICo
                 }
                 else
                 {
-                    
                      self.dataarray.removeAllObjects()
-                      self.mycollectionview.reloadData()
+                     self.mycollectionview.reloadData()
                 }
             
              }
@@ -100,7 +97,6 @@ class WatchListViewController: UIViewController,UICollectionViewDataSource, UICo
     {
         
         let dict = dataBase.getDatabaseresponseinentity(entityname: "Logindata", key: "logindatadict")
-        
         let parameters = [
             "device": "ios",
             "user_id": (dict.value(forKey: "id") as! NSNumber).stringValue,
@@ -144,7 +140,16 @@ class WatchListViewController: UIViewController,UICollectionViewDataSource, UICo
                 
                 if(self.dataarray.count == 0)
                 {
-                    EZAlertController.alert(title: "No Videos found")
+                    
+                    let alert = UIAlertController(title: "", message: "No Videos found", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                    
+                    if(!((self.slideMenuController()?.isLeftOpen())!))
+                    {
+                        self.present(alert, animated: true, completion: nil)
+                     }
+                    
+                   //  EZAlertController.alert(title: "No Videos found")
                 }
                 self.display_offset =   (Catdata_dict.value(forKey: "offset") as! NSNumber).stringValue
                 //self.mytabelview.reloadData()
@@ -159,6 +164,7 @@ class WatchListViewController: UIViewController,UICollectionViewDataSource, UICo
     
     @IBAction func Taptomenu(_ sender: UIButton) {
         slideMenuController()?.openLeft()
+        
     }
     
     
@@ -357,7 +363,8 @@ class WatchListViewController: UIViewController,UICollectionViewDataSource, UICo
         var discriptiontext = (self.dataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "des") as? String
         discriptiontext = discriptiontext?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         cell.Descriptionlabel.text = discriptiontext
-        cell.viewlabel.text = "\((self.dataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "watch") as! String)\(" view")"
+         cell.viewlabel.text = ""
+      //  cell.viewlabel.text = "\((self.dataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "watch") as! String)\(" view")"
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm:ss"
         let videotime = (self.dataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "created") as? String

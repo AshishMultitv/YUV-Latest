@@ -220,9 +220,7 @@ class FavouriteViewController: UIViewController,UITableViewDataSource,UITableVie
                 }
             }
             
-            
-            
-            
+   
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let playerViewController = storyboard.instantiateViewController(withIdentifier: "PlayerViewController") as! PlayerViewController
             playerViewController.Video_url = (dataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "url") as! String
@@ -303,7 +301,8 @@ class FavouriteViewController: UIViewController,UITableViewDataSource,UITableVie
         var discriptiontext = (self.dataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "des") as? String
         discriptiontext = discriptiontext?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         cell.Descriptionlabel.text = discriptiontext
-        cell.viewlabel.text = "\((self.dataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "watch") as! String)\(" view")"
+        cell.viewlabel.text = ""
+      //  cell.viewlabel.text = "\((self.dataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "watch") as! String)\(" view")"
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm:ss"
         let videotime = (self.dataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "created") as? String

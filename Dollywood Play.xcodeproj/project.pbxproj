@@ -210,6 +210,7 @@
 		37F488C31F5EDD63005A0FBF /* UserRelatedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F488C11F5EDD63005A0FBF /* UserRelatedCollectionViewCell.swift */; };
 		37F488C41F5EDD63005A0FBF /* UserRelatedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37F488C21F5EDD63005A0FBF /* UserRelatedCollectionViewCell.xib */; };
 		37F66F9B20BD2E7B003ACE83 /* SelectCountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F66F9A20BD2E7B003ACE83 /* SelectCountryViewController.swift */; };
+		37FD101920F380DE0061EC8C /* SubtleVolume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FD101820F380DE0061EC8C /* SubtleVolume.swift */; };
 		37FDD4721F1E0B3E0054D0E7 /* ChanneldetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FDD4711F1E0B3E0054D0E7 /* ChanneldetailViewController.swift */; };
 		37FDD4741F1E4DC30054D0E7 /* PlaylistdetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FDD4731F1E4DC30054D0E7 /* PlaylistdetailViewController.swift */; };
 		37FFC9071F3B475C00C13C0F /* AHTagsLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FFC9051F3B475C00C13C0F /* AHTagsLabel.swift */; };
@@ -483,6 +484,7 @@
 		37F488C11F5EDD63005A0FBF /* UserRelatedCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRelatedCollectionViewCell.swift; sourceTree = "<group>"; };
 		37F488C21F5EDD63005A0FBF /* UserRelatedCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserRelatedCollectionViewCell.xib; sourceTree = "<group>"; };
 		37F66F9A20BD2E7B003ACE83 /* SelectCountryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCountryViewController.swift; sourceTree = "<group>"; };
+		37FD101820F380DE0061EC8C /* SubtleVolume.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubtleVolume.swift; sourceTree = "<group>"; };
 		37FDD4711F1E0B3E0054D0E7 /* ChanneldetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChanneldetailViewController.swift; sourceTree = "<group>"; };
 		37FDD4731F1E4DC30054D0E7 /* PlaylistdetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistdetailViewController.swift; sourceTree = "<group>"; };
 		37FFC9051F3B475C00C13C0F /* AHTagsLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AHTagsLabel.swift; sourceTree = "<group>"; };
@@ -703,6 +705,7 @@
 				372EA6F91F8BBFD70008E840 /* down_update.gif */,
 				22F35BFD1EEABB7E00D4D1DD /* DataSource.json */,
 				372EA6F71F8BBCC40008E840 /* iOSDevCenters+GIF.swift */,
+				37FD101820F380DE0061EC8C /* SubtleVolume.swift */,
 				22F35C031EEADC0B00D4D1DD /* String+AES.swift */,
 				37ADB32B1F54014D001BB255 /* LeftPaddedTextField.swift */,
 				370A68C31F87AA98006A1188 /* JYToast.swift */,
@@ -1402,6 +1405,7 @@
 				22AF97F41EFAA57A0076402C /* MoreViewController.swift in Sources */,
 				221541091F0286C6001EBDB9 /* SKVASTViewController.m in Sources */,
 				225085031EE938CD00EED1D9 /* UIColor.swift in Sources */,
+				37FD101920F380DE0061EC8C /* SubtleVolume.swift in Sources */,
 				225085441EE9624C00EED1D9 /* AFURLSessionManager.m in Sources */,
 				22F35C001EEABBB700D4D1DD /* HomeCollectionViewCell.swift in Sources */,
 				37E61D4A207216D20085ACDE /* ProductsInfoController.swift in Sources */,
@@ -1609,8 +1613,8 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Dollywood Play/Dollywood Play.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Lakshmipathy Ramasubbu (PFB97F34X6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Lakshmipathy Ramasubbu (PFB97F34X6)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Lakshmipathy Ramasubbu (7DLG79757X)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Lakshmipathy Ramasubbu (7DLG79757X)";
 				DEVELOPMENT_TEAM = PFB97F34X6;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1643,8 +1647,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.yuv;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7f837286-227d-4be8-bc91-76463ed9e4f2";
-				PROVISIONING_PROFILE_SPECIFIER = YUVAPP_ADhoc;
+				PROVISIONING_PROFILE = "7d9540fb-1da9-44e9-b15c-577f56af576e";
+				PROVISIONING_PROFILE_SPECIFIER = YUV_DEV_DEV;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -1656,8 +1660,8 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Dollywood Play/Dollywood Play.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Lakshmipathy Ramasubbu (PFB97F34X6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Lakshmipathy Ramasubbu (PFB97F34X6)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Lakshmipathy Ramasubbu (7DLG79757X)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Lakshmipathy Ramasubbu (7DLG79757X)";
 				DEVELOPMENT_TEAM = PFB97F34X6;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1690,8 +1694,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.yuv;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7f837286-227d-4be8-bc91-76463ed9e4f2";
-				PROVISIONING_PROFILE_SPECIFIER = YUVAPP_ADhoc;
+				PROVISIONING_PROFILE = "7d9540fb-1da9-44e9-b15c-577f56af576e";
+				PROVISIONING_PROFILE_SPECIFIER = YUV_DEV_DEV;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -1700,16 +1704,16 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CBE4C468042178823E55FA6B /* Pods-OneSingleNotification.debug.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Lakshmipathy Ramasubbu (PFB97F34X6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Lakshmipathy Ramasubbu (PFB97F34X6)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Lakshmipathy Ramasubbu (7DLG79757X)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Lakshmipathy Ramasubbu (7DLG79757X)";
 				DEVELOPMENT_TEAM = PFB97F34X6;
 				INFOPLIST_FILE = OneSingleNotification/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.yuv.ext;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d568781e-f6d3-4546-b9a1-5eb1585496ce";
-				PROVISIONING_PROFILE_SPECIFIER = YUVADHOCEXT;
+				PROVISIONING_PROFILE = "a058f498-de30-47d1-b6f0-f4881d4f5e63";
+				PROVISIONING_PROFILE_SPECIFIER = YUV_DEV_EXT;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};
@@ -1719,16 +1723,16 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8CB3B2B66C071AC452581104 /* Pods-OneSingleNotification.release.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Lakshmipathy Ramasubbu (PFB97F34X6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Lakshmipathy Ramasubbu (PFB97F34X6)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Lakshmipathy Ramasubbu (7DLG79757X)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Lakshmipathy Ramasubbu (7DLG79757X)";
 				DEVELOPMENT_TEAM = PFB97F34X6;
 				INFOPLIST_FILE = OneSingleNotification/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.yuv.ext;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d568781e-f6d3-4546-b9a1-5eb1585496ce";
-				PROVISIONING_PROFILE_SPECIFIER = YUVADHOCEXT;
+				PROVISIONING_PROFILE = "a058f498-de30-47d1-b6f0-f4881d4f5e63";
+				PROVISIONING_PROFILE_SPECIFIER = YUV_DEV_EXT;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};

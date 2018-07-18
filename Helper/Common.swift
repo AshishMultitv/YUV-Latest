@@ -396,7 +396,7 @@ class Common: NSObject {
                 
             //    if(Common.isuserseletedlocality()) {
                     
-                    let alert = UIAlertController(title: "", message: "Please Subscribe to watch our great video", preferredStyle: UIAlertControllerStyle.alert)
+                    let alert = UIAlertController(title: "", message: "Please Subscribe to watch this  video", preferredStyle: UIAlertControllerStyle.alert)
                     alert.addAction(UIAlertAction(title: "Subscribe", style: UIAlertActionStyle.default, handler: { (action) in
                         
                         
@@ -766,12 +766,12 @@ class Common: NSObject {
     {
        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "Pushback"), object: nil)
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "Userapplogout"), object: nil)
-     
-        
     }
     
     static func Pushback()
     {
+        let value = UIInterfaceOrientation.portrait.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "Pushback"), object: nil)
     }
     

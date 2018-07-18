@@ -66,6 +66,7 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
     @IBOutlet weak var Resolutionbutton: UIButton!
     @IBOutlet weak var backbutton: UIButton!
     
+    @IBOutlet weak var forword10secbutton: UIButton!
     @IBOutlet weak var forwardbutton: UIButton!
     @IBOutlet weak var backwordbutton: UIButton!
     @IBOutlet weak var backwordbuttonuppercnstraint: NSLayoutConstraint!
@@ -170,7 +171,6 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
     var backgroundSession: URLSession!
     
     ////sav parser
-    
     var Event_dict:NSDictionary=NSDictionary()
     var isplayadd:Bool = Bool()
     var skiptimer = Timer()
@@ -195,6 +195,7 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
     var seletetedresoltionindex:Int = 0
     var Isendcomment:Bool = Bool()
     
+    let volume = SubtleVolume(style: .plain)
     
     //////////////Google Ima Object////////
     var pictureInPictureController: AVPictureInPictureController?
@@ -300,7 +301,10 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
         commenttableview.addPullLoadableView(refreshView, type: .loadMore)
         isplaycromecast = false
         
+        ///Add vOlume
         
+        volume.frame = CGRect(x: 0, y: 10, width: UIScreen.main.bounds.width, height: 0)
+        view.addSubview(volume)
         
     }
     
@@ -541,6 +545,7 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
         self.enlargeBtnLayer.isUserInteractionEnabled = false
         backwordbutton.isUserInteractionEnabled = false
         forwardbutton.isUserInteractionEnabled = false
+        forword10secbutton.isUserInteractionEnabled = false
         Resolutionbutton.isUserInteractionEnabled = false
         self.expandBtn.isUserInteractionEnabled = false
         self.soundcontrolbutton.isUserInteractionEnabled = false
@@ -559,6 +564,7 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
         self.enlargeBtnLayer.isUserInteractionEnabled = true
         backwordbutton.isUserInteractionEnabled = true
         forwardbutton.isUserInteractionEnabled = true
+        forword10secbutton.isUserInteractionEnabled = true
         Resolutionbutton.isUserInteractionEnabled = true
         self.expandBtn.isUserInteractionEnabled = true
         self.soundcontrolbutton.isUserInteractionEnabled = true
@@ -1458,7 +1464,6 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
                 }
                 
                 print(detaildict)
-                
                 if(Common.isNotNull(object: (detaildict.value(forKey: "content") as! NSDictionary).value(forKey: "title") as AnyObject))
                 {
                     self.tilttext = (detaildict.value(forKey: "content") as! NSDictionary).value(forKey: "title") as! String
@@ -1467,7 +1472,6 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
                 {
                     self.descriptiontext = (detaildict.value(forKey: "content") as! NSDictionary).value(forKey: "des") as! String
                 }
-                
                 
                 
                 let catdataarray = (detaildict.value(forKey: "content") as! NSDictionary).value(forKey: "category_ids") as! NSArray
@@ -2112,7 +2116,7 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
                             self.isplaydfturl = false
                         }
                         
-                        
+                   
                         self.setvideodata(titile: self.tilttext, like: self.liketext, des: self.descriptiontext, url:self.Video_url)
                         self.setvideodescription(titile: self.tilttext, like: self.liketext, des: self.descriptiontext, url:self.Video_url)
                         dispatch(queue: .background, closure: {
@@ -2458,7 +2462,6 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
     
     //MARK:- One user one Session
     
-    
     func playvideoaftercheckingcontantsession()
     {
         if(Common.isInternetAvailable())
@@ -2473,8 +2476,6 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
     func disableappsessionalert()
     {
         let alert = UIAlertController(title: "", message: "You are currently accessing YUV content with same account on some other device.", preferredStyle: UIAlertControllerStyle.alert)
-        
-        
         alert.addAction(UIAlertAction(title: "Watch Here", style: UIAlertActionStyle.default, handler: { (action) in
             Common.ActivateUsersession()
             self.playvideoaftercheckingcontantsession()
@@ -2486,7 +2487,6 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
             })
             return
         }))
-        
         if(!LoginCredentials.Issociallogin)
         {
             alert.addAction(UIAlertAction(title: "Reset Password", style: UIAlertActionStyle.default, handler: { (action) in
@@ -2846,7 +2846,7 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
             self.securitylabel.text = Common.getstatickey()
             self.tempView.addSubview(self.securitylabel)
             
-            let rectMore = CGRect(origin: CGPoint(x: self.view.frame.size.width/2-20,y :80), size: CGSize(width: 50, height: 50))
+            let rectMore = CGRect(origin: CGPoint(x: self.view.frame.size.width/2-50,y :80), size: CGSize(width: 50, height: 50))
             self.expandBtn.frame = rectMore
             self.expandBtn.addTarget(self, action: #selector(self.expandBtnAction), for: .touchUpInside)
             let image = UIImage(named:"pause")
@@ -2904,11 +2904,13 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
             self.tempView.bringSubview(toFront: self.enlargeBtnLayer)
             self.backwordbutton.isHidden = true
             self.forwardbutton.isHidden = true
+            self.forword10secbutton.isHidden = true
             self.settingbutton.isHidden = true
             self.castButton.isHidden = true
             self.backwordbuttonuppercnstraint.constant = 60.0
             self.Resolutionbutton.isHidden = true
             self.view.bringSubview(toFront: self.forwardbutton)
+            self.view.bringSubview(toFront: self.forword10secbutton)
             self.view.bringSubview(toFront: self.castButton)
             self.view.bringSubview(toFront: self.backwordbutton)
             self.view.bringSubview(toFront: self.backbutton)
@@ -3547,7 +3549,7 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
                 Bottomviewuppercnstraint.constant = 300.0
                 let rect = CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: self.view.frame.size.width, height: self.view.frame.size.height))
                 self.avLayer.frame = rect
-                backbutton.isHidden = true
+                backbutton.isHidden = false
                 backwordbuttonuppercnstraint.constant = rect.size.height/2-20
                 let rectPlay = CGRect(x:10, y:self.view.frame.size.height-45, width:self.view.frame.size.width-20, height:25)
                 self.playbackSlider.frame = rectPlay
@@ -3562,7 +3564,7 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
                 let rectsecuritylabel = CGRect(origin: CGPoint(x: self.view.frame.size.width/2-20,y :30), size: CGSize(width: 100, height: 50))
                 self.securitylabel.frame = rectsecuritylabel
                 
-                let rectMore = CGRect(origin: CGPoint(x: self.view.frame.size.width/2-20,y :self.view.frame.size.height/2 - 30.0), size: CGSize(width: 50, height: 50))
+                let rectMore = CGRect(origin: CGPoint(x: self.view.frame.size.width/2-50,y :self.view.frame.size.height/2 - 30.0), size: CGSize(width: 50, height: 50))
                 self.expandBtn.frame = rectMore
                 let rectEnlarge = CGRect(origin: CGPoint(x: self.view.frame.size.width-40,y :self.view.frame.size.height-25), size: CGSize(width: 20, height: 20))
                 enlargeBtn.frame = rectEnlarge
@@ -3582,6 +3584,7 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
                 activityIndicator.frame = CGRect(x: CGFloat(self.tempView.frame.size.width/2-25), y: CGFloat(self.tempView.frame.size.height/2-25), width:CGFloat(50), height: CGFloat(50))
                 backwordbutton.isHidden = true
                 forwardbutton.isHidden = true
+                forword10secbutton.isHidden = true
                 self.castButton.isHidden = true
                 
                 
@@ -3589,6 +3592,7 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
                 self.view.bringSubview(toFront: enlargeBtn)
                 self.view.bringSubview(toFront: enlargeBtnLayer)
                 self.view.bringSubview(toFront: forwardbutton)
+                self.view.bringSubview(toFront: forword10secbutton)
                 self.view.bringSubview(toFront: castButton)
                 self.view.bringSubview(toFront: backwordbutton)
                 self.view.bringSubview(toFront: Resolutionbutton)
@@ -3631,7 +3635,7 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
                 }
                 self.playbackSlider.frame = rectPlay
                 self.soundbackSlider.frame = soundPlay
-                let rectMore = CGRect(origin: CGPoint(x: self.view.frame.size.width/2-20,y :70), size: CGSize(width: 50, height: 50))
+                let rectMore = CGRect(origin: CGPoint(x: self.view.frame.size.width/2-50,y :70), size: CGSize(width: 50, height: 50))
                 self.expandBtn.frame = rectMore
                 backwordbuttonuppercnstraint.constant = 60.0
                 if(isdeviceiphonex() == "iPhone X") {
@@ -3675,14 +3679,12 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
     
     func controlsound(button:UIButton)
     {
-        let volume = AVAudioSession.sharedInstance().outputVolume
-        print(volume)
-        
-        self.soundbackSlider.value = volume
+      //  let volume = AVAudioSession.sharedInstance().outputVolume
+      //  print(volume)
+        self.soundbackSlider.value = Float(volume.volumeLevel)
         playbackSlider.isHidden = true
         soundbackSlider.isHidden = false
-        
-        
+ 
         //         DispatchQueue.main.asyncAfter(deadline: .now() + 4.0, execute: {
         //            self.bHideControl = false
         //            self.singleTapped()
@@ -3691,22 +3693,28 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
         
     }
     
-    
+
     
     //MARK:- Sound Slider Change notifation method
     
     func soundSliderValueChanged(_ playbackSlider:UISlider)
     {
+        
+        
+        try? volume.setVolumeLevel(Double(playbackSlider.value))
+        
+       // try? volume.increseVolume(by: Double(playbackSlider.value), animated: true)
+        
+        
+        //try? volume.increaseVolume(by: playbackSlider.value, animated: true)
+        
         print("\("Sound volueme is ")\(playbackSlider.value)")
-        self.videoPlayer.volume = playbackSlider.value
-        
-        
+     //   self.videoPlayer.volume = playbackSlider.value
         let vol = String(format: "%.1f", playbackSlider.value)
-        
         print(vol)
         switch vol {
         case "0.0":
-            self.soundcontrolbutton.setImage(#imageLiteral(resourceName: "sound_mute"), for: .normal)
+             self.soundcontrolbutton.setImage(#imageLiteral(resourceName: "sound_mute"), for: .normal)
             break
         case "0.3":
             self.soundcontrolbutton.setImage(#imageLiteral(resourceName: "sound_33"), for: .normal)
@@ -3798,6 +3806,7 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
             self.enlargeBtnLayer.isHidden = false
             backwordbutton.isHidden = false
             forwardbutton.isHidden = false
+            forword10secbutton.isHidden = false
             castButton.isHidden = false
             
             Resolutionbutton.isHidden = true
@@ -3823,6 +3832,7 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
             self.enlargeBtnLayer.isHidden = true
             backwordbutton.isHidden = true
             forwardbutton.isHidden = true
+            forword10secbutton.isHidden = true
             castButton.isHidden = true
             Resolutionbutton.isHidden = true
             self.expandBtn.isHidden = true
@@ -4099,6 +4109,9 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
         DispatchQueue.global(qos: .background).async {
             let dict = dataBase.getDatabaseresponseinentity(entityname: "Logindata", key: "logindatadict")
             print(self.Download_dic)
+            
+            if(Common.isNotNull(object: self.Download_dic.value(forKey: "thumbs") as AnyObject))
+            {
             if((self.Download_dic.value(forKey: "thumbs") as! NSArray).count>0)
             {
                 let url = (((self.Download_dic.value(forKey: "thumbs") as! NSArray).object(at: 0) as! NSDictionary).value(forKey: "thumb") as! NSDictionary).value(forKey: "medium") as! String
@@ -4108,6 +4121,12 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
             else
             {
                 
+                let videoimage = UIImagePNGRepresentation(#imageLiteral(resourceName: "Placehoder")) as NSData?
+                dataBase.SaveDownloadvideo(Userid: (dict.value(forKey: "id") as! NSNumber).stringValue, Videoid: self.cat_id, data: self.Download_dic, image:videoimage!)
+            }
+            }
+            else
+            {
                 let videoimage = UIImagePNGRepresentation(#imageLiteral(resourceName: "Placehoder")) as NSData?
                 dataBase.SaveDownloadvideo(Userid: (dict.value(forKey: "id") as! NSNumber).stringValue, Videoid: self.cat_id, data: self.Download_dic, image:videoimage!)
             }
@@ -4129,7 +4148,6 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
     
     //MARK:- Taptodislike
     @IBAction func Taptodislike(_ sender: UIButton) {
-        
         
         let dict = dataBase.getDatabaseresponseinentity(entityname: "Logindata", key: "logindatadict")
         if (dict.count>0)
@@ -4283,22 +4301,16 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
            
             if(self.isfav)
             {
-               
                 self.Favroutbutton.setImage(UIImage.init(named: "favriout"), for: .normal)
                 self.isfav = false
                 JYToast.init().isShow("Removed from favorite videos")
-
-               
-                
             }
             else
             {
                 self.Favroutbutton.setImage(UIImage.init(named: "favriout1"), for: .normal)
                 self.isfav = true
                 JYToast.init().isShow("Added to favorite videos")
- 
              }
-            
  
             let url = String(format: "%@%@", LoginCredentials.Favrioutapi,Apptoken)
             print(url)
@@ -4320,10 +4332,7 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
             Common.Showloginalert(view: self, text: "Please login to access this section")
             
         }
-        
-        
-        
-        
+
     }
     
     //MARK:- Taptolike
@@ -4494,6 +4503,17 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
     
     //MARK:- Taptoback
     @IBAction func Taptoback(_ sender: UIButton) {
+        
+        
+         if UIDeviceOrientationIsLandscape(UIDevice.current.orientation)
+         {
+        if(self.avLayer != nil)
+        {
+           enlargeBtnAction()
+            return
+         }
+        }
+        
         Common.DeActivateUsersession()
         if(securitykeytimer != nil)
         {
@@ -4600,7 +4620,7 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
         case 0:
             return "More Videos"
         case 1:
-            return "Related Videos"
+            return "Trending"
         default:
             break
         }
@@ -4994,7 +5014,7 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
             
         else
         {
-            return self.recomdentdedataarray.count
+            return LoginCredentials.Tredingcontent.count
             
         }
         
@@ -5045,20 +5065,20 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
         else
         {
             
-            cell?.headerlabel.text = (self.recomdentdedataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "title") as? String
+            cell?.headerlabel.text = (LoginCredentials.Tredingcontent.object(at: indexPath.row) as! NSDictionary).value(forKey: "title") as? String
             
-            var discriptiontext = (self.recomdentdedataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "des") as? String
+            var discriptiontext = (LoginCredentials.Tredingcontent.object(at: indexPath.row) as! NSDictionary).value(forKey: "des") as? String
             discriptiontext = discriptiontext?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
             cell?.Descriptionlabel.text = discriptiontext
             
-            cell?.Viewlabel.text = "\((self.recomdentdedataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "watch") as! String)\(" view")"
+            cell?.Viewlabel.text = "\((LoginCredentials.Tredingcontent.object(at: indexPath.row) as! NSDictionary).value(forKey: "watch") as! String)\(" view")"
             
-            let videotime = (self.recomdentdedataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "created") as? String
+            let videotime = (LoginCredentials.Tredingcontent.object(at: indexPath.row) as! NSDictionary).value(forKey: "created") as? String
             
             cell?.Uploadtimelabel.text = self.compatedate(date: videotime!)
-            if(Common.isNotNull(object: (self.recomdentdedataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "thumbs") as AnyObject))
+            if(Common.isNotNull(object: (LoginCredentials.Tredingcontent.object(at: indexPath.row) as! NSDictionary).value(forKey: "thumbs") as AnyObject))
             {
-                let url = (self.recomdentdedataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "thumbs") as! NSArray
+                let url = (LoginCredentials.Tredingcontent.object(at: indexPath.row) as! NSDictionary).value(forKey: "thumbs") as! NSArray
                 if(url.count>0)
                 {
                     var str = ((url.object(at: 0) as! NSDictionary).value(forKey: "thumb") as! NSDictionary).value(forKey: "medium") as! String
@@ -5115,9 +5135,9 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
         else
             
         {
-            if(Common.isNotNull(object: (recomdentdedataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "status") as AnyObject?))
+            if(Common.isNotNull(object: (LoginCredentials.Tredingcontent.object(at: indexPath.row) as! NSDictionary).value(forKey: "status") as AnyObject?))
             {
-                let type = (recomdentdedataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "status") as! String
+                let type = (LoginCredentials.Tredingcontent.object(at: indexPath.row) as! NSDictionary).value(forKey: "status") as! String
                 print(type)
                 if(!Common.Isvideolvodtype(type: type))
                 {
@@ -5125,13 +5145,13 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
                     {
                         if(!Common.Islogin())
                         {
-                            Common.Showloginalert(view: self, text: "\((recomdentdedataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "title") as! String)\(" is streaming live now. Please login to watch")")
+                            Common.Showloginalert(view: self, text: "\((LoginCredentials.Tredingcontent.object(at: indexPath.row) as! NSDictionary).value(forKey: "title") as! String)\(" is streaming live now. Please login to watch")")
                             return
                         }
                     }
                     else
                     {
-                        EZAlertController.alert(title: "\((recomdentdedataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "title") as! String)\(" event is scheduled as upcoming.")")
+                        EZAlertController.alert(title: "\((LoginCredentials.Tredingcontent.object(at: indexPath.row) as! NSDictionary).value(forKey: "title") as! String)\(" event is scheduled as upcoming.")")
                         return
                     }
                     
@@ -5220,15 +5240,15 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
         }
         else
         {
-            print(recomdentdedataarray.object(at: indexPath.row))
+            print(LoginCredentials.Tredingcontent.object(at: indexPath.row))
             
-            print((recomdentdedataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "category_ids") as! NSArray)
-            self.cat_id = (recomdentdedataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "id") as! String
-            let catdataarray = (recomdentdedataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "category_ids") as! NSArray
+            print((LoginCredentials.Tredingcontent.object(at: indexPath.row) as! NSDictionary).value(forKey: "category_ids") as! NSArray)
+            self.cat_id = (LoginCredentials.Tredingcontent.object(at: indexPath.row) as! NSDictionary).value(forKey: "id") as! String
+            let catdataarray = (LoginCredentials.Tredingcontent.object(at: indexPath.row) as! NSDictionary).value(forKey: "category_ids") as! NSArray
             print(catdataarray)
             if(catdataarray.count == 0)
             {
-                catid = (recomdentdedataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "category_id") as! String
+                catid = (LoginCredentials.Tredingcontent.object(at: indexPath.row) as! NSDictionary).value(forKey: "category_id") as! String
             }
                 
             else
@@ -5238,7 +5258,7 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
                 for i in 0..<catdataarray.count
                 {
                     
-                    let str = ((recomdentdedataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "category_ids") as! NSArray).object(at: i) as! String
+                    let str = ((LoginCredentials.Tredingcontent.object(at: indexPath.row) as! NSDictionary).value(forKey: "category_ids") as! NSArray).object(at: i) as! String
                     ids = ids + str + ","
                     
                 }
@@ -5248,11 +5268,11 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
             }
             
             
-            tilttext = (recomdentdedataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "title") as! String
+            tilttext = (LoginCredentials.Tredingcontent.object(at: indexPath.row) as! NSDictionary).value(forKey: "title") as! String
             
-            if(Common.isNotNull(object: (recomdentdedataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "des") as AnyObject?))
+            if(Common.isNotNull(object: (LoginCredentials.Tredingcontent.object(at: indexPath.row) as! NSDictionary).value(forKey: "des") as AnyObject?))
             {
-                self.descriptiontext = (recomdentdedataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "des") as! String
+                self.descriptiontext = (LoginCredentials.Tredingcontent.object(at: indexPath.row) as! NSDictionary).value(forKey: "des") as! String
             }
             else
             {
@@ -5277,6 +5297,22 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
     
     
     
+    @IBAction func secforwordaction(_ sender: UIButton) {
+        
+        if(self.videoPlayer != nil) {
+          let seconds : Int64 = Int64(playbackSlider.value + 10.0)
+        let targetTime:CMTime = CMTimeMake(seconds, 1)
+        self.videoPlayer!.seek(to: targetTime)
+        self.playbackSlider.value = Float(CGFloat(seconds))
+        self.bSlideBar = true
+        
+        if self.videoPlayer!.rate == 0
+        {
+            self.isplayorpause()
+         }
+        }
+        
+    }
     
     
     //MARK:-Taptofarword5sec
@@ -5321,6 +5357,15 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
         if(lastindex == Nextvideoindex)
         {
             Nextvideoindex = 0
+        }
+        
+        
+         print("Nextvideoindex \(Nextvideoindex)")
+         print("moredataarray count \(moredataarray.count)")
+        
+        if(Nextvideoindex>moredataarray.count)
+        {
+           Nextvideoindex = 0
         }
         
         self.collectionView(Mycollectionview, didSelectItemAt: NSIndexPath.init(item: Nextvideoindex, section: 0) as IndexPath)

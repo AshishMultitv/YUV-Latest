@@ -24,7 +24,7 @@ class ViewController: UIViewController,MXSegmentedPagerDataSource,MXSegmentedPag
     @IBOutlet weak var myscrollview: UIScrollView!
     @IBOutlet weak var imageCarouselView: ImageCarouselView!
     @IBOutlet weak var myCollectionView: UICollectionView!
-    
+    @IBOutlet weak var imagecorasalheightconstrant: NSLayoutConstraint!
     var scrollXpos: CGFloat = 0.0
     var scrollYpos: CGFloat = 0.0
     
@@ -137,10 +137,10 @@ class ViewController: UIViewController,MXSegmentedPagerDataSource,MXSegmentedPag
             self.activityindicater.isHidden = true
             if(Isscroolenable)
             {
-                self.activityindicater.isHidden = false
-                self.activityindicater.startAnimating()
-                self.callhomedatawebapi()
-                self.Isscroolenable = false
+                //self.activityindicater.isHidden = false
+               // self.activityindicater.startAnimating()
+              //  self.callhomedatawebapi()
+              //  self.Isscroolenable = false
                 
             }
         }
@@ -193,7 +193,7 @@ class ViewController: UIViewController,MXSegmentedPagerDataSource,MXSegmentedPag
         if(Common.Islogin()) {
             let dict = dataBase.getDatabaseresponseinentity(entityname: "Logindata", key: "logindatadict")
             print(dict.value(forKey: "id") as! NSNumber)
-            var url = String(format: "%@/subscriptionapi/v6/spackage/subscription/token/%@/device/ios/uid/%@/region_type/%@",SubscriptionBaseUrl,Apptoken,(dict.value(forKey: "id") as! NSNumber).stringValue,LoginCredentials.Regiontype)
+            var url = String(format: "%@%@/device/ios/uid/%@/region_type/%@",LoginCredentials.Subscriptionpackageapi,Apptoken,(dict.value(forKey: "id") as! NSNumber).stringValue,LoginCredentials.Regiontype)
             url = url.trimmingCharacters(in: .whitespaces)
             print(url)
             let manager = AFHTTPSessionManager()
@@ -235,8 +235,9 @@ class ViewController: UIViewController,MXSegmentedPagerDataSource,MXSegmentedPag
         if(Common.Islogin()) {
             let dict = dataBase.getDatabaseresponseinentity(entityname: "Logindata", key: "logindatadict")
             print(dict.value(forKey: "id") as! NSNumber)
-            var url = String(format: "%@/subscriptionapi/v6/spackage/user_packages/token/%@/device/ios/uid/%@",SubscriptionBaseUrl,Apptoken,(dict.value(forKey: "id") as! NSNumber).stringValue)
-            url = url.trimmingCharacters(in: .whitespaces)
+            var url = String(format: "%@%@/device/ios/uid/%@",LoginCredentials.Userpackagesapi,Apptoken,(dict.value(forKey: "id") as! NSNumber).stringValue)
+            
+              url = url.trimmingCharacters(in: .whitespaces)
             print(url)
             let manager = AFHTTPSessionManager()
             manager.get(url, parameters: nil, progress: nil, success: { (task: URLSessionDataTask, responseObject: Any?) in
@@ -560,7 +561,6 @@ class ViewController: UIViewController,MXSegmentedPagerDataSource,MXSegmentedPag
             LoginCredentials.Display_offset_home = "0"
             LoginCredentials.Flag_Home = "0"
         }
-
         let url = String(format: "%@%@/device/ios/display_offset/%@/display_limit/3/content_count/5", LoginCredentials.Homeapi,Apptoken,LoginCredentials.Display_offset_home)
         print(url)
         let manager = AFHTTPSessionManager()
@@ -603,7 +603,7 @@ class ViewController: UIViewController,MXSegmentedPagerDataSource,MXSegmentedPag
                 }
                 
        
-                if(((self.HomeData_dict.value(forKey: "dashboard") as! NSDictionary).value(forKey: "home_category") as! NSArray).count > 0)
+                if((self.HomeData_dict.value(forKey: "dashboard") as! NSDictionary).count > 0)
                 {
                     
                     
@@ -673,7 +673,7 @@ class ViewController: UIViewController,MXSegmentedPagerDataSource,MXSegmentedPag
                             
                         }
                         dict.setValue(latestcontentarraymutablearray, forKey: "cat_cntn")
-                        dict.setValue("Latest Content", forKey: "cat_name")
+                        dict.setValue("Latest", forKey: "cat_name")
                         self.collectionviewarray.add(dict)
                         
                         // self.collectionviewarray.insert(dict, at: 0)
@@ -704,8 +704,12 @@ class ViewController: UIViewController,MXSegmentedPagerDataSource,MXSegmentedPag
                                 trendingcontentarraymutablearray.add(array)
                                 
                             }
+                            
+                            
+                            LoginCredentials.Tredingcontent = trendingcontentarraymutablearray
+                            
                             dict.setValue(trendingcontentarraymutablearray, forKey: "cat_cntn")
-                            dict.setValue("Trending Content", forKey: "cat_name")
+                            dict.setValue("Trending", forKey: "cat_name")
                             self.collectionviewarray.add(dict)
                           }
                     }
@@ -764,7 +768,7 @@ class ViewController: UIViewController,MXSegmentedPagerDataSource,MXSegmentedPag
                     Common.stoploder(view: self.view)
                      self.getslidermenudata()
                     self.Getchannel()
-                    self.Isscroolenable = true
+                    self.Isscroolenable = false
                     
                 }
                 else
@@ -789,11 +793,11 @@ class ViewController: UIViewController,MXSegmentedPagerDataSource,MXSegmentedPag
     
     
     func setcollectionviewheight() {
-        var collectionheight = Int()
         
+        var collectionheight = Int()
         if(self.collectionviewarray.count<=3)
         {
-            collectionheight = self.collectionviewarray.count*100
+            collectionheight = self.collectionviewarray.count*120
         }
         if(self.collectionviewarray.count>3)
         {
@@ -804,10 +808,19 @@ class ViewController: UIViewController,MXSegmentedPagerDataSource,MXSegmentedPag
         {
             collectionheight = self.collectionviewarray.count*200
         }
-        if(self.collectionviewarray.count >= 6)
+        if(self.collectionviewarray.count > 8)
         {
-            collectionheight = self.collectionviewarray.count*230
-            
+            collectionheight = self.collectionviewarray.count*240
+        }
+        
+        if(featurebanner.count == 0)
+        {
+            imagecorasalheightconstrant.constant = 0
+            collectionheight = collectionheight-200
+         }
+        else
+        {
+          imagecorasalheightconstrant.constant = 200.0
         }
         
         self.srollviewviewhgtconstrant.constant = CGFloat(collectionheight) + 20
@@ -1154,7 +1167,7 @@ class ViewController: UIViewController,MXSegmentedPagerDataSource,MXSegmentedPag
                 cellheaderimageview?.image = #imageLiteral(resourceName: "Placehoder1")
             }
             
-            dummyLabel = UILabel(frame: CGRect(x: CGFloat(0.20*CGFloat(view.frame.size.width)), y: CGFloat(0), width: CGFloat(view.frame.size.width), height: CGFloat(30)))
+            dummyLabel = UILabel(frame: CGRect(x: CGFloat(0.15*CGFloat(view.frame.size.width)), y: CGFloat(0), width: CGFloat(view.frame.size.width), height: CGFloat(30)))
             print(collectionviewarray.object(at: indexPath.section))
             dummyLabel?.text = ((collectionviewarray.object(at: indexPath.section)) as AnyObject).value(forKey: "cat_name") as? String
             dummyLabel?.textAlignment = .left
@@ -1167,7 +1180,7 @@ class ViewController: UIViewController,MXSegmentedPagerDataSource,MXSegmentedPag
             homebutton = UIButton(frame: CGRect(x: 0, y: 0.0, width: 0, height: 0))
             
            
-            if(dummyLabel?.text == "Latest Content" || dummyLabel?.text == "Trending Content" )
+            if(dummyLabel?.text == "Latest" || dummyLabel?.text == "Trending" )
             {
                 morebutton = UIButton(frame: CGRect(x: CGFloat(view.frame.size.width)-10, y: 8.0, width: 0.0, height: 0.0))
                 morebutton?.setImage(nil, for: .normal)
@@ -1200,7 +1213,7 @@ class ViewController: UIViewController,MXSegmentedPagerDataSource,MXSegmentedPag
             cell?.contentView.addSubview(dummybutton!)
             cell?.contentView.addSubview(homechannelheaderbutton!)
             
-            if(dummyLabel?.text == "Latest Content" || dummyLabel?.text == "Trending Content" )
+            if(dummyLabel?.text == "Latest" || dummyLabel?.text == "Trending" )
             {
             cell?.collectionScroll.contentSize = CGSize(width: CGFloat(((((collectionviewarray.value(forKey: "cat_cntn") as! NSArray).object(at: indexPath.section) as AnyObject).count) * Int(self.view.frame.size.width/2)) + 100), height: CGFloat((cell?.frame.size.height)!))
             }
@@ -1242,7 +1255,7 @@ class ViewController: UIViewController,MXSegmentedPagerDataSource,MXSegmentedPag
                 print(((collectionviewarray.value(forKey: "cat_cntn") as! NSArray).object(at: indexPath.section) as AnyObject).object(at: i))
                 
                
-                if(dummyLabel?.text == "Latest Content" || dummyLabel?.text == "Trending Content" )
+                if(dummyLabel?.text == "Latest" || dummyLabel?.text == "Trending" )
                 {
                     
                 cellView = UIView(frame: CGRect(x: CGFloat(scrollXpos), y: CGFloat(0), width: CGFloat(self.view.frame.size.width/2-10), height: CGFloat(150)))
@@ -1253,7 +1266,7 @@ class ViewController: UIViewController,MXSegmentedPagerDataSource,MXSegmentedPag
                 }
                 
           
-                if(dummyLabel?.text == "Latest Content" || dummyLabel?.text == "Trending Content" )
+                if(dummyLabel?.text == "Latest" || dummyLabel?.text == "Trending" )
                 {
                     
                 scrollXpos += self.view.frame.size.width/2-10
@@ -1264,7 +1277,7 @@ class ViewController: UIViewController,MXSegmentedPagerDataSource,MXSegmentedPag
                 }
                 cell?.collectionScroll.addSubview(cellView!)
                 
-                if(dummyLabel?.text == "Latest Content" || dummyLabel?.text == "Trending Content" )
+                if(dummyLabel?.text == "Latest" || dummyLabel?.text == "Trending" )
                 {
                 dummyView = UIImageView(frame: CGRect(x: CGFloat(5), y: CGFloat(40), width: CGFloat(self.view.frame.size.width/2-15), height: CGFloat(140)))
                 }
@@ -1278,7 +1291,7 @@ class ViewController: UIViewController,MXSegmentedPagerDataSource,MXSegmentedPag
                 button?.tag = i
                 button?.setTitle("", for: .normal)
                
-                if(dummyLabel?.text == "Latest Content" || dummyLabel?.text == "Trending Content" )
+                if(dummyLabel?.text == "Latest" || dummyLabel?.text == "Trending" )
                 {
                 
                 cellImage = UIImageView(frame: CGRect(x: CGFloat(0), y: CGFloat(40), width: CGFloat(self.view.frame.size.width/2-15), height: CGFloat(100)))
@@ -1293,7 +1306,7 @@ class ViewController: UIViewController,MXSegmentedPagerDataSource,MXSegmentedPag
                 
                 
               
-                if(dummyLabel?.text == "Latest Content" || dummyLabel?.text == "Trending Content" )
+                if(dummyLabel?.text == "Latest" || dummyLabel?.text == "Trending" )
                 {
                     
                  if((((((collectionviewarray.value(forKey: "cat_cntn") as! NSArray).object(at: indexPath.section) as AnyObject).object(at: i) as! NSDictionary).value(forKey: "thumbs") as? NSArray)?.count) == 0)
@@ -1344,7 +1357,37 @@ class ViewController: UIViewController,MXSegmentedPagerDataSource,MXSegmentedPag
                             }
                             else
                             {
-                                cellImage?.image = UIImage.init(named: "Placeholder1")
+                                 cellImage?.image = UIImage.init(named: "Placeholder1")
+                                if let _ = (((collectionviewarray.value(forKey: "cat_cntn") as! NSArray).object(at: indexPath.section) as AnyObject).object(at: i) as! NSDictionary).value(forKey: "banners")
+                                {
+                                    
+                                   if(Common.isNotNull(object: ((((collectionviewarray.value(forKey: "cat_cntn") as! NSArray).object(at: indexPath.section) as AnyObject).object(at: i) as! NSDictionary).value(forKey: "banners") as AnyObject)))
+                                   {
+                                    
+                                    
+                                      let bannersarray  = (((collectionviewarray.value(forKey: "cat_cntn") as! NSArray).object(at: indexPath.section) as AnyObject).object(at: i) as! NSDictionary).value(forKey: "banners") as? NSArray
+                                    
+                                    if(bannersarray?.count == 0)
+                                    {
+                                     cellImage?.image = UIImage.init(named: "Placeholder1")
+                                    }
+                                    else
+                                    {
+                                      
+                                        let str  = bannersarray?.object(at: 0) as! String
+                                        self.cellImage?.setImageWith(URL(string: str)!, placeholderImage: UIImage.init(named: "Placehoder1"))
+                                        
+                                    }
+                                    
+                                    
+                                    
+                                    }
+                                    
+                                }
+                               
+                                
+                                
+                                
 
                             }
                         }
@@ -1412,7 +1455,8 @@ class ViewController: UIViewController,MXSegmentedPagerDataSource,MXSegmentedPag
                 
                 
                 if let _ = (((collectionviewarray.value(forKey: "cat_cntn") as! NSArray).object(at: indexPath.section) as AnyObject).object(at: i) as! NSDictionary).value(forKey: "watch") {
-                videoviewlabel?.text =  "\((((collectionviewarray.value(forKey: "cat_cntn") as! NSArray).object(at: indexPath.section) as AnyObject).object(at: i) as! NSDictionary).value(forKey: "watch") as! String)\(" view")"
+                    videoviewlabel?.text = ""
+            //    videoviewlabel?.text =  "\((((collectionviewarray.value(forKey: "cat_cntn") as! NSArray).object(at: indexPath.section) as AnyObject).object(at: i) as! NSDictionary).value(forKey: "watch") as! String)\(" view")"
                 }
                 else
                 {
@@ -1420,7 +1464,7 @@ class ViewController: UIViewController,MXSegmentedPagerDataSource,MXSegmentedPag
                 }
                 
                 Borderview = UIView(frame: CGRect(x: CGFloat(0), y: CGFloat(40), width: CGFloat(self.view.frame.size.width/2-15), height: CGFloat((cellImage?.frame.maxY)!)+10))
-                if(dummyLabel?.text == "Latest Content" || dummyLabel?.text == "Trending Content" )
+                if(dummyLabel?.text == "Latest" || dummyLabel?.text == "Trending" )
                 {
                 Common.setuiviewdborderwidth(View: Borderview!, borderwidth: 0.5)
                 }
@@ -1888,7 +1932,7 @@ class ViewController: UIViewController,MXSegmentedPagerDataSource,MXSegmentedPag
             
             let dic = ((collectionviewarray.value(forKey: "cat_cntn") as! NSArray).object(at:ds) as AnyObject).object(at: sender.tag) as! NSDictionary
             
-            if((collectionviewarray.object(at: ds) as! NSDictionary).value(forKey: "cat_name") as! String == "Latest Content"  || (collectionviewarray.object(at: ds) as! NSDictionary).value(forKey: "cat_name") as! String == "Trending Content" )
+            if((collectionviewarray.object(at: ds) as! NSDictionary).value(forKey: "cat_name") as! String == "Latest"  || (collectionviewarray.object(at: ds) as! NSDictionary).value(forKey: "cat_name") as! String == "Trending" )
             {
                 
         

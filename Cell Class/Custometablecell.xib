@@ -368,35 +368,39 @@
                                     <constraint firstAttribute="height" constant="33" id="obe-z6-8f6"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rrN-AX-S48">
-                                <rect key="frame" x="18" y="10" width="272" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rrN-AX-S48">
+                                <rect key="frame" x="18" y="10" width="272" height="0.0"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cgw-Wj-TbH">
-                                <rect key="frame" x="18" y="38" width="252" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cgw-Wj-TbH">
+                                <rect key="frame" x="18" y="20" width="252" height="0.0"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xUy-O5-svK">
-                                <rect key="frame" x="18" y="72" width="162" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xUy-O5-svK">
+                                <rect key="frame" x="18" y="30" width="162" height="0.0"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J9P-dK-Mqd">
-                                <rect key="frame" x="280" y="40" width="20" height="20"/>
+                                <rect key="frame" x="280" y="10" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="U7p-TB-i0i"/>
                                     <constraint firstAttribute="width" constant="20" id="cJt-s6-EPA"/>
                                 </constraints>
                                 <state key="normal" image="unselectcircle"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EKL-63-tAv">
+                                <rect key="frame" x="0.0" y="0.0" width="308" height="92"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="EKL-63-tAv" secondAttribute="bottom" id="3FF-pL-8cj"/>
                             <constraint firstItem="rrN-AX-S48" firstAttribute="leading" secondItem="t9J-gX-IcV" secondAttribute="leading" constant="18" id="64m-ON-NaA"/>
                             <constraint firstItem="xUy-O5-svK" firstAttribute="leading" secondItem="t9J-gX-IcV" secondAttribute="leading" constant="18" id="BVH-bS-L2N"/>
                             <constraint firstItem="NNj-ZU-upi" firstAttribute="top" secondItem="t9J-gX-IcV" secondAttribute="top" id="F33-PQ-dJR"/>
@@ -410,6 +414,9 @@
                             <constraint firstItem="cgw-Wj-TbH" firstAttribute="trailing" secondItem="rrN-AX-S48" secondAttribute="trailing" constant="-20" id="cn7-X0-jxp"/>
                             <constraint firstItem="J9P-dK-Mqd" firstAttribute="centerY" secondItem="cgw-Wj-TbH" secondAttribute="centerY" id="eST-xC-zZi"/>
                             <constraint firstItem="NNj-ZU-upi" firstAttribute="leading" secondItem="t9J-gX-IcV" secondAttribute="leading" id="fTS-ee-ohj"/>
+                            <constraint firstItem="EKL-63-tAv" firstAttribute="top" secondItem="t9J-gX-IcV" secondAttribute="top" id="jF6-Tp-Mp4"/>
+                            <constraint firstItem="EKL-63-tAv" firstAttribute="leading" secondItem="t9J-gX-IcV" secondAttribute="leading" id="lEe-qL-k2s"/>
+                            <constraint firstAttribute="trailing" secondItem="EKL-63-tAv" secondAttribute="trailing" id="qTD-5u-Mdm"/>
                             <constraint firstAttribute="trailing" secondItem="J9P-dK-Mqd" secondAttribute="trailing" constant="8" id="sbB-b6-Pxf"/>
                         </constraints>
                     </view>
@@ -424,6 +431,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="issubscribebutton" destination="J9P-dK-Mqd" id="HCz-gZ-hVR"/>
+                <outlet property="subscriptioncellbutton" destination="EKL-63-tAv" id="Mx5-Wq-9ms"/>
                 <outlet property="subscriptiondatelabel" destination="xUy-O5-svK" id="9wO-iI-xvZ"/>
                 <outlet property="subscriptionname" destination="rrN-AX-S48" id="0RV-5s-1u3"/>
                 <outlet property="subscriptionprice" destination="cgw-Wj-TbH" id="6Bg-ud-sak"/>

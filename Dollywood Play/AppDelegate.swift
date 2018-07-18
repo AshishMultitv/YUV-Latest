@@ -77,8 +77,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
                 var rootContainerVC: ViewController?
                 rootContainerVC = (window?.rootViewController as? ViewController)
                 rootContainerVC?.miniMediaControlsViewEnabled = notificationsEnabled
-
-              }
+                
+            }
         }
     }
     
@@ -88,9 +88,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         
         // create viewController code...
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
- 
-         let dict = dataBase.getDatabaseresponseinentity(entityname: "Logindata", key: "logindatadict")
-       
+        
+        let dict = dataBase.getDatabaseresponseinentity(entityname: "Logindata", key: "logindatadict")
+        
         if (dict.count>0)
         {
             if(Common.isInternetAvailable())
@@ -166,7 +166,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         
     }
     
-  
+    
     
     
     
@@ -179,36 +179,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         Common.DeActivateUsersession()
         dataBase.deletedataentity(entityname: "Logindata")
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "Setprofiledata"), object: nil, userInfo: nil)
-         dataBase.deletedataentity(entityname: "Downloadvideoid")
-         Common.stopHeartbeat()
-         print("User Logout From aPp")
-       let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//        let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-//        self.window?.rootViewController = loginViewController
+        dataBase.deletedataentity(entityname: "Downloadvideoid")
+        Common.stopHeartbeat()
+        print("User Logout From aPp")
+        let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        //        let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+        //        self.window?.rootViewController = loginViewController
         
-         let mainViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+        let mainViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
         let leftViewController = storyboard.instantiateViewController(withIdentifier: "LeftViewController") as! LeftViewController
         let nvc: UINavigationController = UINavigationController(rootViewController: mainViewController)
         UINavigationBar.appearance().tintColor = UIColor(hex: "689F38")
         leftViewController.HomeViewController = nvc
-         let slideMenuController =   ExSlideMenuController(mainViewController: nvc, leftMenuViewController: leftViewController)
+        let slideMenuController =   ExSlideMenuController(mainViewController: nvc, leftMenuViewController: leftViewController)
         slideMenuController.automaticallyAdjustsScrollViewInsets = true
         slideMenuController.delegate = mainViewController as? SlideMenuControllerDelegate
         
         self.window?.backgroundColor = UIColor(red: 236.0, green: 238.0, blue: 241.0, alpha: 1.0)
         self.window?.rootViewController = slideMenuController
         self.window?.makeKeyAndVisible()
-     }
+    }
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         LoginCredentials.Isallapicall = false
         dataBase.deletedataentity(entityname: "Channeldata")
-      //  ATAppUpdater.init().showUpdateWithConfirmation()
+        //  ATAppUpdater.init().showUpdateWithConfirmation()
         self.Getmasterurl()
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         GIDSignIn.sharedInstance().clientID = "708011623836-e6c5naj5lfdnfhnjfjj5m7q1dekq23qh.apps.googleusercontent.com"
-      
+        
         Fabric.with([Crashlytics.self])
         
         /////Set UDID
@@ -220,33 +220,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         {
             UserDefaults.standard.set(uuid as String, forKey: "UUID")
         }
-//        ///SEt Notification
-//
-//                 if #available(iOS 10.0, *) {
-//                    let center = UNUserNotificationCenter.current()
-//                    center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
-//                        // Enable or disable features based on authorization.
-//                    }
-//                    application.registerForRemoteNotifications()
-//                } else {
-//                    if #available(iOS 9, *) {
-//                        UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil))
-//                        UIApplication.shared.registerForRemoteNotifications()
-//                    }
-//                    // Fallback on earlier versions
-//                }
+        //        ///SEt Notification
+        //
+        //                 if #available(iOS 10.0, *) {
+        //                    let center = UNUserNotificationCenter.current()
+        //                    center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
+        //                        // Enable or disable features based on authorization.
+        //                    }
+        //                    application.registerForRemoteNotifications()
+        //                } else {
+        //                    if #available(iOS 9, *) {
+        //                        UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil))
+        //                        UIApplication.shared.registerForRemoteNotifications()
+        //                    }
+        //                    // Fallback on earlier versions
+        //                }
         application.applicationIconBadgeNumber = 0
         NotificationCenter.default.addObserver(self, selector: #selector(appanalytics), name: NSNotification.Name(rawValue: "useranalytics"), object: nil)
         
         NotificationCenter.default.addObserver(self,selector: #selector(activateUserappsession),name: NSNotification.Name(rawValue: "activateusersession"),object: nil)
         NotificationCenter.default.addObserver(self,selector: #selector(deActivateUserappsession),name: NSNotification.Name(rawValue: "deactivateusersession"),object: nil)
         NotificationCenter.default.addObserver(self,selector: #selector(userlogoutfromapp),name: NSNotification.Name(rawValue: "Userapplogout"),object: nil)
-       
-
+        
+        
         let notificationReceivedBlock: OSHandleNotificationReceivedBlock =
         { notification in
-
-           print("Did Recive notofiasd")
+            
+            print("Did Recive notofiasd")
         }
         
         let notificationOpenedBlock: OSHandleNotificationActionBlock = { result in
@@ -255,51 +255,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
             if let additionalData = result!.notification.payload!.additionalData {
                 if let _ = additionalData["type"]
                 {
-                let type = additionalData["type"] as! String
-                if(type == "SESSION_EXPIRY")
-                {
-                    if(Common.Islogin())
+                    let type = additionalData["type"] as! String
+                    if(type == "SESSION_EXPIRY")
                     {
-                        Common.appLogout()
-                        return
+                        if(Common.Islogin())
+                        {
+                            Common.appLogout()
+                            return
+                        }
+                        else
+                        {
+                            return
+                        }
                     }
-                    else
-                    {
-                      return
-                    }
-                }
                 }
                 
                 
                 
                 let notifytype = additionalData["type"] as! String
                 if(notifytype == "notify") {
-                
-                print(additionalData["id"] as! String)
-                self.catid = additionalData["id"] as! String
-                print(self.catid)
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let mainViewController = storyboard.instantiateViewController(withIdentifier: "PlayerViewController") as! PlayerViewController
-                mainViewController.cat_id = self.catid
-                mainViewController.Isfromdeeplinking = true
-                self.Isdeeplinking = true
-                let leftViewController = storyboard.instantiateViewController(withIdentifier: "LeftViewController") as! LeftViewController
-                let nvc: UINavigationController = UINavigationController(rootViewController: mainViewController)
-                UINavigationBar.appearance().tintColor = UIColor(hex: "689F38")
-                leftViewController.HomeViewController = nvc
-                 let slideMenuController =   ExSlideMenuController(mainViewController: nvc, leftMenuViewController: leftViewController)
-                slideMenuController.automaticallyAdjustsScrollViewInsets = true
-                self.window?.backgroundColor = UIColor(red: 236.0, green: 238.0, blue: 241.0, alpha: 1.0)
-                self.window?.rootViewController = slideMenuController
-                self.window?.makeKeyAndVisible()
+                    
+                    print(additionalData["id"] as! String)
+                    self.catid = additionalData["id"] as! String
+                    print(self.catid)
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let mainViewController = storyboard.instantiateViewController(withIdentifier: "PlayerViewController") as! PlayerViewController
+                    mainViewController.cat_id = self.catid
+                    mainViewController.Isfromdeeplinking = true
+                    self.Isdeeplinking = true
+                    let leftViewController = storyboard.instantiateViewController(withIdentifier: "LeftViewController") as! LeftViewController
+                    let nvc: UINavigationController = UINavigationController(rootViewController: mainViewController)
+                    UINavigationBar.appearance().tintColor = UIColor(hex: "689F38")
+                    leftViewController.HomeViewController = nvc
+                    let slideMenuController =   ExSlideMenuController(mainViewController: nvc, leftMenuViewController: leftViewController)
+                    slideMenuController.automaticallyAdjustsScrollViewInsets = true
+                    self.window?.backgroundColor = UIColor(red: 236.0, green: 238.0, blue: 241.0, alpha: 1.0)
+                    self.window?.rootViewController = slideMenuController
+                    self.window?.makeKeyAndVisible()
                 }
                 
-                 // DEEP LINK and open url in RedViewController
+                // DEEP LINK and open url in RedViewController
                 // Send notification with Additional Data > example key: "OpenURL" example value: "https://google.com"
-
+                
                 if let actionSelected = payload?.actionButtons {
                     print("actionSelected = \(actionSelected)")
-          
+                    
                 }
                 
                 // DEEP LINK from action buttons
@@ -310,7 +310,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
             }
         }
         
- 
+        
         /////////REGISTER ONE SINGLE NOTIFICATION?//////
         
         let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false]
@@ -318,14 +318,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         OneSignal.add(self as OSSubscriptionObserver)
         // OneSignal.initWithLaunchOptions(launchOptions, appId: "2662a68c-d7cc-4d92-bc47-2de7d0b5965c", handleNotificationReceived: notificationReceivedBlock, handleNotificationAction: notificationOpenedBlock, settings: onesignalInitSettings)
         //16b95c8e-6fd7-46cc-a1c4-a5ccde92da78 /// Ye kis app
-       OneSignal.initWithLaunchOptions(launchOptions, appId: "2662a68c-d7cc-4d92-bc47-2de7d0b5965c", handleNotificationReceived: notificationReceivedBlock, handleNotificationAction: notificationOpenedBlock, settings: onesignalInitSettings)
+        OneSignal.initWithLaunchOptions(launchOptions, appId: "2662a68c-d7cc-4d92-bc47-2de7d0b5965c", handleNotificationReceived: notificationReceivedBlock, handleNotificationAction: notificationOpenedBlock, settings: onesignalInitSettings)
         
         OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification;
         OneSignal.promptForPushNotifications(userResponse: { accepted in
             print("User accepted notifications: \(accepted)")
-  
+            
         })
-
+        
         
         //       // let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false, kOSSettingsKeyInAppLaunchURL: true, ]
         //          let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false]
@@ -335,7 +335,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         //        OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification
         //        print(Common.getstatickey())
         
-
+        
         ///////CROME CAST
         
         populateRegistrationDomain()
@@ -372,8 +372,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         } else {
             let rootContainerVC = (window?.rootViewController as? ViewController)
             rootContainerVC?.miniMediaControlsViewEnabled = true
-
-         }
+            
+        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(syncWithUserDefaults),
                                                name: UserDefaults.didChangeNotification, object: nil)
@@ -384,12 +384,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         UIApplication.shared.statusBarStyle = .lightContent
         GCKCastContext.sharedInstance().sessionManager.add(self)
         GCKCastContext.sharedInstance().imagePicker = self
-         return true
+        return true
         
         
     }
     
- 
+    
     
     /////Notification Delegate
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
@@ -397,7 +397,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
         print("deviceTokenString >>",deviceTokenString)
         LoginCredentials.DiviceToken = deviceTokenString
-     }
+    }
     
     
     
@@ -420,27 +420,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
             self.Refreshtoken(playerid: LoginCredentials.OnesinglePlayerid)
         }
     }
-
+    
     func application(_ application: UIApplication,
                      didReceiveRemoteNotification userInfo: [AnyHashable : Any],
                      fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void)
     {
-         print("Recived: \(userInfo)")
-         completionHandler(.newData)
+        print("Recived: \(userInfo)")
+        completionHandler(.newData)
         if let _ = userInfo["custom"] {
             
-           if let _  = (userInfo["custom"] as! NSDictionary).value(forKey: "a")
-           {
-            let dict  = (userInfo["custom"] as! NSDictionary).value(forKey: "a") as! NSDictionary
-            let type = dict.value(forKey: "type") as! String
-            if(type == "SESSION_EXPIRY")
+            if let _  = (userInfo["custom"] as! NSDictionary).value(forKey: "a")
             {
-                if(Common.Islogin())
+                let dict  = (userInfo["custom"] as! NSDictionary).value(forKey: "a") as! NSDictionary
+                let type = dict.value(forKey: "type") as! String
+                if(type == "SESSION_EXPIRY")
                 {
-                    Common.appLogout()
+                    if(Common.Islogin())
+                    {
+                        Common.appLogout()
+                    }
                 }
-            }
-            
+                
             }
             
             
@@ -449,13 +449,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         
         if let _ = userInfo["type"]
         {
+            let typeStr = userInfo["type"] as! String
+            print(typeStr)
+            if typeStr == "SESSION_EXPIRY" {
+                print("Content updated")
+                if(Common.Islogin())
+                {
+                    Common.appLogout()
+                }
+            }
+            else if typeStr == "SESSION_INACTIVE" {
+                print("SESSION_INACTIVE")
+                if(Common.Islogin())
+                {
+                    Common.Pushback()
+                }
+            }
+            
+        }
+        
+    }
+    
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        if application.applicationState == .active {
+            //opened from a push notification when the app was on background
+            print(userInfo)
+        }
+        else
+        {
+            print(userInfo)
+        }
+        print(userInfo)
+        let aps = userInfo["aps"] as! [String: AnyObject]
+        print(aps)
+        
+        print("userInfo",userInfo)
         let typeStr = userInfo["type"] as! String
-        print(typeStr)
-         if typeStr == "SESSION_EXPIRY" {
+        
+        if typeStr == "SESSION_EXPIRY" {
             print("Content updated")
             if(Common.Islogin())
             {
-              Common.appLogout()
+                Common.appLogout()
             }
         }
         else if typeStr == "SESSION_INACTIVE" {
@@ -466,42 +502,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
             }
         }
         
-        }
-        
-    }
-    
-    
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
-        if application.applicationState == .active {
-            //opened from a push notification when the app was on background
-             print(userInfo)
-        }
-        else
-        {
-          print(userInfo)
-        }
-        print(userInfo)
-        let aps = userInfo["aps"] as! [String: AnyObject]
-        print(aps)
-        
-        print("userInfo",userInfo)
-        let typeStr = userInfo["type"] as! String
-        
-         if typeStr == "SESSION_EXPIRY" {
-            print("Content updated")
-            if(Common.Islogin())
-            {
-               Common.appLogout()
-             }
-        }
-        else if typeStr == "SESSION_INACTIVE" {
-            print("SESSION_INACTIVE")
-            if(Common.Islogin())
-            {
-              Common.Pushback()
-            }
-        }
-        
         
         
         
@@ -511,7 +511,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     
     
     
-   
+    
     
     
     func activateUserappsession()
@@ -522,24 +522,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
             let uuid = UIDevice.current.identifierForVendor!.uuidString
             let dict = dataBase.getDatabaseresponseinentity(entityname: "Logindata", key: "logindatadict")
             let json = ["device":"ios","customer_id":(dict.value(forKey: "id") as! NSNumber).stringValue,"content_id":"", "session_status":"active","device_unique_id" : uuid as String] as [String : Any]
-             print("CAll USER ACTIVE SESSION")
+            print("CAll USER ACTIVE SESSION")
             print("json >>",json)
             
             var url = String(format: "%@%@", LoginCredentials.Ifallowedapi,Apptoken)
             print(url)
             url = url.trimmingCharacters(in: .whitespaces)
-             let manager = AFHTTPSessionManager()
+            let manager = AFHTTPSessionManager()
             manager.post(url, parameters: json, progress: nil, success: { (task: URLSessionDataTask, responseObject: Any?) in
                 if (responseObject as? [String: AnyObject]) != nil {
                     let dict = responseObject as! NSDictionary
                     print(dict)
-                 }
+                }
             }) { (task: URLSessionDataTask?, error: Error) in
                 print("POST fails with error \(error)")
             }
             
             
-       
+            
         }
     }
     
@@ -549,34 +549,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         {
             let dict = dataBase.getDatabaseresponseinentity(entityname: "Logindata", key: "logindatadict")
             let uuid = UIDevice.current.identifierForVendor!.uuidString
-             let json = ["device":"ios","customer_id":(dict.value(forKey: "id") as! NSNumber).stringValue  ,"content_id":"", "session_status":"inactive","device_unique_id" : uuid as String] as [String : Any]
+            let json = ["device":"ios","customer_id":(dict.value(forKey: "id") as! NSNumber).stringValue  ,"content_id":"", "session_status":"inactive","device_unique_id" : uuid as String] as [String : Any]
             print("CAll DE USER ACTIVE SESSION")
             print("json >>",json)
             var url = String(format: "%@%@", LoginCredentials.Ifallowedapi,Apptoken)
             print(url)
             url = url.trimmingCharacters(in: .whitespaces)
-            
             let manager = AFHTTPSessionManager()
             manager.post(url, parameters: json, progress: nil, success: { (task: URLSessionDataTask, responseObject: Any?) in
                 if (responseObject as? [String: AnyObject]) != nil {
                     let dict = responseObject as! NSDictionary
                     print(dict)
-                 }
+                }
             }) { (task: URLSessionDataTask?, error: Error) in
                 print("POST fails with error \(error)")
             }
             
- 
+            
         }
     }
-
     
-
+    
+    
     ///////getMasterurl Update
     
     func Getmasterurl()
     {
-         let url = String(format: "%@/token/%@", MaterBaseUrl,Apptoken)
+        let url = String(format: "%@/token/%@", MaterBaseUrl,Apptoken)
         print(url)
         let manager = AFHTTPSessionManager()
         manager.get(url, parameters: nil, progress: nil, success: { (task: URLSessionDataTask, responseObject: Any?) in
@@ -589,9 +588,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
                 }
                 else
                 {
-   
-                  let Catdata_dict = dict.value(forKey: "result") as! NSDictionary
-                  print(Catdata_dict)
+                    
+                    let Catdata_dict = dict.value(forKey: "result") as! NSDictionary
+                    print(Catdata_dict)
                     
                     ////////////////////////////////addapi 1  //////////////////////////
                     let addapi = Catdata_dict.value(forKey: "add") as! String
@@ -754,18 +753,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
                     
                     ////////////////////////////////edit    12   //////////////////////////
                     if let _ = Catdata_dict.value(forKey: "edit")  {
-                    let editapi = Catdata_dict.value(forKey: "edit") as! String
-                    let editapiArr : [String] = editapi.components(separatedBy: "|,")
-                    
-                    LoginCredentials.Editapi = editapiArr[1]
-                    if((editapiArr[0] as String) == "0")
-                    {
-                        LoginCredentials.IsencriptEditapi = true
-                    }
-                    else
-                    {
-                        LoginCredentials.IsencriptEditapi = false
-                    }
+                        let editapi = Catdata_dict.value(forKey: "edit") as! String
+                        let editapiArr : [String] = editapi.components(separatedBy: "|,")
+                        
+                        LoginCredentials.Editapi = editapiArr[1]
+                        if((editapiArr[0] as String) == "0")
+                        {
+                            LoginCredentials.IsencriptEditapi = true
+                        }
+                        else
+                        {
+                            LoginCredentials.IsencriptEditapi = false
+                        }
                     }
                     ////////////////////////////////forgot   13   //////////////////////////
                     let forgotapi = Catdata_dict.value(forKey: "forgot") as! String
@@ -997,7 +996,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
                     {
                         LoginCredentials.IsencriptUserbehaviorapi = false
                     }
-         
+                    
                     
                     
                     ////////////////////////////////userrelated    28     //////////////////////////
@@ -1077,8 +1076,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
                     let ifallowedapiArr : [String] = ifallowedapi.components(separatedBy: "|,")
                     
                     LoginCredentials.Ifallowedapi = ifallowedapiArr[1]
-                
-          
+                    
+                    
                     
                     ////////////////////////////////abuse     33         //////////////////////////
                     let abuseapi = Catdata_dict.value(forKey: "abuse") as! String
@@ -1091,32 +1090,89 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
                     //////////////////////////////Fauvout   33   //////////////////////////
                     let fauvoutapi = Catdata_dict.value(forKey: "favorite") as! String
                     let fauvoutapiArr : [String] = fauvoutapi.components(separatedBy: "|,")
-                     LoginCredentials.Favrioutapi = fauvoutapiArr[1]
+                    LoginCredentials.Favrioutapi = fauvoutapiArr[1]
                     
-                    
-                    ////////////////////////////////Cromecast     34        //////////////////////////
-                //    let chromecastapi = Catdata_dict.value(forKey: "chromecast") as! String
-            //        let chromecastapiArr : [String] = chromecastapi.components(separatedBy: "|,")
-              //      LoginCredentials.Chromecastapi = chromecastapiArr[1]
-                    
-                     ///////////////////////
     
                     
-  ////////////////////////////////Autosugection     34        //////////////////////////
-      let Autosugectionapi = Catdata_dict.value(forKey: "autosuggest") as! String
-      let Autosugectionarra : [String] = Autosugectionapi.components(separatedBy: "|,")
-        LoginCredentials.Autosuggestapi = Autosugectionarra[1]
- 
-        ////////////////////////////////Clearwatchapi     34        //////////////////////////
-       let Clearwatchapi = Catdata_dict.value(forKey: "clear_watch") as! String
-         let Clearwatchapiarra : [String] = Clearwatchapi.components(separatedBy: "|,")
-         LoginCredentials.Clearwatchapi = Clearwatchapiarra[1]
+                    
+                    ////////////////////////////////Autosugection     34        //////////////////////////
+                    let Autosugectionapi = Catdata_dict.value(forKey: "autosuggest") as! String
+                    let Autosugectionarra : [String] = Autosugectionapi.components(separatedBy: "|,")
+                    LoginCredentials.Autosuggestapi = Autosugectionarra[1]
+                    
+                    ////////////////////////////////Clearwatchapi     34        //////////////////////////
+                    let Clearwatchapi = Catdata_dict.value(forKey: "clear_watch") as! String
+                    let Clearwatchapiarra : [String] = Clearwatchapi.components(separatedBy: "|,")
+                    LoginCredentials.Clearwatchapi = Clearwatchapiarra[1]
+                    
+                    
+                        ///////Subscription///////////////////
+                    
+                    
+                    //////////////////////////////subs_redeem_refferal   34   //////////////////////////
+                    let redeemrefferalapi = Catdata_dict.value(forKey: "subs_redeem_refferal") as! String
+                    let redeemrefferalapiArr : [String] = redeemrefferalapi.components(separatedBy: "|,")
+                    LoginCredentials.Redeemrefferalapi = redeemrefferalapiArr[1]
+                    
+                    
+                    //////////////////////////////subs_redeem_coupon   34   //////////////////////////
+                    let redeemcouponapi = Catdata_dict.value(forKey: "subs_redeem_coupon") as! String
+                    let redeemcouponapiArr : [String] = redeemcouponapi.components(separatedBy: "|,")
+                    LoginCredentials.Redeemcouponapi = redeemcouponapiArr[1]
+                    
+                    //////////////////////////////subs_create_order_onetime   34   //////////////////////////
+                    let createorderonetimeapi = Catdata_dict.value(forKey: "subs_create_order_onetime") as! String
+                    let createorderonetimeapiArr : [String] = createorderonetimeapi.components(separatedBy: "|,")
+                    LoginCredentials.Onetimecreateorderapi = createorderonetimeapiArr[1]
+                    
+                   
+                    
+                    //////////////////////////////subs_create_order_autorenewl   34   //////////////////////////
+                    let createorderautorenewlapi = Catdata_dict.value(forKey: "subs_create_order_autorenewl") as! String
+                    let createorderautorenewlapiArr : [String] = createorderautorenewlapi.components(separatedBy: "|,")
+                    LoginCredentials.Createorderapi = createorderautorenewlapiArr[1]
+                    
+                    
+                    
+                    //////////////////////////////subs_complete_order_onetime   34   //////////////////////////
+                    let completeorderonetimeapi = Catdata_dict.value(forKey: "subs_complete_order_onetime") as! String
+                    let completeorderonetimeapiArr : [String] = completeorderonetimeapi.components(separatedBy: "|,")
+                    LoginCredentials.Onetimecompleteorderapi = completeorderonetimeapiArr[1]
+                    
+                    
+                    //////////////////////////////subs_complete_order_autorenewl   34   //////////////////////////
+                    let completeorderautorenewlapi = Catdata_dict.value(forKey: "subs_complete_order_autorenewl") as! String
+                    let completeorderautorenewlapiArr : [String] = completeorderautorenewlapi.components(separatedBy: "|,")
+                    LoginCredentials.Completeorderapi = completeorderautorenewlapiArr[1]
+                    
+                    
+                    
+                    //////////////////////////////subs_package_list   34   //////////////////////////
+                    let packagelistapi = Catdata_dict.value(forKey: "subs_package_list") as! String
+                    let packagelistapiArr : [String] = packagelistapi.components(separatedBy: "|,")
+                    LoginCredentials.Subscriptionpackageapi = packagelistapiArr[1]
+                    
+                    
+                    
+                    //////////////////////////////subs_user_subscriptions   34   //////////////////////////
+                    let usersubscriptionsapi = Catdata_dict.value(forKey: "subs_user_subscriptions") as! String
+                    let usersubscriptionsapiArr : [String] = usersubscriptionsapi.components(separatedBy: "|,")
+                    LoginCredentials.Userpackagesapi = usersubscriptionsapiArr[1]
+                    
+                    
+                    
+                    //////////////////////////////subs_free_subscription   34   //////////////////////////
+                    let freesubscriptionapi = Catdata_dict.value(forKey: "subs_free_subscription") as! String
+                    let freesubscriptionapiArr : [String] = freesubscriptionapi.components(separatedBy: "|,")
+                    LoginCredentials.Freesubscriptionapi = freesubscriptionapiArr[1]
+                    
+                    
                     
                     self.Refreshtoken(playerid: LoginCredentials.OnesinglePlayerid)
                     self.checkContantUpdate()
                     if(!self.Isdeeplinking)
                     {
-                    self.createMenuView()
+                        self.createMenuView()
                     }
                     
                     
@@ -1140,15 +1196,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     func Refreshtoken(playerid:String)
     {
         
- 
-         let uuid = UIDevice.current.identifierForVendor!.uuidString
+        
+        let uuid = UIDevice.current.identifierForVendor!.uuidString
         let parameters = ["device_type":"app",
                           "device_unique_id": uuid,
                           "device_push_token":LoginCredentials.DiviceToken,
                           "one_signal_id":playerid
         ]
         print(parameters)
-         let url = String(format: "%@%@", LoginCredentials.Udatedeviceapi,Apptoken)
+        let url = String(format: "%@%@", LoginCredentials.Udatedeviceapi,Apptoken)
         let manager = AFHTTPSessionManager()
         
         manager.post(url, parameters: parameters, progress: nil, success: { (task: URLSessionDataTask, responseObject: Any?) in
@@ -1348,7 +1404,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         var json = [String:Any]()
         if(Common.Islogin())
         {
-              let dict = dataBase.getDatabaseresponseinentity(entityname: "Logindata", key: "logindatadict")
+            let dict = dataBase.getDatabaseresponseinentity(entityname: "Logindata", key: "logindatadict")
             json = ["device":"ios","u_id":((dict.value(forKey: "id") as! NSNumber).stringValue),"c_id":LoginCredentials.Videoid ,"type": "2","buff_d":"0","dod":Common.convertdictinyijasondata(data: dictionaryOtherDetail),"dd":Common.convertdictinyijasondata(data: devicedetailss),"pd":LoginCredentials.VideoPlayingtime,"token":Apptoken]
         }
         else
@@ -1574,8 +1630,8 @@ extension AppDelegate {
             } else {
                 let rootContainerVC = (window?.rootViewController as? ViewController)
                 rootContainerVC?.miniMediaControlsViewEnabled = mediaNotificationsEnabled
-
-             }
+                
+            }
         }
         firstUserDefaultsSync = false
     }

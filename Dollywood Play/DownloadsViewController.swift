@@ -208,7 +208,10 @@ class DownloadsViewController: UIViewController,UITableViewDelegate,UITableViewD
         cell.layer.borderWidth = 0.5
         cell.layer.borderColor = UIColor.white.cgColor
         cell.clipsToBounds = true
+        if(Common.isNotNull(object: (self.downloadarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "thumbs") as AnyObject))
+        {
         let url = (self.downloadarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "thumbs") as! NSArray
+        
         if(url.count>0)
         {
             var str = ((url.object(at: 0) as! NSDictionary).value(forKey: "thumb") as! NSDictionary).value(forKey: "medium") as! String
@@ -219,7 +222,11 @@ class DownloadsViewController: UIViewController,UITableViewDelegate,UITableViewD
         {
             cell.bannerimaheview.image = #imageLiteral(resourceName: "Placehoder")
         }
-        
+    }
+        else
+        {
+              cell.bannerimaheview.image = #imageLiteral(resourceName: "Placehoder")
+        }
         let button: UIButton = UIButton()
         button.setImage(UIImage(named:"Cross"), for: .normal)
         button.frame = CGRect.init(x: cell.contentView.frame.size.width - 30, y: cell.contentView.frame.origin.y+5, width: 25, height: 25)
@@ -229,7 +236,8 @@ class DownloadsViewController: UIViewController,UITableViewDelegate,UITableViewD
         var discriptiontext = (self.downloadarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "des") as? String
         discriptiontext = discriptiontext?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         cell.Descriptionlabel.text = discriptiontext
-        cell.viewlabel.text = "\((self.downloadarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "watch") as! String)\(" view")"
+         cell.viewlabel.text = ""
+        //cell.viewlabel.text = "\((self.downloadarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "watch") as! String)\(" view")"
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm:ss"
         let videotime = (self.downloadarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "created") as? String

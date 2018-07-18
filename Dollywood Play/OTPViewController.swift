@@ -29,6 +29,8 @@ class OTPViewController: UIViewController {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
+        self.toolbar = FormToolbar(inputs: [otptx])
+
     }
     
     @IBAction func Taptoresendotp(_ sender: Any) {

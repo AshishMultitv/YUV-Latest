@@ -456,7 +456,14 @@ class SearchViewController: UIViewController,UISearchBarDelegate,UITableViewData
             if(Common.isNotNull(object: (showsarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "thumbnails") as AnyObject))
             {
                   url  = ((showsarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "thumbnails") as! NSArray).object(at: 0) as! String
+                if(url == "")
+                {
+                   cell.showimageview.image = #imageLiteral(resourceName: "Placehoder")
+                }
+                else
+                {
                   cell.showimageview.setImageWith(URL(string: url)!, placeholderImage: UIImage.init(named: "Placehoder"))
+                }
             }
             else
             {

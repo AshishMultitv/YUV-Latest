@@ -42,6 +42,8 @@ class Custometablecell: UITableViewCell {
     @IBOutlet weak var subscriptiondatelabel: UILabel!
     
     @IBOutlet weak var issubscribebutton: UIButton!
+    
+    @IBOutlet weak var subscriptioncellbutton: UIButton!
     //////Free Trail video outlate
     
     @IBOutlet weak var freetrailouterview: UIView!

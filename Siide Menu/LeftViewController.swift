@@ -58,7 +58,7 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
         
         super.viewDidLoad()
         tableView.separatorStyle = .none
-        NotificationCenter.default.addObserver(self, selector: #selector(createsidemenu(data:)), name: NSNotification.Name(rawValue: "Sidemenunotification"), object: nil)
+         NotificationCenter.default.addObserver(self, selector: #selector(createsidemenu(data:)), name: NSNotification.Name(rawValue: "Sidemenunotification"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(TaptoProfile), name: NSNotification.Name(rawValue: "taptoprofile"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(loginlogoutaction), name: NSNotification.Name(rawValue: "logoutaction"), object: nil)
          NotificationCenter.default.addObserver(self, selector: #selector(showWithoutloginalert), name: NSNotification.Name(rawValue: "Sidemenuloginalert"), object: nil)
@@ -119,11 +119,6 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
         self.imageHeaderView = ImageHeaderView.loadNib()
         self.view.addSubview(self.imageHeaderView)
     }
-    
-    
-    
- 
-  
 
     
     func TaptoProfile()
@@ -132,6 +127,9 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
         LoginCredentials.faveprofileorother = "Myaccount"
         self.slideMenuController()?.changeMainViewController(self.MyAccountViewController, close: true)
     }
+    
+    
+    
     func createsidemenu(data:Notification)
     {
         menus.removeAll()
@@ -180,17 +178,18 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
     }
   
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+         // tableView.setContentOffset(.zero, animated: true)
+    }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+         super.viewDidAppear(animated)
     }
     
     
     
     func showWithoutloginalert()
     {
-     
             let alertView = UIAlertController(title: "YUV", message: "Please login to access your profile", preferredStyle: .alert)
             let action = UIAlertAction(title: "Login", style: .default, handler: { (alert) in
               self.redirecttologinscreen()
@@ -202,17 +201,10 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
             alertView.addAction(action)
             alertView.addAction(cancel)
             self.present(alertView, animated: true, completion: nil)
-       
-       
-        
-        
+  
     }
 
-    
-    
-    
     ///////Login/logout button Action////////////////
-    
     func loginlogoutaction()
     {
      if (dataBase.getDatabaseresponseinentity(entityname: "Logindata", key: "logindatadict").count>0)
@@ -246,8 +238,7 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
     
   func redirecttologinscreen()
   {
-    
-    
+
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
     let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
     self.SignoutViewController = UINavigationController(rootViewController: loginViewController)
@@ -345,19 +336,17 @@ extension LeftViewController : UITableViewDelegate {
         print(identifier)
         if let menu = LeftMenu(rawValue: indexPath.row) {
            // self.changeViewController(menu)
+            
             self.chageviewcontrooleracodingname(index: indexPath.row)
+             tableView.setContentOffset(.zero, animated: true)
 
         }
     }
     
     
     func chageviewcontrooleracodingname(index:Int) {
-        
-        
         print(identifier)
-        
         print(identifier[index])
-        
         switch identifier[index] {
         case "home":
             self.slideMenuController()?.changeMainViewController(self.HomeViewController, close: true)
@@ -439,7 +428,7 @@ extension LeftViewController : UITableViewDelegate {
             }
             break
         case "tc":
-            LoginCredentials.headerlabeltext = "Terms"
+            LoginCredentials.headerlabeltext = "Terms & Privacy"
             self.slideMenuController()?.changeMainViewController(self.PrivacyPolicyViewController, close: true)
             break
         case "faq":
@@ -494,16 +483,16 @@ extension LeftViewController : UITableViewDataSource {
             switch menu {
             case .main, .First, .Second, .Third, .Fourth, .fifth, .Six, .Seven, .eight, .nine, .ten, .eleven:
                 let cell = BaseTableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: BaseTableViewCell.identifier)
-                cell.setData(menus[indexPath.row])
+                 cell.selectionStyle = .gray
+                 cell.setData(menus[indexPath.row])
                 let lastRowIndex = tableView.numberOfRows(inSection: tableView.numberOfSections-1)
                 if (indexPath.row == lastRowIndex - 1) {
                    if(Common.Islogin())
-                   {
+                    {
                     cell.setmenuimage(image[indexPath.row])
-                    
                     }
                     else
-                   {
+                    {
                     cell.setsigninoutimage(nil)
                     }
                     

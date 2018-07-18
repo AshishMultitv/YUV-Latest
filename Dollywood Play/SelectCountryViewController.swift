@@ -18,6 +18,7 @@ class SelectCountryViewController: UIViewController,UITableViewDelegate,UITableV
     var contrylist = NSArray()
     
     override func viewDidLoad() {
+       LoginCredentials.Isselectuserback = false
         super.viewDidLoad()
         parseJsonfile()
         indiabutton.setImage(#imageLiteral(resourceName: "Selectcircle"), for: .normal)
@@ -62,7 +63,15 @@ class SelectCountryViewController: UIViewController,UITableViewDelegate,UITableV
     }
     @IBAction func Taptocancel(_ sender: Any) {
         
-        backaction()
+        
+ 
+        LoginCredentials.Isselectuserback = true
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "dismisssubscription"), object: nil)
+      
+        
+        
+        
+         //  backaction()
         
     }
     
@@ -120,7 +129,9 @@ class SelectCountryViewController: UIViewController,UITableViewDelegate,UITableV
     {
         
         
-        let name = (contrylist.object(at: indexPath.row) as! NSDictionary).value(forKey: "name") as? String
+      
+         LoginCredentials.Isselectuserback = false
+         let name = (contrylist.object(at: indexPath.row) as! NSDictionary).value(forKey: "name") as? String
         
         if(name == "Tamil Nadu") {
             LoginCredentials.Regiontype = "1"
@@ -152,7 +163,7 @@ class SelectCountryViewController: UIViewController,UITableViewDelegate,UITableV
             
             let dict = dataBase.getDatabaseresponseinentity(entityname: "Logindata", key: "logindatadict")
             print(dict.value(forKey: "id") as! NSNumber)
-            var url = String(format: "%@/subscriptionapi/v6/spackage/subscription/token/%@/device/ios/uid/%@/region_type/%@",SubscriptionBaseUrl,Apptoken,(dict.value(forKey: "id") as! NSNumber).stringValue,LoginCredentials.Regiontype)
+            var url = String(format: "%@%@/device/ios/uid/%@/region_type/%@",LoginCredentials.Subscriptionpackageapi,Apptoken,(dict.value(forKey: "id") as! NSNumber).stringValue,LoginCredentials.Regiontype)
             url = url.trimmingCharacters(in: .whitespaces)
             print(url)
             let manager = AFHTTPSessionManager()

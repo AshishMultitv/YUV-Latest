@@ -18,6 +18,7 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
     var Subscriptioniapname = String()
     var Subscriptiontype = String()
     var Subscriptionpakageid = String()
+    var Isuserlocalityback:Bool = false
     
     
     ////////// Object Outlate Connection/////////////////
@@ -34,6 +35,7 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
+         LoginCredentials.Isselectuserback = false
         Common.getRounduiview(view: Subscriptiontableview, radius: 10.0)
         Common.getRounduiview(view: giftView, radius: 10.0)
         // Common.setuiviewdborderwidth(View: Subscriptiontableview, borderwidth: 1.0)
@@ -54,10 +56,7 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
             ScroolviewHeightcntrant.constant = tabelviewhghtcontrant.constant + 50.0
         }
 
-       
-        
-        
-        
+ 
 
         // Do any additional setup after loading the view.
     }
@@ -74,6 +73,15 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
     
     
     override func viewDidAppear(_ animated: Bool) {
+        
+        print("Is Press Back \(LoginCredentials.Isselectuserback)")
+        if(LoginCredentials.Isselectuserback)
+        {
+            self.dismiss(animated: true, completion: nil)
+            return
+            
+        }
+      
         if(!Common.isuserseletedlocality()) {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let selectCountryViewController = storyboard.instantiateViewController(withIdentifier: "SelectCountryViewController") as! SelectCountryViewController
@@ -85,11 +93,11 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
             
             if(LoginCredentials.Regiontype == "2")
             {
-            Redeemgiftrefreellabel.text = "Redeem Referral"
+            Redeemgiftrefreellabel.text = "Redeem a Referral"
             }
             else
             {
-               Redeemgiftrefreellabel.text = "Redeem Gift / Referral"
+               Redeemgiftrefreellabel.text = "Use a Gift / Referral"
             }
             
             
@@ -257,7 +265,7 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
             "c_id": (dict.value(forKey: "id") as! NSNumber).stringValue
         ]
         print(parameters)
-        var url = String(format: "%@/subscriptionapi/v6/subscription/redeem_refferal/token/%@/device/ios", SubscriptionBaseUrl,Apptoken)
+        var url = String(format: "%@%@/device/ios", LoginCredentials.Redeemrefferalapi,Apptoken)
         url =  url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         let manager = AFHTTPSessionManager()
         manager.post(url, parameters: parameters, progress: nil, success: { (task: URLSessionDataTask, responseObject: Any?) in
@@ -315,7 +323,7 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
                        "c_phone":contactno
             ] as [String:Any]
         print(dict.value(forKey: "id") as! NSNumber)
-        var url = String(format: "%@/subscriptionapi/v6/subscription/redeem_coupon/token/%@/device/ios",SubscriptionBaseUrl,Apptoken)
+        var url = String(format: "%@%@/device/ios",LoginCredentials.Redeemcouponapi,Apptoken)
         url = url.trimmingCharacters(in: .whitespaces)
         print(url)
         print(Param)
@@ -359,11 +367,15 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
             }
         }
         
+        
         return 113.0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
+        
+        
+        
         print(LoginCredentials.UserPakegeList)
         return LoginCredentials.UserPakegeList.count
     }
@@ -383,9 +395,9 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
             
             Common.setuiviewdbordercolor(View: cell.subscriptionview, borderwidth: 2.0, bordercolor: UIColor.white)
             Common.getRounduiview(view: cell.subscriptionview, radius: 10.0)
-            cell.subscriptionname.textAlignment = .center
-            cell.subscriptionname.text =  "Or"
-            cell.subscriptionprice.text = "Watch ad and get ONE day full Subscription"
+            //cell.subscriptionname.textAlignment = .center
+            cell.subscriptionname.text =  "Free Subscription"
+            cell.subscriptionprice.text = "Watch ad and get one day free."
             cell.subscriptionprice.textColor = UIColor.green
             let issubcribed = ((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "is_subscriber") as! String
             if(issubcribed == "1") {
@@ -409,16 +421,16 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
             
             var price = String()
             
-             price = "\(((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "p_currency") as! String)\(" ")\(((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "p_price") as! String)"
+             price = "\(((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "p_currency") as! String)\(" ")\(((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "ios_price") as! String)"
             
-            if let _ = ((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "have_discount") {
+            if let _ = ((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "ios_have_discount") {
             
                 
-               let havediscount = ((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "have_discount") as! String
+               let havediscount = ((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "ios_have_discount") as! String
                 
                 if(havediscount == "0")
                 {
-                    price = "\(((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "p_currency") as! String)\(" ")\(((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "p_price") as! String)"
+                    price = "\(((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "p_currency") as! String)\(" ")\(((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "ios_price") as! String)"
                     let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: price)
                     cell.subscriptionprice.attributedText = attributeString
                     
@@ -427,8 +439,8 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
                 {
                    
               
-                 let discoubtprice = "\(((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "p_currency") as! String)\(" ")\(((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "price_without_discnt") as! String)"
-                let finalprice = "\(discoubtprice) \(" ")\(((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "p_currency") as! String)\(" ")\(((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "p_price") as! String)"
+                 let discoubtprice = "\(((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "p_currency") as! String)\(" ")\(((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "ios_price_without_discnt") as! String)"
+                let finalprice = "\(discoubtprice) \(" ")\(((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "p_currency") as! String)\(" ")\(((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "ios_price") as! String)"
 //                    let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: finalprice)
 //                    attributeString.addAttribute(NSStrikethroughStyleAttributeName, value: 1, range: NSMakeRange(0, discoubtprice.length))
 //                     cell.subscriptionprice.attributedText = attributeString
@@ -482,8 +494,8 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
             
             
         }
-        
-        
+         cell.subscriptioncellbutton.tag = indexPath.row
+        cell.subscriptioncellbutton.addTarget(self, action: #selector(clickoncell(sender:)), for: .touchUpInside)
         
         cell.selectionStyle = .none
         return cell
@@ -493,52 +505,77 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+     
+    }
+    
+    
+    
+    
+    
+    func clickoncell(sender:UIButton)
+    {
+        
+        print("Cell Tag \(sender.tag)")
+        
+        
+        
+        let buttonPosition:CGPoint = sender.convert(CGPoint.zero, to:self.Subscriptiontableview)
+        let indexPath = self.Subscriptiontableview.indexPathForRow(at: buttonPosition)
+ 
+         print("indexPath row \(indexPath?.row)")
+        
+        
+        
+        
+        
+        
         if(Common.Islogin())
         {
             
-//            if(!Common.Isuserissubscribenew(Userdetails: self as AnyObject))
-//            {
-//
+            //            if(!Common.Isuserissubscribenew(Userdetails: self as AnyObject))
+            //            {
+            //
             
-                let selectedCell:Custometablecell = tableView.cellForRow(at: indexPath)! as! Custometablecell
-                selectedCell.issubscribebutton.setImage(#imageLiteral(resourceName: "Selectcircle"), for: .normal)
-                let pakeagename = ((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "p_name") as! String
-                if(pakeagename == "1 Day @ Free")
-                {
-                    freesubscriptionid = ((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "package_id") as! NSString
-                    print(freesubscriptionid)
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let vc = storyboard.instantiateViewController(withIdentifier: "AddLoderViewController") as! AddLoderViewController
-                    self.present(vc, animated: true, completion: nil)
-                    
+            let selectedCell:Custometablecell = Subscriptiontableview.cellForRow(at: indexPath!)! as! Custometablecell
+            
+            selectedCell.issubscribebutton.setImage(#imageLiteral(resourceName: "Selectcircle"), for: .normal)
+            let pakeagename = ((LoginCredentials.UserPakegeList.object(at: (indexPath?.row)!) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "p_name") as! String
+            if(pakeagename == "1 Day @ Free")
+            {
+                freesubscriptionid = ((LoginCredentials.UserPakegeList.object(at: (indexPath?.row)!) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "package_id") as! NSString
+                print(freesubscriptionid)
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "AddLoderViewController") as! AddLoderViewController
+                self.present(vc, animated: true, completion: nil)
+                
+                
+            }
+            else
+            {
+                
+                print(LoginCredentials.UserPakegeList.object(at: (indexPath?.row)!))
+                Subscriptionpakageid = ((LoginCredentials.UserPakegeList.object(at: (indexPath?.row)!) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "package_id") as! String
+                Subscriptionpakagename = ((LoginCredentials.UserPakegeList.object(at: (indexPath?.row)!) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "p_name") as! String
+                
+                Subscriptioniapname = "\(((LoginCredentials.UserPakegeList.object(at: (indexPath?.row)!) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "period_interval") as! String)\(" ")\((LoginCredentials.UserPakegeList.object(at: (indexPath?.row)!) as! NSDictionary).value(forKey: "s_name") as! String)"
+                
+                print(Subscriptioniapname)
+                
+                
+                if(((LoginCredentials.UserPakegeList.object(at: (indexPath?.row)!) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "package_type") as! String == "3") {
+                    self.showonetimesubscription(titile: Subscriptionpakagename, description: "")
                     
                 }
                 else
                 {
-                    
-                    print(LoginCredentials.UserPakegeList.object(at: indexPath.row))
-                    Subscriptionpakageid = ((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "package_id") as! String
-                    Subscriptionpakagename = ((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "p_name") as! String
-                    
-                    Subscriptioniapname = "\(((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "period_interval") as! String)\(" ")\((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_name") as! String)"
-                    
-                    print(Subscriptioniapname)
-                    
-                    
-                    if(((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "package_type") as! String == "3") {
-                        self.showonetimesubscription(titile: Subscriptionpakagename, description: "")
-                        
-                    }
-                    else
-                    {
-                        self.showsubcriptionalert(titile: Subscriptionpakagename, description: "")
-                    }
+                    self.showsubcriptionalert(titile: Subscriptionpakagename, description: "")
                 }
-//            }
-//            else
-//            {
-//                EZAlertController.alert(title: "You are already subscribed")
-//            }
+            }
+            //            }
+            //            else
+            //            {
+            //                EZAlertController.alert(title: "You are already subscribed")
+            //            }
         }
         else
         {
@@ -556,6 +593,7 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
             
             //   Common.Showloginalert(view: self, text: "Please login to access this section")
         }
+        
     }
     
     
@@ -658,7 +696,8 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
                        "c_id":(dict.value(forKey: "id") as! NSNumber),
                        "paymentgateway":"inapp",
                        "local_user":LoginCredentials.CreateorderRegiontype,
-                       "state_code": LoginCredentials.SelectedUserCountry.value(forKey: "code") as! String
+                       "state_code": LoginCredentials.SelectedUserCountry.value(forKey: "code") as! String,
+                       "region_type":LoginCredentials.Regiontype
                 ] as NSDictionary
         }
         else
@@ -666,20 +705,24 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
             Param =   ["cart":Common.convertdictinyijasondata(data: cartdetail as NSDictionary),
                        "c_id":(dict.value(forKey: "id") as! NSNumber),
                        "paymentgateway":"inapp",
+                       "region_type":LoginCredentials.Regiontype
                        ] as NSDictionary
         }
         print(Common.convertdictinyijasondata(data: Param as NSDictionary))
         var url = String()
         if(Subscriptiontype == "NonRenewable") {
             
-            url = String(format: "%@/subscriptionapi/v6/subscription/onetime_create_order/token/%@/device/ios",SubscriptionBaseUrl,Apptoken)
+        
+            url = String(format: "%@%@/device/ios",LoginCredentials.Onetimecreateorderapi,Apptoken)
+            
+            
             
         }
         else if(Subscriptiontype == "AutoRenewable")
         {
             
-            url = String(format: "%@/subscriptionapi/v6/subscription/create_order/token/%@/device/ios",SubscriptionBaseUrl,Apptoken)
-            
+             url = String(format: "%@%@/device/ios",LoginCredentials.Createorderapi,Apptoken)
+ 
         }
         
         url = url.trimmingCharacters(in: .whitespaces)
@@ -710,7 +753,8 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
             }
         }) { (task: URLSessionDataTask?, error: Error) in
             print("POST fails with error \(error)")
-            Common.stoploderonsubscription(view: self.view)
+           self.Subscriptiontableview.reloadData()
+          Common.stoploderonsubscription(view: self.view)
         }
         
         
@@ -726,11 +770,12 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
         var newsubscriptionname = fullNameArr[0]
         newsubscriptionname = newsubscriptionname.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         print(newsubscriptionname)
-        print(Constant.getsubscriptionid(subscriptiontype: Subscriptiontype, subscriptionname: newsubscriptionname))
-        print(Constant.getsubscriptionid(subscriptiontype: Subscriptiontype, subscriptionname: Subscriptioniapname))
+ 
+        print(Constant.getsubscriptionid(subscriptiontype: Subscriptiontype, subscriptionname: newsubscriptionname, regiontype:LoginCredentials.Regiontype))
+        print(Constant.getsubscriptionid(subscriptiontype: Subscriptiontype, subscriptionname: Subscriptioniapname, regiontype:LoginCredentials.Regiontype))
         
         NetworkActivityIndicatorManager.networkOperationStarted()
-        SwiftyStoreKit.purchaseProduct(Constant.getsubscriptionid(subscriptiontype: Subscriptiontype, subscriptionname: Subscriptioniapname), atomically: true) { result in
+        SwiftyStoreKit.purchaseProduct(Constant.getsubscriptionid(subscriptiontype: Subscriptiontype, subscriptionname: Subscriptioniapname, regiontype:LoginCredentials.Regiontype), atomically: true) { result in
             NetworkActivityIndicatorManager.networkOperationFinished()
             if case .success(let purchase) = result {
                 print(result)
@@ -786,12 +831,13 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
         print(Param)
         var url = String()
         if(Subscriptiontype == "NonRenewable") {
-            url = String(format: "%@/subscriptionapi/v6/subscription/onetime_complete_order/token/%@/device/ios",SubscriptionBaseUrl,Apptoken)
+       
+              url = String(format: "%@%@/device/ios",LoginCredentials.Onetimecompleteorderapi,Apptoken)
             
         }
         else if(Subscriptiontype == "AutoRenewable")
         {
-            url = String(format: "%@/subscriptionapi/v6/subscription/complete_order/token/%@/device/ios",SubscriptionBaseUrl,Apptoken)
+              url = String(format: "%@%@/device/ios",LoginCredentials.Completeorderapi,Apptoken)
             
         }
         Common.startloderonsubscription(view: self.view)
@@ -828,7 +874,9 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
         
         let dict = dataBase.getDatabaseresponseinentity(entityname: "Logindata", key: "logindatadict")
         print(dict.value(forKey: "id") as! NSNumber)
-        var url = String(format: "%@/subscriptionapi/v6/spackage/subscription/token/%@/device/ios/uid/%@/region_type/%@",SubscriptionBaseUrl,Apptoken,(dict.value(forKey: "id") as! NSNumber).stringValue,LoginCredentials.Regiontype)
+        var url = String(format: "%@%@/device/ios/uid/%@/region_type/%@",LoginCredentials.Subscriptionpackageapi,Apptoken,(dict.value(forKey: "id") as! NSNumber).stringValue,LoginCredentials.Regiontype)
+        
+        
         url = url.trimmingCharacters(in: .whitespaces)
         print(url)
         Common.stoploderonsubscription(view: self.view)
@@ -883,7 +931,7 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
             Common.startloderonsubscription(view: self.view)
             let dict = dataBase.getDatabaseresponseinentity(entityname: "Logindata", key: "logindatadict")
             print(dict.value(forKey: "id") as! NSNumber)
-            var url = String(format: "%@/subscriptionapi/v6/spackage/user_packages/token/%@/device/ios/uid/%@",SubscriptionBaseUrl,Apptoken,(dict.value(forKey: "id") as! NSNumber).stringValue)
+            var url = String(format: "%@%@/device/ios/uid/%@",LoginCredentials.Userpackagesapi,Apptoken,(dict.value(forKey: "id") as! NSNumber).stringValue)
             url = url.trimmingCharacters(in: .whitespaces)
             print(url)
             let manager = AFHTTPSessionManager()
@@ -968,7 +1016,7 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
                        "cart":Common.convertdictinyijasondata(data: cartdetail as NSDictionary),
                        ] as [String:Any]
         print(dict.value(forKey: "id") as! NSNumber)
-        var url = String(format: "%@/subscriptionapi/v6/subscription/free_subscription/token/%@/device/ios",SubscriptionBaseUrl,Apptoken)
+        var url = String(format: "%@%@/device/ios",LoginCredentials.Freesubscriptionapi,Apptoken)
         url = url.trimmingCharacters(in: .whitespaces)
         print(url)
         print(Param)
@@ -987,6 +1035,11 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
                 else
                 {
                     self.chekcUsersubscription()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
+                    JYToast.init().isShow("You have earned one-day free subscription successfully")
+
+                    })
+                    
                     
                 }
                 
@@ -997,6 +1050,12 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
         
     }
 
+    
+    
+    
+    
+    
+    
     @IBAction func TapToCancel(_ sender: UIButton) {
         if(!Common.Isuserissubscribenew(Userdetails: self))
         {

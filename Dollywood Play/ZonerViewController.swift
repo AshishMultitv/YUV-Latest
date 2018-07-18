@@ -24,8 +24,7 @@ class ZonerViewController: UIViewController,UICollectionViewDataSource, UICollec
         // mycollectionview!.collectionViewLayout = layout
         Common.startloder(view: self.view)
         self.getZonerlist()
-        
-        // Do any additional setup after loading the view.
+         // Do any additional setup after loading the view.
     }
     
     @IBAction func Taptosearch(_ sender: UIButton) {
@@ -35,11 +34,8 @@ class ZonerViewController: UIViewController,UICollectionViewDataSource, UICollec
     }
     @IBAction func Backbuttonaction(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
-        
-        
     }
-    
-    
+ 
     func getZonerlist()
     {
         let parameters = [
@@ -71,17 +67,12 @@ class ZonerViewController: UIViewController,UICollectionViewDataSource, UICollec
         }
         
     }
-    
-    
-    
-    
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
         return self.ZonerData_arry.count

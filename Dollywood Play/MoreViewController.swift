@@ -31,10 +31,7 @@ class MoreViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     var moreorzoner = String()
     var Isfromhome = Bool()
     let refreshView = KRPullLoadView()
-    
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         display_offset = "0"
@@ -47,15 +44,13 @@ class MoreViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             Collectiontopsonstrant.constant = 0.0
         }
         
-        
         Morecollectionview!.register(UINib(nibName: "MyAppCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "cell")
-        
         refreshView.delegate = self
         Morecollectionview.addPullLoadableView(refreshView, type: .loadMore)
    
         print(id)
         print(headertext)
-        headerlabel.text = "Back"
+        headerlabel.text = ""
         moreheaderimageview.layer.cornerRadius = 5.0
         moreheaderimageview.clipsToBounds = true
         moreheaderimageview.layer.borderColor = UIColor.white.cgColor
@@ -307,9 +302,6 @@ class MoreViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        
-        
-        
         return self.dataarray.count
     }
     
@@ -510,7 +502,8 @@ class MoreViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         var discriptiontext = (self.dataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "des") as? String
         discriptiontext = discriptiontext?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         cell.Descriptionlabel.text = discriptiontext
-        cell.viewlabel.text = "\((self.dataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "watch") as! String)\(" view")"
+         cell.viewlabel.text = ""
+      //  cell.viewlabel.text = "\((self.dataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "watch") as! String)\(" view")"
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm:ss"
         let videotime = (self.dataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "created") as? String
@@ -656,8 +649,8 @@ class MoreViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        
-        Morecollectionview.removePullLoadableView(refreshView)    }
+        Morecollectionview.removePullLoadableView(refreshView)
+    }
     
     
     override func didReceiveMemoryWarning() {

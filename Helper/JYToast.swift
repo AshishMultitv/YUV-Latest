@@ -119,8 +119,8 @@ class JYToast: UILabel {
 	}
 	
 	private func willDisappearWithAnimation() {
-		UIView.animate(withDuration: 0.5,
-		               delay: 1.5,
+		UIView.animate(withDuration: 2.5,
+		               delay: 1.0,
 		               options: .curveEaseOut,
 		               animations: { self.alpha = 0.0 },
 		               completion: {(finished:Bool) in
