@@ -32,7 +32,10 @@ import GoogleInteractiveMediaAds
 import KRPullLoader
 import GoogleCast
 import Sugar
+import Toast_Swift
+
 var kPrefMediaListURL: String = "media_list_url"
+
 
 
 
@@ -4303,13 +4306,14 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
             {
                 self.Favroutbutton.setImage(UIImage.init(named: "favriout"), for: .normal)
                 self.isfav = false
-                JYToast.init().isShow("Removed from favorite videos")
+               //JYToast.init().isShow("Removed from favorite videos")
+                self.view.makeToast("Removed from favorite videos", duration: 1.0, position: .center)
             }
             else
             {
                 self.Favroutbutton.setImage(UIImage.init(named: "favriout1"), for: .normal)
                 self.isfav = true
-                JYToast.init().isShow("Added to favorite videos")
+                self.view.makeToast("Added to favorite videos", duration: 1.0, position: .center)
              }
  
             let url = String(format: "%@%@", LoginCredentials.Favrioutapi,Apptoken)
@@ -5035,8 +5039,8 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
             var discriptiontext = (self.moredataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "des") as? String
             discriptiontext = discriptiontext?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
             cell?.Descriptionlabel.text = discriptiontext
-            cell?.Viewlabel.text = "\((self.moredataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "watch") as! String)\(" view")"
-            
+           // cell?.Viewlabel.text = "\((self.moredataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "watch") as! String)\(" view")"
+            cell?.Viewlabel.text = ""
             let videotime = (self.moredataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "created") as? String
             
             cell?.Uploadtimelabel.text = self.compatedate(date: videotime!)
@@ -5071,8 +5075,8 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
             discriptiontext = discriptiontext?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
             cell?.Descriptionlabel.text = discriptiontext
             
-            cell?.Viewlabel.text = "\((LoginCredentials.Tredingcontent.object(at: indexPath.row) as! NSDictionary).value(forKey: "watch") as! String)\(" view")"
-            
+          //  cell?.Viewlabel.text = "\((LoginCredentials.Tredingcontent.object(at: indexPath.row) as! NSDictionary).value(forKey: "watch") as! String)\(" view")"
+            cell?.Viewlabel.text = ""
             let videotime = (LoginCredentials.Tredingcontent.object(at: indexPath.row) as! NSDictionary).value(forKey: "created") as? String
             
             cell?.Uploadtimelabel.text = self.compatedate(date: videotime!)

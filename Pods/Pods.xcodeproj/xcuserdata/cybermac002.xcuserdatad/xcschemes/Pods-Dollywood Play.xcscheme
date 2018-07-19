@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3019D325FA0310004AD3FDF47EBA4A6C"
+               BlueprintIdentifier = "DA82CC76F1EC818DB1A9437F3CB34822"
                BuildableName = "Pods_Dollywood_Play.framework"
                BlueprintName = "Pods-Dollywood Play"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3019D325FA0310004AD3FDF47EBA4A6C"
+            BlueprintIdentifier = "DA82CC76F1EC818DB1A9437F3CB34822"
             BuildableName = "Pods_Dollywood_Play.framework"
             BlueprintName = "Pods-Dollywood Play"
             ReferencedContainer = "container:Pods.xcodeproj">

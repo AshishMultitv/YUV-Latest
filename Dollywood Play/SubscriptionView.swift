@@ -35,7 +35,7 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
-         LoginCredentials.Isselectuserback = false
+        LoginCredentials.Isselectuserback = false
         Common.getRounduiview(view: Subscriptiontableview, radius: 10.0)
         Common.getRounduiview(view: giftView, radius: 10.0)
         // Common.setuiviewdborderwidth(View: Subscriptiontableview, borderwidth: 1.0)
@@ -44,7 +44,7 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
                                                name: NSNotification.Name(rawValue: "Userfreesubscription"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(dismisssubscription), name: NSNotification.Name(rawValue: "dismisssubscription"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(willResignActive), name: .UIApplicationDidBecomeActive, object: nil)
-   
+        
         if(Common.Isuserhavefreedayssubscription(Userdetails: self))
         {
             tabelviewhghtcontrant.constant = CGFloat(LoginCredentials.UserPakegeList.count-1) * 113.0
@@ -55,9 +55,9 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
             tabelviewhghtcontrant.constant = CGFloat(LoginCredentials.UserPakegeList.count) * 113.0
             ScroolviewHeightcntrant.constant = tabelviewhghtcontrant.constant + 50.0
         }
-
- 
-
+        
+        
+        
         // Do any additional setup after loading the view.
     }
     
@@ -81,7 +81,7 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
             return
             
         }
-      
+        
         if(!Common.isuserseletedlocality()) {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let selectCountryViewController = storyboard.instantiateViewController(withIdentifier: "SelectCountryViewController") as! SelectCountryViewController
@@ -93,11 +93,11 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
             
             if(LoginCredentials.Regiontype == "2")
             {
-            Redeemgiftrefreellabel.text = "Redeem a Referral"
+                Redeemgiftrefreellabel.text = "Redeem a Referral"
             }
             else
             {
-               Redeemgiftrefreellabel.text = "Use a Gift / Referral"
+                Redeemgiftrefreellabel.text = "Use a Gift / Referral"
             }
             
             
@@ -111,7 +111,7 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
                 tabelviewhghtcontrant.constant = CGFloat(LoginCredentials.UserPakegeList.count) * 113.0
                 ScroolviewHeightcntrant.constant = tabelviewhghtcontrant.constant + 50.0
             }
-             self.Subscriptiontableview.reloadData()
+            self.Subscriptiontableview.reloadData()
         }
         
     }
@@ -135,7 +135,7 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
         //            return
         //        }
         
-       var title = String()
+        var title = String()
         
         if(LoginCredentials.Regiontype == "2")
         {
@@ -156,11 +156,11 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
         }
         else
         {
-        
-        alert.addAction(UIAlertAction(title: "Redeem Gift", style: .default , handler:{ (UIAlertAction)in
-            print("User click Approve button")
-            self.showredeemgiftalert()
-        }))
+            
+            alert.addAction(UIAlertAction(title: "Redeem Gift", style: .default , handler:{ (UIAlertAction)in
+                print("User click Approve button")
+                self.showredeemgiftalert()
+            }))
         }
         
         alert.addAction(UIAlertAction(title: "Redeem Referral", style: .default , handler:{ (UIAlertAction)in
@@ -189,12 +189,12 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
         
         
         
-//        if(Common.Isuserissubscribenew(Userdetails: self))
-//        {
-//            EZAlertController.alert(title: "You are already subcribed")
-//            return
-//        }
-//
+        //        if(Common.Isuserissubscribenew(Userdetails: self))
+        //        {
+        //            EZAlertController.alert(title: "You are already subcribed")
+        //            return
+        //        }
+        //
         let alertController = UIAlertController(title: "Redeem Gift", message: "", preferredStyle: .alert)
         alertController.addTextField { (textField : UITextField!) -> Void in
             textField.placeholder = "Enter Gift Code"
@@ -252,7 +252,7 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
         self.present(alertController, animated: true, completion: nil)
     }
     
-
+    
     
     func redeemreferrelcode(referralcode:String)
     {
@@ -421,12 +421,12 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
             
             var price = String()
             
-             price = "\(((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "p_currency") as! String)\(" ")\(((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "ios_price") as! String)"
+            price = "\(((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "p_currency") as! String)\(" ")\(((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "ios_price") as! String)"
             
             if let _ = ((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "ios_have_discount") {
-            
                 
-               let havediscount = ((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "ios_have_discount") as! String
+                
+                let havediscount = ((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "ios_have_discount") as! String
                 
                 if(havediscount == "0")
                 {
@@ -437,13 +437,13 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
                 }
                 else
                 {
-                   
-              
-                 let discoubtprice = "\(((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "p_currency") as! String)\(" ")\(((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "ios_price_without_discnt") as! String)"
-                let finalprice = "\(discoubtprice) \(" ")\(((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "p_currency") as! String)\(" ")\(((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "ios_price") as! String)"
-//                    let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: finalprice)
-//                    attributeString.addAttribute(NSStrikethroughStyleAttributeName, value: 1, range: NSMakeRange(0, discoubtprice.length))
-//                     cell.subscriptionprice.attributedText = attributeString
+                    
+                    
+                    let discoubtprice = "\(((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "p_currency") as! String)\(" ")\(((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "ios_price_without_discnt") as! String)"
+                    let finalprice = "\(discoubtprice) \(" ")\(((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "p_currency") as! String)\(" ")\(((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "ios_price") as! String)"
+                    //                    let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: finalprice)
+                    //                    attributeString.addAttribute(NSStrikethroughStyleAttributeName, value: 1, range: NSMakeRange(0, discoubtprice.length))
+                    //                     cell.subscriptionprice.attributedText = attributeString
                     
                     
                     let attributeString: NSMutableAttributedString = NSMutableAttributedString(string: finalprice)
@@ -452,23 +452,23 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
                     cell.subscriptionprice.attributedText = attributeString
                     
                     
-              
+                    
                 }
-            
+                
             }
-            
+                
             else
             {
                 let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: price)
                 cell.subscriptionprice.attributedText = attributeString
-             
+                
                 
             }
             
-   
-          
             
-//            cell.subscriptionprice.text = "\(((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "p_currency") as! String)\(" ")\(((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "p_price") as! String)"
+            
+            
+            //            cell.subscriptionprice.text = "\(((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "p_currency") as! String)\(" ")\(((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "p_price") as! String)"
             
             //  cell.subscriptiondatelabel.text = ((LoginCredentials.UserPakegeList.object(at: indexPath.row) as! NSDictionary).value(forKey: "s_package") as! NSDictionary).value(forKey: "end_date") as? String
             cell.subscriptiondatelabel.text = ""
@@ -494,7 +494,7 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
             
             
         }
-         cell.subscriptioncellbutton.tag = indexPath.row
+        cell.subscriptioncellbutton.tag = indexPath.row
         cell.subscriptioncellbutton.addTarget(self, action: #selector(clickoncell(sender:)), for: .touchUpInside)
         
         cell.selectionStyle = .none
@@ -505,7 +505,7 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-     
+        
     }
     
     
@@ -521,8 +521,8 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
         
         let buttonPosition:CGPoint = sender.convert(CGPoint.zero, to:self.Subscriptiontableview)
         let indexPath = self.Subscriptiontableview.indexPathForRow(at: buttonPosition)
- 
-         print("indexPath row \(indexPath?.row)")
+        
+        print("indexPath row \(indexPath?.row)")
         
         
         
@@ -706,23 +706,20 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
                        "c_id":(dict.value(forKey: "id") as! NSNumber),
                        "paymentgateway":"inapp",
                        "region_type":LoginCredentials.Regiontype
-                       ] as NSDictionary
+                ] as NSDictionary
         }
         print(Common.convertdictinyijasondata(data: Param as NSDictionary))
         var url = String()
         if(Subscriptiontype == "NonRenewable") {
             
-        
             url = String(format: "%@%@/device/ios",LoginCredentials.Onetimecreateorderapi,Apptoken)
-            
-            
             
         }
         else if(Subscriptiontype == "AutoRenewable")
         {
             
-             url = String(format: "%@%@/device/ios",LoginCredentials.Createorderapi,Apptoken)
- 
+            url = String(format: "%@%@/device/ios",LoginCredentials.Createorderapi,Apptoken)
+            
         }
         
         url = url.trimmingCharacters(in: .whitespaces)
@@ -753,8 +750,8 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
             }
         }) { (task: URLSessionDataTask?, error: Error) in
             print("POST fails with error \(error)")
-           self.Subscriptiontableview.reloadData()
-          Common.stoploderonsubscription(view: self.view)
+            self.Subscriptiontableview.reloadData()
+            Common.stoploderonsubscription(view: self.view)
         }
         
         
@@ -770,7 +767,7 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
         var newsubscriptionname = fullNameArr[0]
         newsubscriptionname = newsubscriptionname.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         print(newsubscriptionname)
- 
+        
         print(Constant.getsubscriptionid(subscriptiontype: Subscriptiontype, subscriptionname: newsubscriptionname, regiontype:LoginCredentials.Regiontype))
         print(Constant.getsubscriptionid(subscriptiontype: Subscriptiontype, subscriptionname: Subscriptioniapname, regiontype:LoginCredentials.Regiontype))
         
@@ -831,13 +828,13 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
         print(Param)
         var url = String()
         if(Subscriptiontype == "NonRenewable") {
-       
-              url = String(format: "%@%@/device/ios",LoginCredentials.Onetimecompleteorderapi,Apptoken)
+            
+            url = String(format: "%@%@/device/ios",LoginCredentials.Onetimecompleteorderapi,Apptoken)
             
         }
         else if(Subscriptiontype == "AutoRenewable")
         {
-              url = String(format: "%@%@/device/ios",LoginCredentials.Completeorderapi,Apptoken)
+            url = String(format: "%@%@/device/ios",LoginCredentials.Completeorderapi,Apptoken)
             
         }
         Common.startloderonsubscription(view: self.view)
@@ -983,7 +980,7 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
                             self.ScroolviewHeightcntrant.constant = self.tabelviewhghtcontrant.constant + 50.0
                         }
                         self.dismiss(animated: true, completion: nil)
-                     }
+                    }
                     
                     
                     
@@ -1026,8 +1023,8 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
                 let dict = responseObject as! NSDictionary
                 print(dict)
                 
-                 AppUtility.lockOrientation(.portrait)
-                 let number = dict.value(forKey: "code") as! NSNumber
+                AppUtility.lockOrientation(.portrait)
+                let number = dict.value(forKey: "code") as! NSNumber
                 if(number == 0)
                 {
                     
@@ -1036,8 +1033,8 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
                 {
                     self.chekcUsersubscription()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
-                    JYToast.init().isShow("You have earned one-day free subscription successfully")
-
+                        JYToast.init().isShow("You have earned one-day free subscription successfully")
+                        
                     })
                     
                     
@@ -1049,7 +1046,7 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
         }
         
     }
-
+    
     
     
     

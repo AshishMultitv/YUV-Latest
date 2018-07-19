@@ -280,7 +280,6 @@ class LoginCredentials: NSObject {
     
     static var User_As_id: String {
         get {
-
             if let user_As_id = UserDefaults.standard.object(forKey: "asid") as? String {
                 return user_As_id
             }
@@ -294,7 +293,6 @@ class LoginCredentials: NSObject {
     
     static var Video_sid: String {
         get {
-            
             if let video_sid = UserDefaults.standard.object(forKey: "video_sid") as? String {
                 return video_sid
             }
@@ -2027,6 +2025,22 @@ class LoginCredentials: NSObject {
         }
         set {
             UserDefaults.standard.set(newValue, forKey: "freesubscriptionapi")
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
+    
+    static var Dvrurl: String {
+        get {
+            
+            if let dvrurl = UserDefaults.standard.object(forKey: "dvrurl") as? String
+            {
+                return dvrurl
+            }
+            return String()
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "dvrurl")
             UserDefaults.standard.synchronize()
         }
     }

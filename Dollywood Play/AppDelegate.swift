@@ -1168,6 +1168,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
                     
                     
                     
+                    //////////////////////////////dvr_url   34   //////////////////////////
+                    let Dvrurlapi = Catdata_dict.value(forKey: "dvr_url") as! String
+                    let DvrurlapiArr : [String] = Dvrurlapi.components(separatedBy: "|,")
+                    LoginCredentials.Dvrurl = DvrurlapiArr[1]
+                    
+                    
+                    
+                    
                     self.Refreshtoken(playerid: LoginCredentials.OnesinglePlayerid)
                     self.checkContantUpdate()
                     if(!self.Isdeeplinking)

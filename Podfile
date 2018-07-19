@@ -36,6 +36,7 @@ target 'Dollywood Play' do
   pod 'TPInAppReceipt'
   pod 'CZPicker'
   pod 'PTPopupWebView'
+  pod 'Toast-Swift', '~> 3.0.1'
  
   end
 target 'OneSingleNotification' do

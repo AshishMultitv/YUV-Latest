@@ -288,12 +288,9 @@ class MoreViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             print("POST fails with error \(error)")
             Common.stoploder(view: self.view)
         }
-        
     }
     
-    
-    
-    
+ 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
         return 100.0

@@ -17,12 +17,10 @@ import CZPicker
 
 
 //For dev
-var MaterBaseUrl =  "http://staging.multitvsolution.com:9000/api/v6/master/url_static_staging"
-var SubscriptionBaseUrl =  "http://staging.multitvsolution.com:9003"
+//var MaterBaseUrl =  "http://staging.multitvsolution.com:9000/api/v6/master/url_static_staging"
 
 //For Production
-//var MaterBaseUrl = "http://services.yuv.multitvsolution.com/api/v6/master/url_static"
-//var SubscriptionBaseUrl =  "http://staging.multitvsolution.com:9003"
+var MaterBaseUrl = "http://services.yuv.multitvsolution.com/api/v6/master/url_static"
 
 
 ////////////////////////////////PRODUCTION TOKEN ///////////////////////////////
