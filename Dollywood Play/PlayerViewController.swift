@@ -1664,6 +1664,9 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
     func ChekUsersecceion(dictDetail:NSDictionary) -> Bool
     {
  
+        
+ 
+        
         print(dictDetail)
         if(checkcontantenable)
         {
@@ -2484,11 +2487,14 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
             self.playvideoaftercheckingcontantsession()
         }))
         alert.addAction(UIAlertAction(title: "Continue There Only", style: UIAlertActionStyle.default, handler: { (action) in
-            self.contantdisablebackaction()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 4.0, execute: {
-                self.backstoppalyer()
-            })
-            return
+               //Common.Pushback()
+            
+
+             self.contantdisablebackaction()
+//             DispatchQueue.main.asyncAfter(deadline: .now() + 4.0, execute: {
+//             self.backstoppalyer()
+//            })
+   //         return
         }))
         if(!LoginCredentials.Issociallogin)
         {
@@ -2553,8 +2559,10 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
     {
         // let sender = UIButton()
         // self.Taptoback(sender)
-        NotificationCenter.default.removeObserver(self)
-        let _ =  self.navigationController?.popViewController(animated: true)
+      
+         let _ =  self.navigationController?.popViewController(animated: true)
+         NotificationCenter.default.removeObserver(self)
+         self.viewWillDisappear(true)
         //  self.view = nil
         
     }
@@ -2598,13 +2606,7 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
         }
         else
         {
-            if(self.videoPlayer == nil)
-            {
-            }
-            else
-            {
-                self.videoPlayer.pause()
-            }
+            
         }
         
         //        if(self.videoPlayer == nil)
@@ -3958,8 +3960,7 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
                 else
                 {
                     Catdata_dict = Common.decodedresponsedata(msg:dict.value(forKey: "result") as! String)
-                    
-                }
+                 }
                 print(Catdata_dict)
                 self.moredataarray = Catdata_dict.value(forKey: "content") as! NSArray
                 //self.scrollviewheighltcontrant.constant = (CGFloat(self.moredataarray.count/2) * 141.0)

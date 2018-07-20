@@ -29,6 +29,7 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
     
     @IBOutlet weak var Redeemgiftrefreellabel: UILabel!
     
+    @IBOutlet weak var Subscriptiontextview: UITextView!
     
     
     // MARK: - view Did Load
@@ -48,12 +49,12 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
         if(Common.Isuserhavefreedayssubscription(Userdetails: self))
         {
             tabelviewhghtcontrant.constant = CGFloat(LoginCredentials.UserPakegeList.count-1) * 113.0
-            ScroolviewHeightcntrant.constant = tabelviewhghtcontrant.constant + 50.0
+            ScroolviewHeightcntrant.constant = tabelviewhghtcontrant.constant + 50.0 + 300
         }
         else
         {
             tabelviewhghtcontrant.constant = CGFloat(LoginCredentials.UserPakegeList.count) * 113.0
-            ScroolviewHeightcntrant.constant = tabelviewhghtcontrant.constant + 50.0
+            ScroolviewHeightcntrant.constant = tabelviewhghtcontrant.constant + 50.0 + 300
         }
         
         
@@ -64,6 +65,7 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
     
     
     override func viewWillAppear(_ animated: Bool) {
+        setlinkattribute()
         self.navigationController?.isNavigationBarHidden = true
         let value = UIInterfaceOrientation.portrait.rawValue
         UIDevice.current.setValue(value, forKey: "orientation")
@@ -104,17 +106,48 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
             if(Common.Isuserhavefreedayssubscription(Userdetails: self))
             {
                 tabelviewhghtcontrant.constant = CGFloat(LoginCredentials.UserPakegeList.count) * 113.0
-                ScroolviewHeightcntrant.constant = tabelviewhghtcontrant.constant + 50.0
+                ScroolviewHeightcntrant.constant = tabelviewhghtcontrant.constant + 50.0 + 300
             }
             else
             {
                 tabelviewhghtcontrant.constant = CGFloat(LoginCredentials.UserPakegeList.count) * 113.0
-                ScroolviewHeightcntrant.constant = tabelviewhghtcontrant.constant + 50.0
+                ScroolviewHeightcntrant.constant = tabelviewhghtcontrant.constant + 50.0 + 300
             }
             self.Subscriptiontableview.reloadData()
         }
         
     }
+    
+    
+    
+    
+    func setlinkattribute()
+    {
+        let linkAttributes = [
+            NSLinkAttributeName: NSURL(string: "http://myyuv.com/#/tc")!,
+            NSForegroundColorAttributeName: UIColor.white,
+            NSFontAttributeName: UIFont(name: "HelveticaNeue-Bold", size: 16.0)!
+            ] as [String : Any]
+        let linkAttributes1 = [
+            NSLinkAttributeName: NSURL(string: "http://myyuv.com/#/privacy")!,
+            NSForegroundColorAttributeName: UIColor.white,
+            NSFontAttributeName: UIFont(name: "HelveticaNeue-Bold", size: 16.0)!
+            ] as [String : Any]
+        Subscriptiontextview.linkTextAttributes = linkAttributes
+        let linkAttributes2 = [
+            NSForegroundColorAttributeName: UIColor.white
+        ]
+        let attributedString = NSMutableAttributedString(string: Subscriptiontextview.text, attributes: linkAttributes2 )
+        print(attributedString.length)
+        
+        
+        // Set the 'click here' substring to be the link
+        attributedString.setAttributes(linkAttributes, range:NSRange(location:Subscriptiontextview.text.length-33,length:13))
+        attributedString.setAttributes(linkAttributes1, range:NSRange(location:Subscriptiontextview.text.length-15,length:14))
+        Subscriptiontextview.attributedText = attributedString
+        
+    }
+    
     
     
     func willResignActive(_ notification: Notification) {
@@ -362,7 +395,7 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
             if(Common.Isuserhavefreedayssubscription(Userdetails: self))
             {
                 tabelviewhghtcontrant.constant = CGFloat(LoginCredentials.UserPakegeList.count-1) * 113.0
-                ScroolviewHeightcntrant.constant = tabelviewhghtcontrant.constant + 50.0
+                ScroolviewHeightcntrant.constant = tabelviewhghtcontrant.constant + 50.0 + 300
                 return 0.0
             }
         }
@@ -972,12 +1005,12 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
                         if(Common.Isuserhavefreedayssubscription(Userdetails: self))
                         {
                             self.tabelviewhghtcontrant.constant = CGFloat(LoginCredentials.UserPakegeList.count-1) * 113.0
-                            self.ScroolviewHeightcntrant.constant = self.tabelviewhghtcontrant.constant + 50.0
+                            self.ScroolviewHeightcntrant.constant = self.tabelviewhghtcontrant.constant + 50.0 + 300
                         }
                         else
                         {
                             self.tabelviewhghtcontrant.constant = CGFloat(LoginCredentials.UserPakegeList.count) * 113.0
-                            self.ScroolviewHeightcntrant.constant = self.tabelviewhghtcontrant.constant + 50.0
+                            self.ScroolviewHeightcntrant.constant = self.tabelviewhghtcontrant.constant + 50.0 + 300
                         }
                         self.dismiss(animated: true, completion: nil)
                     }

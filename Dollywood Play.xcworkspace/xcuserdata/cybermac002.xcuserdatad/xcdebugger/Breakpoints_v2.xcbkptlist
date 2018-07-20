@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Dollywood Play/LoginViewController.swift"
-            timestampString = "553584827.055769"
+            filePath = "Dollywood Play/PlayerViewController.swift"
+            timestampString = "553776192.993778"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "600"
-            endingLineNumber = "600"
-            landmarkName = "getUsersubscriptiondetail()"
+            startingLineNumber = "4566"
+            endingLineNumber = "4566"
+            landmarkName = "Taptoback(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Dollywood Play/LoginViewController.swift"
-            timestampString = "553584827.056275"
+            filePath = "Dollywood Play/PlayerViewController.swift"
+            timestampString = "553776192.99435"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "627"
-            endingLineNumber = "627"
-            landmarkName = "getUsersubscriptiondetail()"
+            startingLineNumber = "2994"
+            endingLineNumber = "2994"
+            landmarkName = "deinit"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,13 +41,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Dollywood Play/LoginViewController.swift"
-            timestampString = "553584827.056615"
+            filePath = "Dollywood Play/PlayerViewController.swift"
+            timestampString = "553776192.994432"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "623"
-            endingLineNumber = "623"
-            landmarkName = "getUsersubscriptiondetail()"
+            startingLineNumber = "2995"
+            endingLineNumber = "2995"
+            landmarkName = "deinit"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -57,13 +57,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Dollywood Play/ViewController.swift"
-            timestampString = "553584827.056937"
+            filePath = "Dollywood Play/SubscriptionView.swift"
+            timestampString = "553776192.994701"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "285"
-            endingLineNumber = "285"
-            landmarkName = "getUsersubscriptiondetail()"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "setlinkattribute()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -73,13 +73,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Dollywood Play/LoginViewController.swift"
-            timestampString = "553584827.056996"
+            filePath = "Dollywood Play/SubscriptionView.swift"
+            timestampString = "553776192.995002"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "640"
-            endingLineNumber = "640"
-            landmarkName = "getUsersubscriptiondetail()"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
+            landmarkName = "setlinkattribute()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -89,13 +89,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Dollywood Play/LoginViewController.swift"
-            timestampString = "553584827.0573"
+            filePath = "Dollywood Play/PlayerViewController.swift"
+            timestampString = "553776434.264892"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "638"
-            endingLineNumber = "638"
-            landmarkName = "getUsersubscriptiondetail()"
+            startingLineNumber = "3943"
+            endingLineNumber = "3943"
+            landmarkName = "getmorevideo()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -105,29 +105,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Dollywood Play/AppDelegate.swift"
-            timestampString = "553689706.510922"
+            filePath = "Dollywood Play/PlayerViewController.swift"
+            timestampString = "553776434.904768"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1174"
-            endingLineNumber = "1174"
-            landmarkName = "Getmasterurl()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Dollywood Play/AppDelegate.swift"
-            timestampString = "553689706.511054"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1172"
-            endingLineNumber = "1172"
-            landmarkName = "Getmasterurl()"
+            startingLineNumber = "3939"
+            endingLineNumber = "3939"
+            landmarkName = "getmorevideo()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

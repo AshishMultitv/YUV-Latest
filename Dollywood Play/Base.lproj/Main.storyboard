@@ -5497,14 +5497,51 @@
                                                     <constraint firstItem="TIO-S2-O5i" firstAttribute="centerY" secondItem="wGS-yK-QHw" secondAttribute="centerY" id="nLC-Ke-kHS"/>
                                                 </constraints>
                                             </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iOK-K7-HQE">
+                                                <rect key="frame" x="0.0" y="465" width="375" height="224"/>
+                                                <subviews>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XnE-r2-Xh0">
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="224"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <attributedString key="attributedText">
+                                                            <fragment>
+                                                                <string key="content">All payments will be charged to iTunes account at confirmation of purchase.
+• Subscription is an one time payment which does not  renews after the current period.
+• Subscriptions may be managed by the user.
+• YUV gives 1 day free subscription If you watch an Ad from the above section.
+• You have read and agree to the YUV Terms of Use and Privacy Policy.</string>
+                                                                <attributes>
+                                                                    <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <font key="NSFont" size="12" name="HelveticaNeue"/>
+                                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" lineSpacing="1" defaultTabInterval="28" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                                        <tabStops/>
+                                                                    </paragraphStyle>
+                                                                </attributes>
+                                                            </fragment>
+                                                        </attributedString>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="XnE-r2-Xh0" firstAttribute="leading" secondItem="iOK-K7-HQE" secondAttribute="leading" id="1ST-xV-qz4"/>
+                                                    <constraint firstAttribute="trailing" secondItem="XnE-r2-Xh0" secondAttribute="trailing" id="axi-GD-ggY"/>
+                                                    <constraint firstAttribute="bottom" secondItem="XnE-r2-Xh0" secondAttribute="bottom" id="bTq-LY-8sF"/>
+                                                    <constraint firstAttribute="height" constant="224" id="cmt-JR-roi"/>
+                                                    <constraint firstItem="XnE-r2-Xh0" firstAttribute="top" secondItem="iOK-K7-HQE" secondAttribute="top" id="iBz-C1-KLD"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="5Hs-Uj-mAq" secondAttribute="trailing" id="60f-Bd-y49"/>
+                                            <constraint firstAttribute="trailing" secondItem="iOK-K7-HQE" secondAttribute="trailing" id="8HA-Jz-AKz"/>
                                             <constraint firstItem="5Hs-Uj-mAq" firstAttribute="top" secondItem="BT8-z1-0VL" secondAttribute="top" id="ChX-6U-DGo"/>
                                             <constraint firstAttribute="height" constant="667" id="CvQ-vq-gbi"/>
+                                            <constraint firstItem="iOK-K7-HQE" firstAttribute="leading" secondItem="BT8-z1-0VL" secondAttribute="leading" id="TIj-vh-Uor"/>
                                             <constraint firstAttribute="trailing" secondItem="wGS-yK-QHw" secondAttribute="trailing" id="c9R-WL-8Eq"/>
                                             <constraint firstItem="wGS-yK-QHw" firstAttribute="top" secondItem="5Hs-Uj-mAq" secondAttribute="bottom" id="oRx-gm-InE"/>
+                                            <constraint firstItem="iOK-K7-HQE" firstAttribute="top" secondItem="wGS-yK-QHw" secondAttribute="bottom" id="tPV-64-tfx"/>
                                             <constraint firstItem="5Hs-Uj-mAq" firstAttribute="leading" secondItem="BT8-z1-0VL" secondAttribute="leading" id="tvf-Oz-Pr7"/>
                                             <constraint firstItem="wGS-yK-QHw" firstAttribute="leading" secondItem="BT8-z1-0VL" secondAttribute="leading" id="voZ-xe-37k"/>
                                         </constraints>
@@ -5535,6 +5572,7 @@
                         <outlet property="Redeemgiftrefreellabel" destination="TIO-S2-O5i" id="Xrh-BJ-VTz"/>
                         <outlet property="ScroolviewHeightcntrant" destination="CvQ-vq-gbi" id="Yiw-cX-3nO"/>
                         <outlet property="Subscriptiontableview" destination="5Hs-Uj-mAq" id="FOL-hn-Gnj"/>
+                        <outlet property="Subscriptiontextview" destination="XnE-r2-Xh0" id="RzD-ZL-KtB"/>
                         <outlet property="giftView" destination="wGS-yK-QHw" id="sQ7-cQ-p0R"/>
                         <outlet property="tabelviewhghtcontrant" destination="dE9-MA-0Qu" id="nTP-vc-qiv"/>
                     </connections>

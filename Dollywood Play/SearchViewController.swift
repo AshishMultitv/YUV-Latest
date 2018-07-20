@@ -306,18 +306,21 @@ class SearchViewController: UIViewController,UISearchBarDelegate,UITableViewData
             if(issegmentselectshow) {
                 if(showsarray.count>0)
                 {
-                searchwithstring(searchkey: ((showsarray.object(at: indexPath.row) as? NSDictionary)?.value(forKey: "name") as? String)!)
-                    
-                    getshowsearch(text: ((showsarray.object(at: indexPath.row) as? NSDictionary)?.value(forKey: "name") as? String)!)
-                
+             //   searchwithstring(searchkey: ((showsarray.object(at: indexPath.row) as? NSDictionary)?.value(forKey: "name") as? String)!)
+                self.contentlable.isHidden = true
+                self.dataarray = NSArray()
+                getshowsearch(text: ((showsarray.object(at: indexPath.row) as? NSDictionary)?.value(forKey: "name") as? String)!)
+               self.showcollectionview.reloadData()
+                self.resultlistview.isHidden = false
                 }
                 
         }
             else{
                 if(autosuggectionaarray.count>0)
                 {
-          searchwithstring(searchkey: (autosuggectionaarray.object(at: indexPath.row) as? String)!)
-          getshowsearch(text: (autosuggectionaarray.object(at: indexPath.row) as? String)!)
+                 showsarray = NSArray()
+                 searchwithstring(searchkey: (autosuggectionaarray.object(at: indexPath.row) as? String)!)
+             //  getshowsearch(text: (autosuggectionaarray.object(at: indexPath.row) as? String)!)
                 }
         }
         searchbar.resignFirstResponder()
@@ -453,9 +456,9 @@ class SearchViewController: UIViewController,UISearchBarDelegate,UITableViewData
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "showchnl", for: indexPath) as! ShowCollectionViewCell
              var url = String()
-            if(Common.isNotNull(object: (showsarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "thumbnails") as AnyObject))
+            if(Common.isNotNull(object: (showsarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "banners") as AnyObject))
             {
-                  url  = ((showsarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "thumbnails") as! NSArray).object(at: 0) as! String
+                  url  = ((showsarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "banners") as! NSArray).object(at: 0) as! String
                 if(url == "")
                 {
                    cell.showimageview.image = #imageLiteral(resourceName: "Placehoder")
