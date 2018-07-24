@@ -3088,9 +3088,7 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
         }
     }
     
-    
     // MARK: AdsLoader Delegates
-    
     func adsLoader(_ loader: IMAAdsLoader!, adsLoadedWith adsLoadedData: IMAAdsLoadedData!) {
         // Grab the instance of the IMAAdsManager and set ourselves as the delegate.
         adsManager = adsLoadedData.adsManager
@@ -3334,14 +3332,7 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
                         midroletime = self.playbackSlider.value
                         
                     }
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
+  
                     
                 }
                 else
@@ -3900,7 +3891,6 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
             bPlay = true
             let image = UIImage(named:"play")
             self.expandBtn.setImage(image, for: .normal)
-            
         }
     }
     
@@ -3939,7 +3929,6 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
         let url = String(format: "%@%@/device/ios/current_offset/0/max_counter/10/cat_id/%@", LoginCredentials.Listapi,Apptoken,catid)
         
         // http://staging.multitvsolution.com:9000/api/v6/content/list/token/59a942cd8175f/device/web/current_offset/0/max_counter/10/cat_id/99
-        
         print(url)
         let manager = AFHTTPSessionManager()
         manager.get(url, parameters: nil, progress: nil, success: { (task: URLSessionDataTask, responseObject: Any?) in
@@ -5236,17 +5225,14 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
                 self.descriptiontext = ""
             }
             
-            
             self.setvideodescription(titile: tilttext, like: "", des: descriptiontext, url:"")
             getplayerurl()
             // self.getuserrelatedvideo()
             // self.getmorevideo()
-            
         }
         else
         {
             print(LoginCredentials.Tredingcontent.object(at: indexPath.row))
-            
             print((LoginCredentials.Tredingcontent.object(at: indexPath.row) as! NSDictionary).value(forKey: "category_ids") as! NSArray)
             self.cat_id = (LoginCredentials.Tredingcontent.object(at: indexPath.row) as! NSDictionary).value(forKey: "id") as! String
             let catdataarray = (LoginCredentials.Tredingcontent.object(at: indexPath.row) as! NSDictionary).value(forKey: "category_ids") as! NSArray

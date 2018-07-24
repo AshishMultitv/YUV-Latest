@@ -194,7 +194,6 @@ class FavouriteViewController: UIViewController,UITableViewDataSource,UITableVie
         
         if(Common.Islogin())
         {
-            
             if(Common.isNotNull(object: (dataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "status") as AnyObject?))
             {
                 let type = (dataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "status") as! String
@@ -236,7 +235,6 @@ class FavouriteViewController: UIViewController,UITableViewDataSource,UITableVie
             {
                 playerViewController.downloadVideo_url = ""
             }
-            
             
             var ids = String()
             for i in 0..<((dataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "category_ids") as! NSArray).count

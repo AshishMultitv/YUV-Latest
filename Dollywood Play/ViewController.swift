@@ -903,15 +903,11 @@ class ViewController: UIViewController,MXSegmentedPagerDataSource,MXSegmentedPag
     
     //MARK:-   Zonerbutton action
     @IBAction func TaptoZoner(_ sender: UIButton) {
-        
-        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let zonerViewController = storyboard.instantiateViewController(withIdentifier: "ZonerViewController") as! ZonerViewController
         // let userintersetViewController = storyboard.instantiateViewController(withIdentifier: "UserintersetViewController") as! UserintersetViewController
         self.navigationController?.pushViewController(zonerViewController, animated: true)
-        
-        
-    }
+     }
     
     
     
@@ -926,9 +922,7 @@ class ViewController: UIViewController,MXSegmentedPagerDataSource,MXSegmentedPag
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        
         return self.otherviewarray.count
-        
     }
     
     // cell height

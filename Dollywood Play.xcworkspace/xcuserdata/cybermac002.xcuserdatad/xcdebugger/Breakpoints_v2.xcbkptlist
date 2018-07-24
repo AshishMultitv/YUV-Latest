@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Dollywood Play/PlayerViewController.swift"
-            timestampString = "553776192.993778"
+            filePath = "Dollywood Play/ViewController.swift"
+            timestampString = "554121803.307474"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "4566"
-            endingLineNumber = "4566"
-            landmarkName = "Taptoback(_:)"
+            startingLineNumber = "297"
+            endingLineNumber = "297"
+            landmarkName = "chekforceupgraorsoftupgrateapi()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,61 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Dollywood Play/PlayerViewController.swift"
-            timestampString = "553776192.99435"
+            filePath = "Dollywood Play/ViewController.swift"
+            timestampString = "554121803.307596"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2994"
-            endingLineNumber = "2994"
-            landmarkName = "deinit"
+            startingLineNumber = "299"
+            endingLineNumber = "299"
+            landmarkName = "chekforceupgraorsoftupgrateapi()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Dollywood_Play.ViewController.chekforceupgraorsoftupgrateapi() -&gt; ()"
+                  moduleName = "Dollywood Play"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cybermac002/Desktop/YUV%20WITH%20GOLANG/After%20Removing%20Chanel/Main%20With%20Xode%209/Dollywood%20Play/ViewController.swift"
+                  timestampString = "554121922.072173"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "299"
+                  endingLineNumber = "299"
+                  offsetFromSymbolStart = "440">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__ObjC.URLSessionDataTask, Swift.Optional&lt;Any&gt;) -&gt; () in Dollywood_Play.ViewController.chekforceupgraorsoftupgrateapi() -&gt; ()"
+                  moduleName = "Dollywood Play"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cybermac002/Desktop/YUV%20WITH%20GOLANG/After%20Removing%20Chanel/Main%20With%20Xode%209/Dollywood%20Play/ViewController.swift"
+                  timestampString = "554121922.07497"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "300"
+                  endingLineNumber = "300"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Dollywood Play/SignUpViewController.swift"
+            timestampString = "554121910.5150141"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "280"
+            endingLineNumber = "280"
+            landmarkName = "gotosignupapi()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,13 +89,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Dollywood Play/PlayerViewController.swift"
-            timestampString = "553776192.994432"
+            filePath = "Dollywood Play/SignUpViewController.swift"
+            timestampString = "554121915.082563"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2995"
-            endingLineNumber = "2995"
-            landmarkName = "deinit"
+            startingLineNumber = "263"
+            endingLineNumber = "263"
+            landmarkName = "gotosignupapi()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -57,13 +105,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Dollywood Play/SubscriptionView.swift"
-            timestampString = "553776192.994701"
+            filePath = "Dollywood Play/SignUpViewController.swift"
+            timestampString = "554122015.005747"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
-            landmarkName = "setlinkattribute()"
+            startingLineNumber = "258"
+            endingLineNumber = "258"
+            landmarkName = "gotosignupapi()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -73,13 +121,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Dollywood Play/SubscriptionView.swift"
-            timestampString = "553776192.995002"
+            filePath = "Dollywood Play/SignUpViewController.swift"
+            timestampString = "554122015.445362"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
-            landmarkName = "setlinkattribute()"
+            startingLineNumber = "259"
+            endingLineNumber = "259"
+            landmarkName = "gotosignupapi()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -89,30 +137,46 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Dollywood Play/PlayerViewController.swift"
-            timestampString = "553776434.264892"
+            filePath = "Dollywood Play/SignUpViewController.swift"
+            timestampString = "554122119.146446"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3943"
-            endingLineNumber = "3943"
-            landmarkName = "getmorevideo()"
+            startingLineNumber = "260"
+            endingLineNumber = "260"
+            landmarkName = "gotosignupapi()"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Dollywood Play/PlayerViewController.swift"
-            timestampString = "553776434.904768"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3939"
-            endingLineNumber = "3939"
-            landmarkName = "getmorevideo()"
-            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Dollywood_Play.SignUpViewController.gotosignupapi() -&gt; ()"
+                  moduleName = "Dollywood Play"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cybermac002/Desktop/YUV%20WITH%20GOLANG/After%20Removing%20Chanel/Main%20With%20Xode%209/Dollywood%20Play/SignUpViewController.swift"
+                  timestampString = "554122188.7562211"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "260"
+                  endingLineNumber = "260"
+                  offsetFromSymbolStart = "7164">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__ObjC.URLSessionDataTask, Swift.Optional&lt;Any&gt;) -&gt; () in Dollywood_Play.SignUpViewController.gotosignupapi() -&gt; ()"
+                  moduleName = "Dollywood Play"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cybermac002/Desktop/YUV%20WITH%20GOLANG/After%20Removing%20Chanel/Main%20With%20Xode%209/Dollywood%20Play/SignUpViewController.swift"
+                  timestampString = "554122188.760538"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "261"
+                  endingLineNumber = "261"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

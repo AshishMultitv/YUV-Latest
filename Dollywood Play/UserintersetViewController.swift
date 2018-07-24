@@ -34,7 +34,6 @@ class UserintersetViewController: UIViewController,MagneticDelegate {
         
         print(node.label.text)
         print(seletednode)
-        
         for i in 0..<seletednode.count
         {
             if((seletednode.object(at: i) as! NSDictionary).value(forKey: "title") as? String == node.label.text)
@@ -47,9 +46,10 @@ class UserintersetViewController: UIViewController,MagneticDelegate {
         
     }
     
-    
     var dataarray = NSArray()
     var seletednode = NSMutableArray()
+    
+    
     @IBOutlet weak var magneticView: MagneticView! {
         didSet {
             magnetic.magneticDelegate = self
@@ -60,8 +60,7 @@ class UserintersetViewController: UIViewController,MagneticDelegate {
             #endif
         }
     }
-    
-    
+
     var magnetic: Magnetic {
         return magneticView.magnetic
     }
@@ -77,7 +76,6 @@ class UserintersetViewController: UIViewController,MagneticDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         getuserintesetedapi()
-        
     }
     
     
@@ -86,13 +84,9 @@ class UserintersetViewController: UIViewController,MagneticDelegate {
         for i in 0..<dataarray.count {
             setmagnetview(name: (dataarray.object(at: i) as! NSDictionary).value(forKey: "title") as! String)
         }
-        
-        
     }
     
     @IBAction func TaptoDone(_ sender: UIButton) {
-        
-        
         if(seletednode.count<5)
         {
             EZAlertController.alert(title: "Please select atleast 5 intreset")
@@ -102,8 +96,6 @@ class UserintersetViewController: UIViewController,MagneticDelegate {
             var ids = String()
             for i in 0..<seletednode.count
             {
-                
-                
                 let str = (seletednode.object(at: i) as! NSDictionary).value(forKey: "id") as! String
                 ids = ids + str + ","
                 
@@ -112,11 +104,6 @@ class UserintersetViewController: UIViewController,MagneticDelegate {
             
             self.setuserintersetofuser(userintresetedid: ids)
         }
-        
-        
-        
-        
-        
     }
     
     func gotohomeview()

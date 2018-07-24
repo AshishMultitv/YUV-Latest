@@ -22,7 +22,6 @@ import CZPicker
 //For Production
 var MaterBaseUrl = "http://services.yuv.multitvsolution.com/api/v6/master/url_static"
 
-
 ////////////////////////////////PRODUCTION TOKEN ///////////////////////////////
 //let Apptoken = "59a942cd8175f"
 

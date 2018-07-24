@@ -86,7 +86,6 @@ class MyAccountViewController: UIViewController,MXSegmentedPagerDataSource,MXSeg
     override func viewWillAppear(_ animated: Bool) {
         
         self.navigationController?.isNavigationBarHidden = true
-        
         self.comefromsidemenu(str: LoginCredentials.faveprofileorother)
     }
     
@@ -172,7 +171,7 @@ class MyAccountViewController: UIViewController,MXSegmentedPagerDataSource,MXSeg
         
         
         
-        if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerControllerSourceType.camera))
+    if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerControllerSourceType.camera))
         {
             imagePicker.sourceType = UIImagePickerControllerSourceType.camera
             self .present(imagePicker, animated: true, completion: nil)
@@ -256,7 +255,6 @@ class MyAccountViewController: UIViewController,MXSegmentedPagerDataSource,MXSeg
             ]
         }
         
-        
         let url = String(format: "%@%@", LoginCredentials.Editapi,Apptoken)
         let manager = AFHTTPSessionManager()
         manager.post(url, parameters: parameters, progress: nil, success: { (task: URLSessionDataTask, responseObject: Any?) in
@@ -277,7 +275,6 @@ class MyAccountViewController: UIViewController,MXSegmentedPagerDataSource,MXSeg
                 {
                     data = Common.decodedresponsedata(msg:dict.value(forKey: "result") as! String)
                 }
-                
                 print(data)
                 self.isprofileimagechange = false
                 dataBase.deletedataentity(entityname: "Logindata")
@@ -298,11 +295,9 @@ class MyAccountViewController: UIViewController,MXSegmentedPagerDataSource,MXSeg
     }
     
     @IBAction func Taptomalebuttonaction(_ sender: UIButton) {
-        
         femaleimageview.image = UIImage.init(named: "unselectcircle")
         maleimage_view.image = UIImage.init(named: "Selectcircle")
         malefemale = "Male"
-        
         
     }
     
@@ -370,16 +365,11 @@ class MyAccountViewController: UIViewController,MXSegmentedPagerDataSource,MXSeg
     
     func setprofiledata()
     {
-        
-        
-        
+
         let dict = dataBase.getDatabaseresponseinentity(entityname: "Logindata", key: "logindatadict")
         if (dict.count>0)
         {
-            
-            
-            
-            
+
             if(!(Common.isNotNull(object: dict.value(forKey: "first_name") as AnyObject?)) || !(Common.isNotNull(object: dict.value(forKey: "last_name") as AnyObject?)))
             {
                 

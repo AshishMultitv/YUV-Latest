@@ -34,7 +34,6 @@ let kPrefReceiverAppID = "receiver_app_id"
 let kPrefCustomReceiverSelectedValue = "use_custom_receiver_app_id"
 let kPrefCustomReceiverAppID = "custom_receiver_app_id"
 let kPrefEnableMediaNotifications = "enable_media_notifications"
-
 let kApplicationID: String? = nil
 let appDelegate = (UIApplication.shared.delegate as? AppDelegate)
 
@@ -81,16 +80,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
             }
         }
     }
-    
-    
-    
+
     fileprivate func createMenuView() {
         
         // create viewController code...
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
         let dict = dataBase.getDatabaseresponseinentity(entityname: "Logindata", key: "logindatadict")
-        
         if (dict.count>0)
         {
             if(Common.isInternetAvailable())
@@ -165,14 +160,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         }
         
     }
-    
-    
-    
-    
-    
-    
-    
-    
+
     func userlogoutfromapp()
     {
         
@@ -854,7 +842,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
                         LoginCredentials.IsencriptMenuAPi = false
                     }
                     
-                    
                     ////////////////////////////////otp_generate  18    //////////////////////////
                     let otpgenerateapi = Catdata_dict.value(forKey: "otp_generate") as! String
                     let otpgenerateapiArr : [String] = otpgenerateapi.components(separatedBy: "|,")
@@ -1203,8 +1190,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     ///////Refreshtoken Update
     func Refreshtoken(playerid:String)
     {
-        
-        
         let uuid = UIDevice.current.identifierForVendor!.uuidString
         let parameters = ["device_type":"app",
                           "device_unique_id": uuid,
@@ -1224,8 +1209,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         }) { (task: URLSessionDataTask?, error: Error) in
             print("POST fails with error \(error)")
         }
-        
-        
     }
     
     
@@ -1277,7 +1260,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         
         let parameters = ["device":"ios"]
         print(parameters)
-        
         let url = String(format: "%@%@/device/ios", LoginCredentials.AppVersionAPi,Apptoken)
         let manager = AFHTTPSessionManager()
         

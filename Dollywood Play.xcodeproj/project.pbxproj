@@ -1619,8 +1619,8 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Dollywood Play/Dollywood Play.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Lakshmipathy Ramasubbu (7DLG79757X)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Lakshmipathy Ramasubbu (7DLG79757X)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Lakshmipathy Ramasubbu (PFB97F34X6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Lakshmipathy Ramasubbu (PFB97F34X6)";
 				DEVELOPMENT_TEAM = PFB97F34X6;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1653,8 +1653,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.yuv;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7d9540fb-1da9-44e9-b15c-577f56af576e";
-				PROVISIONING_PROFILE_SPECIFIER = YUV_DEV_DEV;
+				PROVISIONING_PROFILE = "b30bb159-9797-4fa2-985d-ca7c65ffee3b";
+				PROVISIONING_PROFILE_SPECIFIER = YUV_APPSTORE;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -1666,8 +1666,8 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Dollywood Play/Dollywood Play.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Lakshmipathy Ramasubbu (7DLG79757X)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Lakshmipathy Ramasubbu (7DLG79757X)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Lakshmipathy Ramasubbu (PFB97F34X6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Lakshmipathy Ramasubbu (PFB97F34X6)";
 				DEVELOPMENT_TEAM = PFB97F34X6;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1700,8 +1700,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.yuv;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7d9540fb-1da9-44e9-b15c-577f56af576e";
-				PROVISIONING_PROFILE_SPECIFIER = YUV_DEV_DEV;
+				PROVISIONING_PROFILE = "b30bb159-9797-4fa2-985d-ca7c65ffee3b";
+				PROVISIONING_PROFILE_SPECIFIER = YUV_APPSTORE;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -1710,16 +1710,16 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CBE4C468042178823E55FA6B /* Pods-OneSingleNotification.debug.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Lakshmipathy Ramasubbu (7DLG79757X)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Lakshmipathy Ramasubbu (7DLG79757X)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Lakshmipathy Ramasubbu (PFB97F34X6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Lakshmipathy Ramasubbu (PFB97F34X6)";
 				DEVELOPMENT_TEAM = PFB97F34X6;
 				INFOPLIST_FILE = OneSingleNotification/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.yuv.ext;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a058f498-de30-47d1-b6f0-f4881d4f5e63";
-				PROVISIONING_PROFILE_SPECIFIER = YUV_DEV_EXT;
+				PROVISIONING_PROFILE = "1f921c0f-d0f0-43ad-9930-3fbd5faf8419";
+				PROVISIONING_PROFILE_SPECIFIER = YUV_APPSTORE_EXT;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};
@@ -1729,16 +1729,16 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8CB3B2B66C071AC452581104 /* Pods-OneSingleNotification.release.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Lakshmipathy Ramasubbu (7DLG79757X)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Lakshmipathy Ramasubbu (7DLG79757X)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Lakshmipathy Ramasubbu (PFB97F34X6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Lakshmipathy Ramasubbu (PFB97F34X6)";
 				DEVELOPMENT_TEAM = PFB97F34X6;
 				INFOPLIST_FILE = OneSingleNotification/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.yuv.ext;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a058f498-de30-47d1-b6f0-f4881d4f5e63";
-				PROVISIONING_PROFILE_SPECIFIER = YUV_DEV_EXT;
+				PROVISIONING_PROFILE = "1f921c0f-d0f0-43ad-9930-3fbd5faf8419";
+				PROVISIONING_PROFILE_SPECIFIER = YUV_APPSTORE_EXT;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};

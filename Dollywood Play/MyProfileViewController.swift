@@ -91,15 +91,12 @@ class MyProfileViewController: UIViewController,UITextFieldDelegate,UIImagePicke
         
         let popupvc = PTPopupWebViewController()
         let subscription_dict = LoginCredentials.UserSubscriptiondetail.object(at: invoicebutton.tag) as! NSDictionary
-        
         if let _  = subscription_dict.value(forKey: "invoice_url") {
             if(Common.isNotNull(object: subscription_dict.value(forKey: "invoice_url") as AnyObject)) {
                      let url = (subscription_dict.value(forKey: "invoice_url") as! String).url
                      popupvc.popupView.URL(url)
                      popupvc.show()
-                
             }
-            
         }
  
     }
@@ -115,17 +112,13 @@ class MyProfileViewController: UIViewController,UITextFieldDelegate,UIImagePicke
         }
     }
     func textFieldDidBeginEditing(_ textField: UITextField)
-    {
-        
-        self.toolbar.update()
-        
-        
-    }
+     {
+         self.toolbar.update()
+     }
     
     override func viewWillAppear(_ animated: Bool) {
         
-       
-        self.navigationController?.isNavigationBarHidden = true
+         self.navigationController?.isNavigationBarHidden = true
         if(!isprofilemakeupdate)
         {
             if(Common.Islogin())

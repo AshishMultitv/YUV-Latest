@@ -99,7 +99,7 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
             }
             else
             {
-                Redeemgiftrefreellabel.text = "Use a Gift / Referral"
+                Redeemgiftrefreellabel.text = "Redeem a Referral"
             }
             
             
@@ -176,25 +176,25 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
         }
         else
         {
-            title = "Redeem Gift / Referral"
+            title = "Redeem Referral"
         }
         
         
         let alert = UIAlertController(title: title, message: "Please Select an Option", preferredStyle: .actionSheet)
         
         
-        if(LoginCredentials.Regiontype == "2")
-        {
-            
-        }
-        else
-        {
-            
-            alert.addAction(UIAlertAction(title: "Redeem Gift", style: .default , handler:{ (UIAlertAction)in
-                print("User click Approve button")
-                self.showredeemgiftalert()
-            }))
-        }
+//        if(LoginCredentials.Regiontype == "2")
+//        {
+//
+//        }
+//        else
+//        {
+//
+//            alert.addAction(UIAlertAction(title: "Redeem Gift", style: .default , handler:{ (UIAlertAction)in
+//                print("User click Approve button")
+//                self.showredeemgiftalert()
+//            }))
+//        }
         
         alert.addAction(UIAlertAction(title: "Redeem Referral", style: .default , handler:{ (UIAlertAction)in
             print("User click Edit button")
