@@ -236,8 +236,7 @@ class ViewController: UIViewController,MXSegmentedPagerDataSource,MXSegmentedPag
             let dict = dataBase.getDatabaseresponseinentity(entityname: "Logindata", key: "logindatadict")
             print(dict.value(forKey: "id") as! NSNumber)
             var url = String(format: "%@%@/device/ios/uid/%@",LoginCredentials.Userpackagesapi,Apptoken,(dict.value(forKey: "id") as! NSNumber).stringValue)
-            
-              url = url.trimmingCharacters(in: .whitespaces)
+            url = url.trimmingCharacters(in: .whitespaces)
             print(url)
             let manager = AFHTTPSessionManager()
             manager.get(url, parameters: nil, progress: nil, success: { (task: URLSessionDataTask, responseObject: Any?) in
@@ -247,11 +246,9 @@ class ViewController: UIViewController,MXSegmentedPagerDataSource,MXSegmentedPag
                     let number = dict.value(forKey: "code") as! NSNumber
                     if(number == 0)
                     {
-                        
                     }
                     else
                     {
-                        
                         if let _  = dict.value(forKey: "result")
                         {
                             LoginCredentials.Allusersubscriptiondetail = dict.value(forKey: "result") as! NSDictionary
@@ -278,7 +275,6 @@ class ViewController: UIViewController,MXSegmentedPagerDataSource,MXSegmentedPag
                     }
                     
                     
-                    
                 }
             }) { (task: URLSessionDataTask?, error: Error) in
                 print("POST fails with error \(error)")
@@ -287,9 +283,6 @@ class ViewController: UIViewController,MXSegmentedPagerDataSource,MXSegmentedPag
             }
         }
     }
-    
-    
-    
     
     func chekforceupgraorsoftupgrateapi()
     {

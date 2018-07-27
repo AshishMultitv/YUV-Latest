@@ -397,6 +397,8 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
         
         
     }
+    
+    
     func willResignActive(_ notification: Notification) {
         
         
@@ -1560,8 +1562,6 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
                 {
                     self.downloadbutton.setImage(UIImage.init(named: "download"), for: .normal)
                     self.downloadbutton.isUserInteractionEnabled = true
-                    
-                    
                 }
                 
                 
@@ -1575,8 +1575,6 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
                 DispatchQueue.global(qos: .background).async {
                     self.GetVasthurl()
                 }
-                
-                
             }
         }
             )
@@ -1586,14 +1584,10 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
             if(self.fromdownload != "yes")
             {
                 let alert = UIAlertController(title: "", message: "Something went wrong please try again.", preferredStyle: UIAlertControllerStyle.alert)
-                
                 // add an action (button)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (alert) in
-                    
                     self.navigationController?.popViewController(animated: true)
-                    
                 }))
-                
                 // show the alert
                 self.present(alert, animated: true, completion: nil)
             }
@@ -1635,38 +1629,22 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
             }
             else
             {
-                
-                
-                
-                
+  
                 let alert = UIAlertController(title: "", message: "Please Subscribe to watch our great video", preferredStyle: UIAlertControllerStyle.alert)
-                
-                
                 alert.addAction(UIAlertAction(title: "Subscribe", style: UIAlertActionStyle.default, handler: { (action) in
                     Common.PresentSubscription(Viewcontroller: self)
                     self.navigationController?.popViewController(animated: true)
-                    
                 }))
                 self.present(alert, animated: true, completion: nil)
                 return false
             }
-            
         }
     }
     
-    
-    
-    
-    
-    
-    
-    
+
     func ChekUsersecceion(dictDetail:NSDictionary) -> Bool
     {
  
-        
- 
-        
         print(dictDetail)
         if(checkcontantenable)
         {

@@ -1147,12 +1147,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
                     LoginCredentials.Userpackagesapi = usersubscriptionsapiArr[1]
                     
                     
-                    
                     //////////////////////////////subs_free_subscription   34   //////////////////////////
                     let freesubscriptionapi = Catdata_dict.value(forKey: "subs_free_subscription") as! String
                     let freesubscriptionapiArr : [String] = freesubscriptionapi.components(separatedBy: "|,")
                     LoginCredentials.Freesubscriptionapi = freesubscriptionapiArr[1]
-                    
                     
                     
                     //////////////////////////////dvr_url   34   //////////////////////////
@@ -1161,17 +1159,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
                     LoginCredentials.Dvrurl = DvrurlapiArr[1]
                     
                     
-                    
-                    
                     self.Refreshtoken(playerid: LoginCredentials.OnesinglePlayerid)
                     self.checkContantUpdate()
                     if(!self.Isdeeplinking)
                     {
                         self.createMenuView()
                     }
-                    
-                    
-                    
                 }
                 
             }

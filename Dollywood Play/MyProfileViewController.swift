@@ -268,6 +268,7 @@ class MyProfileViewController: UIViewController,UITextFieldDelegate,UIImagePicke
       scrollviewhghtcntrnt.constant =  650
         
         
+        print(LoginCredentials.Allusersubscriptiondetail)
         if(LoginCredentials.Allusersubscriptiondetail.count>0)
         {
             

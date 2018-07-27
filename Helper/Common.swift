@@ -81,11 +81,10 @@ class Common: NSObject {
             
         }
         return false
-        
     }
+    
     static func Isuserissubscribe(Userdetails:AnyObject) -> Bool {
 
-        
         if(LoginCredentials.UserSubscriptiondetail.count>0)
         {
             return true
