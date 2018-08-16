@@ -140,7 +140,6 @@ class UserintersetViewController: UIViewController,MagneticDelegate {
                 else
                 {
                     
-                    
                     self.gotohomeview()
                     
                     
@@ -179,12 +178,9 @@ class UserintersetViewController: UIViewController,MagneticDelegate {
                 }
                 else
                 {
-                    
                     self.dataarray = (dict.value(forKey: "result") as! NSDictionary).value(forKey: "interests") as! NSArray
                     self.makeloopincontant()
-                    
-                    
-                    
+   
                 }
                 
             }
@@ -194,10 +190,7 @@ class UserintersetViewController: UIViewController,MagneticDelegate {
             print("POST fails with error \(error)")
             Common.stoploder(view: self.view)
         }
-        
-        
-        
-        
+ 
     }
     
     @IBAction func Taptomenu(_ sender: UIButton) {

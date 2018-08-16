@@ -500,14 +500,14 @@ class MoreViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         discriptiontext = discriptiontext?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         cell.Descriptionlabel.text = discriptiontext
          cell.viewlabel.text = ""
+        cell.uploaddatelabel.text = ""
       //  cell.viewlabel.text = "\((self.dataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "watch") as! String)\(" view")"
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm:ss"
-        let videotime = (self.dataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "created") as? String
-        
-        cell.uploaddatelabel.text = self.compatedate(date: videotime!)
-        
-        
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "HH:mm:ss"
+//        let videotime = (self.dataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "created") as? String
+//
+//        cell.uploaddatelabel.text = self.compatedate(date: videotime!)
+ 
         return cell
     }
     
@@ -585,7 +585,6 @@ class MoreViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     func compatedate(date:String) ->String {
         print(date)
-        
         var uploadtime = String()
         let dateFormatter = DateFormatter()
         let userCalendar = NSCalendar.current

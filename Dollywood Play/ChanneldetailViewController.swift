@@ -805,14 +805,14 @@ class ChanneldetailViewController: UIViewController,MXSegmentedPagerDataSource,M
             discriptiontext = discriptiontext?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
             cell.Descriptionlabel.text = discriptiontext
              cell.viewlabel.text = ""
+              cell.uploaddatelabel.text = ""
            // cell.viewlabel.text = "\((self.videodata.object(at: indexPath.row) as! NSDictionary).value(forKey: "watch") as! String)\(" view")"
             
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "HH:mm:ss"
-            let videotime = (self.videodata.object(at: indexPath.row) as! NSDictionary).value(forKey: "created") as? String
-            cell.uploaddatelabel.text = self.compatedate(date: videotime!)
-            
-            
+//            let dateFormatter = DateFormatter()
+//            dateFormatter.dateFormat = "HH:mm:ss"
+//            let videotime = (self.videodata.object(at: indexPath.row) as! NSDictionary).value(forKey: "created") as? String
+//            cell.uploaddatelabel.text = self.compatedate(date: videotime!)
+ 
             return cell
             
             

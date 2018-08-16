@@ -96,17 +96,13 @@ class MyAccountViewController: UIViewController,MXSegmentedPagerDataSource,MXSeg
         datePickerView  = UIDatePicker(frame: CGRect.init(x:0, y:40, width:0, height:0))
         datePickerView.datePickerMode = UIDatePickerMode.date
         inputView.addSubview(datePickerView) // add date picker to UIView
-        
         let doneButton = UIButton(frame: CGRect.init(x:(self.view.frame.size.width/2) - (100/2), y:0, width:100, height:50))
         doneButton.setTitle("Done", for: UIControlState.normal)
         doneButton.setTitle("Done", for: UIControlState.highlighted)
         doneButton.setTitleColor(UIColor.white, for: UIControlState.normal)
         doneButton.setTitleColor(UIColor.white, for: UIControlState.highlighted)
-        
         inputView.addSubview(doneButton) // add Button to UIView
-        
         doneButton.addTarget(self, action: #selector(doneButton(sender:)), for: UIControlEvents.touchUpInside) // set button click event
-        
         sender.inputView = inputView
         datePickerView.addTarget(self, action: #selector(handleDatePicker(sender:)), for: .valueChanged)
         
@@ -168,9 +164,7 @@ class MyAccountViewController: UIViewController,MXSegmentedPagerDataSource,MXSeg
     
     func openCamera()
     {
-        
-        
-        
+  
     if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerControllerSourceType.camera))
         {
             imagePicker.sourceType = UIImagePickerControllerSourceType.camera

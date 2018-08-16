@@ -843,8 +843,7 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
         let receiptString = (receiptData?.base64EncodedString(options: []))! as String
         print(receiptString)
         let dict = dataBase.getDatabaseresponseinentity(entityname: "Logindata", key: "logindatadict")
-        
-        print(dict.value(forKey: "id") as! NSNumber)
+         print(dict.value(forKey: "id") as! NSNumber)
         print(tran_id)
         print(receiptString)
         print(sub_id)
@@ -859,6 +858,7 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
                        "status":"1"
             ] as [String:Any]
         print(Param)
+        LoginCredentials.LatestIapRecipt = Param as NSDictionary
         var url = String()
         if(Subscriptiontype == "NonRenewable") {
             
@@ -868,7 +868,6 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
         else if(Subscriptiontype == "AutoRenewable")
         {
             url = String(format: "%@%@/device/ios",LoginCredentials.Completeorderapi,Apptoken)
-            
         }
         Common.startloderonsubscription(view: self.view)
         url = url.trimmingCharacters(in: .whitespaces)
@@ -878,6 +877,15 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
                 let dict = responseObject as! NSDictionary
                 print(dict)
                 let number = dict.value(forKey: "code") as! NSNumber
+                if(number == 0)
+                {
+                    Common.Verifyfailedpayment()
+                    LoginCredentials.Ispaymentfailedonsever = true
+                }
+                else
+                {
+                    LoginCredentials.Ispaymentfailedonsever = false
+                }
                 Common.stoploderonsubscription(view: self.view)
                 self.chekcUsersubscription()
                 self.dismiss(animated: true, completion: nil)
@@ -888,7 +896,9 @@ class SubscriptionView: UIViewController,UITableViewDelegate,UITableViewDataSour
             print("POST fails with error \(error)")
             Common.stoploderonsubscription(view: self.view)
             self.dismiss(animated: true, completion: nil)
-            
+            LoginCredentials.Ispaymentfailedonsever = true
+            Common.Verifyfailedpayment()
+ 
         }
         
         

@@ -343,7 +343,6 @@ class MyProfileViewController: UIViewController,UITextFieldDelegate,UIImagePicke
         isprofilemakeupdate = true
         imagePicker.delegate = self
         let optionMenu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .actionSheet)
-        
         let saveAction = UIAlertAction(title: "Camera", style: .default, handler:
         {
             (alert: UIAlertAction!) -> Void in
@@ -414,29 +413,20 @@ class MyProfileViewController: UIViewController,UITextFieldDelegate,UIImagePicke
     
     func createdatepicker(sender: UITextField)
     {
-        
         let inputView = UIView(frame: CGRect.init(x:0, y:0, width:self.view.frame.width, height:240))
-        
-        
         datePickerView  = UIDatePicker(frame: CGRect.init(x:0, y:40, width:0, height:0))
         datePickerView.datePickerMode = UIDatePickerMode.date
         inputView.addSubview(datePickerView) // add date picker to UIView
-        
         let doneButton = UIButton(frame: CGRect.init(x:(self.view.frame.size.width/2) - (100/2), y:0, width:100, height:50))
         doneButton.setTitle("Done", for: UIControlState.normal)
         doneButton.setTitle("Done", for: UIControlState.highlighted)
         doneButton.setTitleColor(UIColor.white, for: UIControlState.normal)
         doneButton.setTitleColor(UIColor.white, for: UIControlState.highlighted)
-        
         inputView.addSubview(doneButton) // add Button to UIView
-        
         doneButton.addTarget(self, action: #selector(doneButton(sender:)), for: UIControlEvents.touchUpInside) // set button click event
-        
         sender.inputView = inputView
         datePickerView.addTarget(self, action: #selector(handleDatePicker(sender:)), for: .valueChanged)
-        
         handleDatePicker(sender: datePickerView)
-        
     }
     func doneButton(sender:UIButton)
     {
@@ -533,9 +523,7 @@ class MyProfileViewController: UIViewController,UITextFieldDelegate,UIImagePicke
                     self.setprofiledata()
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "Setprofiledata"), object: nil, userInfo: nil)
                     EZAlertController.alert(title: "Profile Update Successfully.")
-                    
-                    
-                    
+      
                 }
             }) { (task: URLSessionDataTask?, error: Error) in
                 print("POST fails with error \(error)")

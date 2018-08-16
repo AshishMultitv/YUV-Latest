@@ -534,7 +534,6 @@ class ViewController: UIViewController,MXSegmentedPagerDataSource,MXSegmentedPag
                 self.myCollectionView.reloadData()
                print(self.slidermenuarray)
                 self.setmenu()
-                // self.mXSegmentedPager.reloadData()
             }
         }) { (task: URLSessionDataTask?, error: Error) in
             print("POST fails with error \(error)")
@@ -1415,34 +1414,27 @@ class ViewController: UIViewController,MXSegmentedPagerDataSource,MXSegmentedPag
                 uploadtimelabel?.textColor = Discriptioncolor
                 videoviewlabel?.textColor = Discriptioncolor
                 uploadtimelabel?.textAlignment = .left
+                 uploadtimelabel?.text = ""
                 
-                
-                if(Common.isNotNull(object: ((collectionviewarray.value(forKey: "cat_cntn") as! NSArray).object(at: indexPath.section) as AnyObject?)))
-                {
-                    
-                    
-                    
-                    
-                    if(Common.isNotNull(object: (((collectionviewarray.value(forKey: "cat_cntn") as! NSArray).object(at: indexPath.section) as AnyObject).object(at: i) as! NSDictionary).value(forKey: "created") as AnyObject?))
-                    {
-                        let videotime = (((collectionviewarray.value(forKey: "cat_cntn") as! NSArray).object(at: indexPath.section) as AnyObject).object(at: i) as! NSDictionary).value(forKey: "created") as! String
-                        
-                        uploadtimelabel?.text = "\(self.compatedate(date: videotime))"
-                    }
-                    else
-                    {
-                        uploadtimelabel?.text = ""
-                    }
-                }
-                else
-                {
-                    uploadtimelabel?.text = ""
-                }
-                
-                
+//                if(Common.isNotNull(object: ((collectionviewarray.value(forKey: "cat_cntn") as! NSArray).object(at: indexPath.section) as AnyObject?)))
+//                {
+//                    if(Common.isNotNull(object: (((collectionviewarray.value(forKey: "cat_cntn") as! NSArray).object(at: indexPath.section) as AnyObject).object(at: i) as! NSDictionary).value(forKey: "created") as AnyObject?))
+//                    {
+//                        let videotime = (((collectionviewarray.value(forKey: "cat_cntn") as! NSArray).object(at: indexPath.section) as AnyObject).object(at: i) as! NSDictionary).value(forKey: "created") as! String
+//                        uploadtimelabel?.text = "\(self.compatedate(date: videotime))"
+//                    }
+//                    else
+//                    {
+//                        uploadtimelabel?.text = ""
+//                    }
+//                }
+//                else
+//                {
+//                    uploadtimelabel?.text = ""
+//                }
                 
                 if let _ = (((collectionviewarray.value(forKey: "cat_cntn") as! NSArray).object(at: indexPath.section) as AnyObject).object(at: i) as! NSDictionary).value(forKey: "watch") {
-                    videoviewlabel?.text = ""
+                videoviewlabel?.text = ""
             //    videoviewlabel?.text =  "\((((collectionviewarray.value(forKey: "cat_cntn") as! NSArray).object(at: indexPath.section) as AnyObject).object(at: i) as! NSDictionary).value(forKey: "watch") as! String)\(" view")"
                 }
                 else
@@ -1913,10 +1905,8 @@ class ViewController: UIViewController,MXSegmentedPagerDataSource,MXSegmentedPag
             print((homebutton?.tag)! as Int)
             print((morebutton?.tag)! as Int)
             let ds = (indexPath?.section)! as Int
-            print(ds)
             print(collectionviewarray.object(at:ds) as AnyObject)
             print(((collectionviewarray.value(forKey: "cat_cntn") as! NSArray).object(at:ds) as AnyObject).object(at: sender.tag))
-            
             let dic = ((collectionviewarray.value(forKey: "cat_cntn") as! NSArray).object(at:ds) as AnyObject).object(at: sender.tag) as! NSDictionary
             
             if((collectionviewarray.object(at: ds) as! NSDictionary).value(forKey: "cat_name") as! String == "Latest"  || (collectionviewarray.object(at: ds) as! NSDictionary).value(forKey: "cat_name") as! String == "Trending" )
@@ -2031,8 +2021,6 @@ class ViewController: UIViewController,MXSegmentedPagerDataSource,MXSegmentedPag
             moreViewController.headertext = dictnew.value(forKey: "name") as! String
             moreViewController.headerimageurl = (dictnew.value(forKey: "thumbnails") as! NSArray).object(at: 0) as! String
             self.navigationController?.pushViewController(moreViewController, animated: true)
-     
-            
         }
     }
     
@@ -2042,9 +2030,7 @@ class ViewController: UIViewController,MXSegmentedPagerDataSource,MXSegmentedPag
         let point : CGPoint = sender.convert(CGPoint.zero, to:myCollectionView)
         var indexPath = myCollectionView!.indexPathForItem(at: point)
         print((indexPath?.section)! as Int)
-        
         print(((((Slidermenusegment_dict.value(forKey: "children") as! NSArray).object(at: (indexPath?.section)!) as! NSDictionary).value(forKey: "children")) as? NSArray)?.object(at: sender.tag) as! NSDictionary)
-        
         let dictnew  = ((((Slidermenusegment_dict.value(forKey: "children") as! NSArray).object(at: (indexPath?.section)!) as! NSDictionary).value(forKey: "children")) as? NSArray)?.object(at: sender.tag) as! NSDictionary
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let moreViewController = storyboard.instantiateViewController(withIdentifier: "MoreViewController") as! MoreViewController
@@ -2054,7 +2040,6 @@ class ViewController: UIViewController,MXSegmentedPagerDataSource,MXSegmentedPag
         moreViewController.headerimageurl = (dictnew.value(forKey: "thumbnails") as! NSArray).object(at: 0) as! String
         self.navigationController?.pushViewController(moreViewController, animated: true)
     }
-    
     
     //MARK:- Init Slider menu
     func setmenu()
@@ -2186,9 +2171,7 @@ class ViewController: UIViewController,MXSegmentedPagerDataSource,MXSegmentedPag
             //callhomedatawebapi()
             //dataBase.deletedataentity(entityname: "Homedata")
             //  getdatabaseresponse()
-            
-            
-            
+      
         }
             
  
@@ -2238,10 +2221,7 @@ class ViewController: UIViewController,MXSegmentedPagerDataSource,MXSegmentedPag
         //myscrollview.setContentOffset(CGPoint(x: 0, y: 106), animated: true)
         
         //myscrollview.setContentOffset(CGPoint.zero, animated: false)
-        
-        
-        
-        
+
     }
     
     
@@ -2295,9 +2275,7 @@ class ViewController: UIViewController,MXSegmentedPagerDataSource,MXSegmentedPag
         
     }
     
-    
-    
-    
+
     //MARK:- SetUp CarouselView
     
     
@@ -2450,10 +2428,7 @@ class ViewController: UIViewController,MXSegmentedPagerDataSource,MXSegmentedPag
         playerViewController.Download_dic = (featurebanner.object(at: index) as! NSDictionary).mutableCopy() as! NSMutableDictionary
         playerViewController.fromdownload = "no"
         playerViewController.downloadVideo_url = ""
-        
-        
-        
-        
+ 
         let catdataarray = (featurebanner.object(at: index) as! NSDictionary).value(forKey: "category_ids") as! NSArray
         if(catdataarray.count == 0)
         {
@@ -2488,14 +2463,9 @@ class ViewController: UIViewController,MXSegmentedPagerDataSource,MXSegmentedPag
         {
             self.navigationController?.pushViewController(playerViewController, animated: true)
         }
-        
-        
+ 
     }
-    
-    
-    
-    
-    
+
     //MARK:- Covert datetime
     func compatedate(date:String) ->String {
         print(date)
@@ -2506,46 +2476,32 @@ class ViewController: UIViewController,MXSegmentedPagerDataSource,MXSegmentedPag
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let startTime = NSDate()
         let endTime = dateFormatter.date(from: date)
-        
         let timeDifference = userCalendar.dateComponents(dayHourMinuteSecond, from: endTime!, to: startTime as Date)
-        
-        
-        
         if(Common.isNotNull(object: timeDifference.month as AnyObject?))
         {
             uploadtime =  "\(timeDifference.month!.toString())\(" Month ago")"
             return uploadtime
         }
-            
         else
         {
-            
-            
             if(timeDifference.day != 0)
             {
-                
                 uploadtime =  "\(timeDifference.day!.toString())\(" Days ago")"
                 return uploadtime
-                
             }
                 
             else if(timeDifference.hour != 0)
             {
-                
                 uploadtime =  "\(timeDifference.hour!.toString())\(" Hours ago")"
                 return uploadtime
             }
             else if(timeDifference.minute != 0)
             {
-                
                 uploadtime =  "\(timeDifference.minute!.toString())\(" Minut ago")"
                 return uploadtime
             }
-            
-            
-            
+  
         }
-        
         return uploadtime
         // dateLabelOutlet.text = "\(timeDifference.month) Months \(timeDifference.day) Days \(timeDifference.minute) Minutes \(timeDifference.second) Seconds"
     }
@@ -2574,17 +2530,7 @@ class ViewController: UIViewController,MXSegmentedPagerDataSource,MXSegmentedPag
         AppUtility.lockOrientation(.portrait)
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     
     func updateControlBarsVisibility() {
         if self.miniMediaControlsViewEnabled && self.miniMediaControlsViewController.active {

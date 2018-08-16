@@ -2046,5 +2046,37 @@ class LoginCredentials: NSObject {
     }
     
     
+    static var LatestIapRecipt: NSDictionary {
+        get {
+             let data = UserDefaults.standard.object(forKey: "latestIapRecipt") as! NSData
+            if let latestIapRecipt = NSKeyedUnarchiver.unarchiveObject(with: data as Data) as? NSDictionary {
+                return latestIapRecipt
+            }
+            return NSDictionary()
+        }
+        set {
+            let data = NSKeyedArchiver.archivedData(withRootObject: newValue)
+            UserDefaults.standard.set(data, forKey: "latestIapRecipt")
+            UserDefaults.standard.synchronize()
+            
+        }
+    }
+    
+    static var Ispaymentfailedonsever: Bool {
+        get {
+            
+            if let ispaymentfailedonsever = UserDefaults.standard.object(forKey: "ispaymentfailedonsever") as? Bool
+            {
+                return ispaymentfailedonsever
+            }
+            return Bool()
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "ispaymentfailedonsever")
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
+    
     
      }

@@ -254,7 +254,6 @@ class SignUpViewController: UIViewController,CLLocationManagerDelegate,Countries
                        "devicedetail":Common.convertdictinyijasondata(data: devicedetailss),
                        "device_other_detail":Common.convertdictinyijasondata(data: dictionaryOtherDetail)
         ]
- 
         let url = String(format: "%@%@", LoginCredentials.AddAPi,Apptoken)
         let manager = AFHTTPSessionManager()
         manager.post(url, parameters: parameters, progress: nil, success: { (task: URLSessionDataTask, responseObject: Any?) in
@@ -269,10 +268,16 @@ class SignUpViewController: UIViewController,CLLocationManagerDelegate,Countries
                 else
                 {
                     LoginCredentials.Regiontype = ""
-                    self.gotoOTPacreen(otp: "", userid: ((dict.value(forKey: "id") as! NSNumber).stringValue))
-                    EZAlertController.alert(title: dict.value(forKey: "result") as! String)
+                    var Catdata_dict = NSMutableDictionary()
+                    Catdata_dict = (dict.value(forKey: "info") as! NSDictionary).mutableCopy() as! NSMutableDictionary
+                     dataBase.deletedataentity(entityname: "Logindata")
+                     dataBase.Savedatainentity(entityname: "Logindata", key: "logindatadict", data: Catdata_dict)
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "Setprofiledata"), object: nil, userInfo: nil)
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "usersession"), object: nil)
+                    self.gotohomeacreen()
+                   // self.gotoOTPacreen(otp: "", userid: ((dict.value(forKey: "id") as! NSNumber).stringValue))
+                   // EZAlertController.alert(title: dict.value(forKey: "result") as! String)
                 }
-                
             }
         }
             )
@@ -321,8 +326,6 @@ class SignUpViewController: UIViewController,CLLocationManagerDelegate,Countries
     
     
     @IBAction func Taptolocation(_ sender: UIButton) {
-        
-        
         if(Common.isInternetAvailable())
         {
             // For use in foreground
@@ -353,7 +356,6 @@ class SignUpViewController: UIViewController,CLLocationManagerDelegate,Countries
     
     
     @IBAction func Taptoage(_ sender: UIButton) {
-        
         let agearry = ["Below 18", "18-24", "25-34","35-44","Above 45"]
         FTPopOverMenu.show(forSender: sender, withMenuArray: agearry, doneBlock: { (selectedIndex) in
             print(selectedIndex)
@@ -371,9 +373,6 @@ class SignUpViewController: UIViewController,CLLocationManagerDelegate,Countries
         }
         
     }
-    
-    
-    
     func setUsersClosestCity()
     {
         let geoCoder = CLGeocoder()

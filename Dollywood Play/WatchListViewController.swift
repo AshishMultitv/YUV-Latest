@@ -363,16 +363,15 @@ class WatchListViewController: UIViewController,UICollectionViewDataSource, UICo
         var discriptiontext = (self.dataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "des") as? String
         discriptiontext = discriptiontext?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         cell.Descriptionlabel.text = discriptiontext
-         cell.viewlabel.text = ""
+        cell.viewlabel.text = ""
+        cell.uploaddatelabel.text = ""
       //  cell.viewlabel.text = "\((self.dataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "watch") as! String)\(" view")"
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm:ss"
-        let videotime = (self.dataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "created") as? String
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "HH:mm:ss"
+//        let videotime = (self.dataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "created") as? String
+//        cell.uploaddatelabel.text = self.compatedate(date: videotime!)
+         return cell
         
-        cell.uploaddatelabel.text = self.compatedate(date: videotime!)
-        
-        
-        return cell
     }
     
     
@@ -553,7 +552,5 @@ extension WatchListViewController: KRPullLoadViewDelegate {
         }
     }
 }
-
-
 
 

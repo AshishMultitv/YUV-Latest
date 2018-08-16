@@ -21,21 +21,14 @@ import CZPicker
 
 //For Production
 var MaterBaseUrl = "http://services.yuv.multitvsolution.com/api/v6/master/url_static"
-
 ////////////////////////////////PRODUCTION TOKEN ///////////////////////////////
 //let Apptoken = "59a942cd8175f"
-
 ////////////////////////////////DEVLOPMENT   TOKEN ///////////////////////////////
 let Apptoken = "5982e6bd0759f"
-
-
 let Discriptioncolor = UIColor.init(colorLiteralRed: 110.0/255, green: 110.0/255, blue: 110.0/255, alpha: 1.0)
-
 var timer:Timer!
 let activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView();
 var picker: CZPickerView?
-
-
 
 
 class Common: NSObject {
@@ -84,6 +77,11 @@ class Common: NSObject {
     }
     
     static func Isuserissubscribe(Userdetails:AnyObject) -> Bool {
+        
+        
+        if(LoginCredentials.Ispaymentfailedonsever) {
+            return true
+        }
 
         if(LoginCredentials.UserSubscriptiondetail.count>0)
         {
@@ -120,7 +118,6 @@ class Common: NSObject {
         }
         
     }
-    
     
     
     static func Isuserissubscribenew(Userdetails:AnyObject) -> Bool {
@@ -764,6 +761,15 @@ class Common: NSObject {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "Userapplogout"), object: nil)
     }
     
+    
+    static func Verifyfailedpayment()
+    {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 300.0, execute: {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "Verifypayment"), object: nil)
+         })
+      
+    }
+    
     static func Pushback()
     {
         let value = UIInterfaceOrientation.portrait.rawValue
@@ -809,7 +815,6 @@ extension ViewController: CZPickerViewDelegate, CZPickerViewDataSource {
     func czpickerView(_pickerView: CZPickerView!, didConfirmWithItemsAtRows rows: [AnyObject]!) {
         
     }
-    
 }
 extension LeftViewController: CZPickerViewDelegate, CZPickerViewDataSource {
     func czpickerView(_ pickerView: CZPickerView!, imageForRow row: Int) -> UIImage! {

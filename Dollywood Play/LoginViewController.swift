@@ -238,11 +238,11 @@ class LoginViewController: UIViewController,GIDSignInDelegate,GIDSignInUIDelegat
                         }
                         print(self.logindatadict)
                         
-                        if((self.logindatadict.value(forKey: "status") as! String) == "inactive")
-                        {
-                            self.showinactiveuseralert(userid: ((self.logindatadict.value(forKey: "id") as! NSNumber).stringValue))
-                            return
-                        }
+//                        if((self.logindatadict.value(forKey: "status") as! String) == "inactive")
+//                        {
+//                            self.showinactiveuseralert(userid: ((self.logindatadict.value(forKey: "id") as! NSNumber).stringValue))
+//                            return
+//                        }
                         
                         
                         dataBase.deletedataentity(entityname: "Logindata")
@@ -250,26 +250,7 @@ class LoginViewController: UIViewController,GIDSignInDelegate,GIDSignInUIDelegat
                         self.getUsersubscriptiondetail()
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "Setprofiledata"), object: nil, userInfo: nil)
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "usersession"), object: nil)
-                        
-                        //                    if((Common.isNotNull(object: self.logindatadict.value(forKey: "age_group") as AnyObject?)) || (Common.isNotNull(object: self.logindatadict.value(forKey: "gender") as AnyObject?)) )
-                        //                    {
-                        //
-                        //                      if(((self.logindatadict.value(forKey: "age_group") as! String) == "0-0") || ((self.logindatadict.value(forKey: "gender") as! String) == ""))
-                        //                      {
-                        //                        self.gotoskipprofilescreen()
-                        //                        }
-                        //                        else
-                        //                      {
-                        //                         }
-                        //
-                        //
-                        //
-                        //                    }
-                        //                    else
-                        //                    {
-                        //                      self.gotoskipprofilescreen()
-                        //                    }
-                        //                    //self.gotouserintersetview()
+               
                     }
                     
                 }

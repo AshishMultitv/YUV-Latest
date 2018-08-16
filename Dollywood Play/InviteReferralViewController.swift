@@ -29,16 +29,12 @@ class InviteReferralViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         let dict = dataBase.getDatabaseresponseinentity(entityname: "Logindata", key: "logindatadict")
-        
         if let _ = dict.value(forKey: "referral_code") {
-            
             refreltext = dict.value(forKey: "referral_code") as! String
-            
-            
-        }
+            print(refreltext)
+           }
         RefrralCodelabel.text = refreltext
     }
-    
     
     @IBAction func Taptomenu(_ sender: UIButton) {
         

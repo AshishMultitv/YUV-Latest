@@ -300,12 +300,13 @@ class FavouriteViewController: UIViewController,UITableViewDataSource,UITableVie
         discriptiontext = discriptiontext?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         cell.Descriptionlabel.text = discriptiontext
         cell.viewlabel.text = ""
+        cell.uploaddatelabel.text = ""
       //  cell.viewlabel.text = "\((self.dataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "watch") as! String)\(" view")"
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm:ss"
-        let videotime = (self.dataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "created") as? String
-         cell.uploaddatelabel.text = self.compatedate(date: videotime!)
-        
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "HH:mm:ss"
+//        let videotime = (self.dataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "created") as? String
+//         cell.uploaddatelabel.text = self.compatedate(date: videotime!)
+  
         
         let unfavbutton = UIButton.init(frame: CGRect.init(x: cell.frame.size.width-40, y: 10, width: 30, height: 30))
          unfavbutton.setImage(#imageLiteral(resourceName: "favremove"), for: .normal)

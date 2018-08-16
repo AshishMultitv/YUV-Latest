@@ -508,12 +508,15 @@ class SearchViewController: UIViewController,UISearchBarDelegate,UITableViewData
             cell.Descriptionlabel.text = discriptiontext
             //cell.viewlabel.text = "\((self.dataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "watch") as! String)\(" view")"
             cell.viewlabel.text = ""
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "HH:mm:ss"
-            let videotime = ((sectiondataarray.object(at: indexPath.section) as! NSArray).object(at: indexPath.row) as! NSDictionary).value(forKey: "created") as? String
+            cell.uploaddatelabel.text = ""
+//            let dateFormatter = DateFormatter()
+//            dateFormatter.dateFormat = "HH:mm:ss"
+//            let videotime = ((sectiondataarray.object(at: indexPath.section) as! NSArray).object(at: indexPath.row) as! NSDictionary).value(forKey: "created") as? String
+//            
+//            cell.uploaddatelabel.text = self.compatedate(date: videotime!)
             
-            cell.uploaddatelabel.text = self.compatedate(date: videotime!)
-            return cell
+            
+             return cell
         }
     }
     

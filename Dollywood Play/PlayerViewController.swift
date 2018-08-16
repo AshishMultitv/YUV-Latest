@@ -2079,7 +2079,7 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
                     print(decodedata_dict)
                     if(Common.isNotNull(object: decodedata_dict.value(forKey: "url") as AnyObject?))
                     {
-                        self.Video_url = (decodedata_dict.value(forKey: "url") as! NSDictionary).value(forKey: "abr") as! String
+                       self.Video_url = (decodedata_dict.value(forKey: "url") as! NSDictionary).value(forKey: "abr") as! String
                         if(Common.isNotNull(object: decodedata_dict.value(forKey: "url") as AnyObject?))
                         {
                             if(Common.isNotNull(object: ((decodedata_dict.value(forKey: "url") as! NSDictionary).value(forKey: "dfp_url") as AnyObject?)))
@@ -2110,9 +2110,7 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
                             self.getusercomment()
                             self.getsubscriptiondetai()
                         })
-                        
-                        
-                        
+          
                     }
                     else
                     {
@@ -3739,6 +3737,8 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
     func playeseektime()
     {
         
+        
+        
         let seconds : Int64 = Int64(midroletime+10)
         let targetTime:CMTime = CMTimeMake(seconds, 1)
         self.videoPlayer!.seek(to: targetTime)
@@ -3789,16 +3789,12 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
             self.soundcontrolbutton.isHidden = false
             DispatchQueue.main.asyncAfter(deadline: .now() + 4.0, execute: {
                 self.singleTapped()
-                
             })
-            
-            
         }
         else
         {
-            //  NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(self.removecontroleronvideofter3sec), object: nil)
+            //NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(self.removecontroleronvideofter3sec), object: nil)
             bHideControl = true
-            
             self.playbackSlider.isHidden = true
             self.lblLeft.isHidden = true
             self.lblEnd.isHidden = true
@@ -3813,8 +3809,6 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
             self.soundcontrolbutton.isHidden = true
             soundbackSlider.isHidden = true
             settingbutton.isHidden = true
-            
-            
         }
         
     }
@@ -3844,8 +3838,7 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
     }
     
     //MARK:- Tap to Play Or Paush video player
-    
-    
+
     func expandBtnAction()
     {
         if bPlay == true
@@ -5007,12 +5000,16 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
             var discriptiontext = (self.moredataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "des") as? String
             discriptiontext = discriptiontext?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
             cell?.Descriptionlabel.text = discriptiontext
+            
            // cell?.Viewlabel.text = "\((self.moredataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "watch") as! String)\(" view")"
             cell?.Viewlabel.text = ""
-            let videotime = (self.moredataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "created") as? String
+              cell?.Uploadtimelabel.text = ""
+//            let videotime = (self.moredataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "created") as? String
+//
+//            cell?.Uploadtimelabel.text = self.compatedate(date: videotime!)
             
-            cell?.Uploadtimelabel.text = self.compatedate(date: videotime!)
             
+      
             if(Common.isNotNull(object: (self.moredataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "thumbs") as AnyObject))
             {
                 let url = (self.moredataarray.object(at: indexPath.row) as! NSDictionary).value(forKey: "thumbs") as! NSArray
@@ -5045,10 +5042,11 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
             
           //  cell?.Viewlabel.text = "\((LoginCredentials.Tredingcontent.object(at: indexPath.row) as! NSDictionary).value(forKey: "watch") as! String)\(" view")"
             cell?.Viewlabel.text = ""
-            let videotime = (LoginCredentials.Tredingcontent.object(at: indexPath.row) as! NSDictionary).value(forKey: "created") as? String
-            
-            cell?.Uploadtimelabel.text = self.compatedate(date: videotime!)
-            if(Common.isNotNull(object: (LoginCredentials.Tredingcontent.object(at: indexPath.row) as! NSDictionary).value(forKey: "thumbs") as AnyObject))
+             cell?.Uploadtimelabel.text = ""
+//            let videotime = (LoginCredentials.Tredingcontent.object(at: indexPath.row) as! NSDictionary).value(forKey: "created") as? String
+//
+//            cell?.Uploadtimelabel.text = self.compatedate(date: videotime!)
+             if(Common.isNotNull(object: (LoginCredentials.Tredingcontent.object(at: indexPath.row) as! NSDictionary).value(forKey: "thumbs") as AnyObject))
             {
                 let url = (LoginCredentials.Tredingcontent.object(at: indexPath.row) as! NSDictionary).value(forKey: "thumbs") as! NSArray
                 if(url.count>0)
@@ -5717,7 +5715,6 @@ GCKRemoteMediaClientListener, GCKRequestDelegate  {
     
     func compatedate(date:String) ->String {
         print(date)
-        
         var uploadtime = String()
         let dateFormatter = DateFormatter()
         let userCalendar = NSCalendar.current
@@ -5811,7 +5808,6 @@ extension PlayerViewController: KRPullLoadViewDelegate {
             }
             return
         }
-        
         switch state {
         case .none:
             pullLoadView.messageLabel.text = ""

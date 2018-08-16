@@ -230,6 +230,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         NotificationCenter.default.addObserver(self,selector: #selector(deActivateUserappsession),name: NSNotification.Name(rawValue: "deactivateusersession"),object: nil)
         NotificationCenter.default.addObserver(self,selector: #selector(userlogoutfromapp),name: NSNotification.Name(rawValue: "Userapplogout"),object: nil)
         
+        NotificationCenter.default.addObserver(self,selector: #selector(IapVerifyPaymentourserver),name: NSNotification.Name(rawValue: "Verifypayment"),object: nil)
+        
+        
         
         let notificationReceivedBlock: OSHandleNotificationReceivedBlock =
         { notification in
@@ -260,8 +263,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
                 
                 
                 
-                let notifytype = additionalData["type"] as! String
-                if(notifytype == "notify") {
+                print(additionalData)
+                if let _ = additionalData["id"] {
+                    
+                  if(!Common.Islogin()) {
+                    return
+                    }
+                    if(!Common.Isuserissubscribe(Userdetails: self))
+                    {
+                      return
+                    }
                     
                     print(additionalData["id"] as! String)
                     self.catid = additionalData["id"] as! String
@@ -280,8 +291,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
                     self.window?.backgroundColor = UIColor(red: 236.0, green: 238.0, blue: 241.0, alpha: 1.0)
                     self.window?.rootViewController = slideMenuController
                     self.window?.makeKeyAndVisible()
-                }
-                
+           
+            }
                 // DEEP LINK and open url in RedViewController
                 // Send notification with Additional Data > example key: "OpenURL" example value: "https://google.com"
                 
@@ -372,9 +383,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         UIApplication.shared.statusBarStyle = .lightContent
         GCKCastContext.sharedInstance().sessionManager.add(self)
         GCKCastContext.sharedInstance().imagePicker = self
+        
+       
+        if(LoginCredentials.Ispaymentfailedonsever)
+        {
+           IapVerifyPaymentourserver()
+        }
         return true
-        
-        
+
     }
     
     
@@ -420,6 +436,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
             if let _  = (userInfo["custom"] as! NSDictionary).value(forKey: "a")
             {
                 let dict  = (userInfo["custom"] as! NSDictionary).value(forKey: "a") as! NSDictionary
+                if let _ = dict.value(forKey: "type")
+                {
                 let type = dict.value(forKey: "type") as! String
                 if(type == "SESSION_EXPIRY")
                 {
@@ -428,7 +446,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
                         Common.appLogout()
                     }
                 }
-                
+            }
             }
             
             
@@ -1327,8 +1345,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     func appanalytics()
     {
         print("called for App analytics")
-        
-        
         let netInfo:CTTelephonyNetworkInfo=CTTelephonyNetworkInfo()
         let carrier = netInfo.subscriberCellularProvider
         let strDeviceName=UIDevice.current.model
@@ -1408,9 +1424,125 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         }) { (task: URLSessionDataTask?, error: Error) in
             print("POST fails with error \(error)")
         }
-        
-        
-        
+   
+    }
+
+    func IapVerifyPaymentourserver()
+    {
+       let Param = LoginCredentials.LatestIapRecipt
+        print(Param)
+       if(Param.count<=0)
+       {
+         return
+        }
+        var url = String()
+        url = String(format: "%@%@/device/ios",LoginCredentials.Onetimecompleteorderapi,Apptoken)
+        url = url.trimmingCharacters(in: .whitespaces)
+        let manager = AFHTTPSessionManager()
+        manager.post(url, parameters: Param, progress: nil, success: { (task: URLSessionDataTask, responseObject: Any?) in
+            if (responseObject as? [String: AnyObject]) != nil {
+                let dict = responseObject as! NSDictionary
+                print(dict)
+                 let number = dict.value(forKey: "code") as! NSNumber
+                if(number == 0)
+                {
+                Common.Verifyfailedpayment()
+                }
+                else
+                {
+                LoginCredentials.Ispaymentfailedonsever = false
+                self.getUsersubscriptiondetail()
+                    
+                }
+                
+             }
+        }) { (task: URLSessionDataTask?, error: Error) in
+            print("POST fails with error \(error)")
+             Common.Verifyfailedpayment()
+         }
+      }
+    
+    
+    
+    
+    
+    func getUsersubscriptiondetail() {
+        if(Common.Islogin()) {
+            let dict = dataBase.getDatabaseresponseinentity(entityname: "Logindata", key: "logindatadict")
+            print(dict.value(forKey: "id") as! NSNumber)
+            var url = String(format: "%@%@/device/ios/uid/%@",LoginCredentials.Userpackagesapi,Apptoken,(dict.value(forKey: "id") as! NSNumber).stringValue)
+            url = url.trimmingCharacters(in: .whitespaces)
+            print(url)
+            let manager = AFHTTPSessionManager()
+            manager.get(url, parameters: nil, progress: nil, success: { (task: URLSessionDataTask, responseObject: Any?) in
+                if (responseObject as? [String: AnyObject]) != nil {
+                    let dict = responseObject as! NSDictionary
+                    print(dict)
+                    let number = dict.value(forKey: "code") as! NSNumber
+                    if(number == 0)
+                    {
+                        
+                    }
+                    else
+                    {
+                        
+                        if let _  = dict.value(forKey: "result")
+                        {
+                            LoginCredentials.Allusersubscriptiondetail = dict.value(forKey: "result") as! NSDictionary
+                            
+                        }
+                        
+                        if let _  = (dict.value(forKey: "result") as! NSDictionary).value(forKey: "packages_list")
+                        {
+                            if(Common.isNotNull(object: (dict.value(forKey: "result") as! NSDictionary).value(forKey: "packages_list") as AnyObject))
+                            {
+                                if(((dict.value(forKey: "result") as! NSDictionary).value(forKey: "packages_list") as! NSArray).count>0) {
+                                    LoginCredentials.UserSubscriptiondetail = (dict.value(forKey: "result") as! NSDictionary).value(forKey: "packages_list") as! NSArray
+                                    if(!Common.Isuserissubscribe(Userdetails: self))
+                                    {
+                                        LoginCredentials.Regiontype = ""
+                                    }
+                                    else
+                                    {
+                                        LoginCredentials.Regiontype = ((LoginCredentials.UserSubscriptiondetail.object(at: 0) as! NSDictionary).value(forKey: "region_type") as! NSNumber).stringValue
+                                        if(LoginCredentials.Regiontype == "2")
+                                        {
+                                            
+                                        }
+                                        else
+                                        {
+                                            LoginCredentials.CreateorderRegiontype = (LoginCredentials.UserSubscriptiondetail.object(at: 0) as! NSDictionary).value(forKey: "local_user") as! String
+                                            
+                                            var dict  =  [String:String]()
+                                            dict = ["code":(LoginCredentials.UserSubscriptiondetail.object(at: 0) as! NSDictionary).value(forKey: "state_code") as! String]
+                                            print(dict)
+                                            LoginCredentials.SelectedUserCountry = dict as NSDictionary
+                                            print(LoginCredentials.SelectedUserCountry)
+                                            
+                                        }
+                                    }
+                                    
+                                    
+                                }
+                                else
+                                {
+                                    LoginCredentials.UserSubscriptiondetail = NSArray()
+                                    LoginCredentials.Regiontype = ""
+                                }
+                            }
+                        }
+                        
+                    }
+                    
+                    
+             
+                    
+                    
+                }
+            }) { (task: URLSessionDataTask?, error: Error) in
+                print("POST fails with error \(error)")
+            }
+        }
     }
     
     
@@ -1418,7 +1550,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        
         return FBSDKApplicationDelegate.sharedInstance().application(application, open: url as URL!, sourceApplication: sourceApplication, annotation: annotation) || GIDSignIn.sharedInstance().handle(url as URL!,
                                                                                                                                                                                                         sourceApplication: sourceApplication,
                                                                                                                                                                                                         annotation: annotation)
