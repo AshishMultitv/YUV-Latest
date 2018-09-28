@@ -15,7 +15,6 @@ import ReachabilitySwift
 import CoreTelephony
 import CZPicker
 
-
 //For dev
 //var MaterBaseUrl =  "http://staging.multitvsolution.com:9000/api/v6/master/url_static_staging"
 
@@ -30,9 +29,7 @@ var timer:Timer!
 let activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView();
 var picker: CZPickerView?
 
-
 class Common: NSObject {
-    
     
     static func isValidEmail(testStr:String) -> Bool
     {
@@ -56,7 +53,6 @@ class Common: NSObject {
         
     }
     
-    
     static func Isuserhavefreedayssubscription(Userdetails:AnyObject) -> Bool {
         
         if(LoginCredentials.Allusersubscriptiondetail.count>0) {
@@ -69,15 +65,12 @@ class Common: NSObject {
                 {
                     return true
                 }
-                
             }
-            
         }
         return false
     }
     
     static func Isuserissubscribe(Userdetails:AnyObject) -> Bool {
-        
         
         if(LoginCredentials.Ispaymentfailedonsever) {
             return true
@@ -167,6 +160,17 @@ class Common: NSObject {
     {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "Userfreesubscription"), object: nil)
     }
+    
+    
+    static func startusersession()
+    {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "startusersession"), object: nil)
+    }
+    static func endusersession()
+    {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ensusersession"), object: nil)
+    }
+    
     
     
     static func stopHeartbeat()
@@ -337,6 +341,8 @@ class Common: NSObject {
         
         
     }
+    
+    
     
     
     
@@ -610,7 +616,6 @@ class Common: NSObject {
         }
         
     }
-    
     
     static func convertarrayinyijasondata(data:NSMutableArray) -> String
     {

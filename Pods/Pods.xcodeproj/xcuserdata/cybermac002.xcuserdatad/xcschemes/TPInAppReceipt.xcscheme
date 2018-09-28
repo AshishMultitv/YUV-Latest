@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '0A818CE6A2E2A563A611F03F4255FAD3'
+               BlueprintIdentifier = '2B658233FCA4ED9C40F4EDE167EAAC59'
                BlueprintName = 'TPInAppReceipt'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'TPInAppReceipt.framework'>

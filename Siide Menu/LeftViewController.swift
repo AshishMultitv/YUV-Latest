@@ -18,6 +18,7 @@ enum LeftMenu: Int {
     case nine
     case ten
     case eleven
+    case tewlve
 }
 
 protocol LeftMenuProtocol : class {
@@ -45,6 +46,7 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
     var DownloadsViewController: UIViewController!
     var SignoutViewController: UIViewController!
     var SubscriptionViewController = UIViewController()
+    var AuditionViewController = UIViewController()
     var imageHeaderView: ImageHeaderView!
     var privacypocliy = String()
     
@@ -113,7 +115,9 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
         self.InvitereferralView = UINavigationController(rootViewController: inviteReferralViewController)
         
         
-        
+        let auditionViewController = storyboard.instantiateViewController(withIdentifier: "AuditionViewController") as! AuditionViewController
+        self.AuditionViewController = UINavigationController(rootViewController: auditionViewController)
+ 
         self.tableView.registerCellClass(BaseTableViewCell.self)
         
         self.imageHeaderView = ImageHeaderView.loadNib()
@@ -132,6 +136,7 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
     
     func createsidemenu(data:Notification)
     {
+        LoginCredentials.Isauditionenabel = false
         menus.removeAll()
         identifier.removeAll()
         image.removeAll()
@@ -141,7 +146,10 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
             let str = (array.object(at: i) as! NSDictionary).value(forKey: "page_title") as! String
             let imageurl = (array.object(at: i) as! NSDictionary).value(forKey: "thumbnail") as! String
             let str1 = (array.object(at: i) as! NSDictionary).value(forKey: "identifier") as! String
-            
+            if(str1 == "audition")
+            {
+               LoginCredentials.Isauditionenabel = true
+            }
             menus.append(str)
             image.append(imageurl)
             identifier.append(str1)
@@ -193,7 +201,6 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
         let alertView = UIAlertController(title: "YUV", message: "Please login to access your profile", preferredStyle: .alert)
         let action = UIAlertAction(title: "Login", style: .default, handler: { (alert) in
             self.redirecttologinscreen()
-            
         })
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: { (alert) in
             
@@ -314,6 +321,8 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
             self.loginlogoutaction()
         case .eleven:
             self.loginlogoutaction()
+        case .tewlve:
+           self.loginlogoutaction()
         }
         
         
@@ -324,7 +333,7 @@ extension LeftViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if let menu = LeftMenu(rawValue: indexPath.row) {
             switch menu {
-            case .main, .First, .Second, .Third, .Fourth, .fifth, .Six, .Seven, .eight, .nine, .ten, .eleven:
+            case .main, .First, .Second, .Third, .Fourth, .fifth, .Six, .Seven, .eight, .nine, .ten, .eleven, .tewlve:
                 return BaseTableViewCell.height()
             }
         }
@@ -450,7 +459,17 @@ extension LeftViewController : UITableViewDelegate {
                 self.showWithoutloginalert()
             }
             break
-            
+        case "audition":
+            if(Common.Islogin()) {
+                
+                self.slideMenuController()?.present(self.AuditionViewController, animated: true, completion: nil)
+             }
+            else
+            {
+                
+                self.showWithoutloginalert()
+            }
+            break
         case "signout":
             self.loginlogoutaction()
             break
@@ -480,7 +499,7 @@ extension LeftViewController : UITableViewDataSource {
         
         if let menu = LeftMenu(rawValue: indexPath.row) {
             switch menu {
-            case .main, .First, .Second, .Third, .Fourth, .fifth, .Six, .Seven, .eight, .nine, .ten, .eleven:
+            case .main, .First, .Second, .Third, .Fourth, .fifth, .Six, .Seven, .eight, .nine, .ten, .eleven, .tewlve:
                 let cell = BaseTableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: BaseTableViewCell.identifier)
                 cell.selectionStyle = .gray
                 cell.setData(menus[indexPath.row])

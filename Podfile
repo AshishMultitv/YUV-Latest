@@ -37,6 +37,10 @@ target 'Dollywood Play' do
   pod 'CZPicker'
   pod 'PTPopupWebView'
   pod 'Toast-Swift', '~> 3.0.1'
+  pod 'MatomoTracker', '~> 5.2'
+  pod 'AWSS3'
+
+
  
   end
 target 'OneSingleNotification' do

@@ -890,7 +890,8 @@ class LoginCredentials: NSObject {
         }
     }
 
-    
+ 
+
     //////////Verify_otpe------ 10-----------/////////////
     static var Verifyotpapi: String {
         get {
@@ -921,7 +922,6 @@ class LoginCredentials: NSObject {
         }
     }
  
-    
     //////////MenuAPie------ 11-----------/////////////
     static var MenuAPi: String {
         get {
@@ -1015,7 +1015,6 @@ class LoginCredentials: NSObject {
         }
     }
     
-
 
     //////////Listapie------ 14-----------/////////////
     static var Listapi: String {
@@ -2044,7 +2043,35 @@ class LoginCredentials: NSObject {
             UserDefaults.standard.synchronize()
         }
     }
+    static var Csession: String {
+        get {
+            
+            if let csession = UserDefaults.standard.object(forKey: "csession") as? String
+            {
+                return csession
+            }
+            return String()
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "csession")
+            UserDefaults.standard.synchronize()
+        }
+    }
     
+    static var Feedbackapi: String {
+        get {
+            
+            if let feedbackapi = UserDefaults.standard.object(forKey: "feedbackapi") as? String
+            {
+                return feedbackapi
+            }
+            return String()
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "feedbackapi")
+            UserDefaults.standard.synchronize()
+        }
+    }
     
     static var LatestIapRecipt: NSDictionary {
         get {
@@ -2073,6 +2100,23 @@ class LoginCredentials: NSObject {
         }
         set {
             UserDefaults.standard.set(newValue, forKey: "ispaymentfailedonsever")
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
+    
+    
+    static var Isauditionenabel: Bool {
+        get {
+            
+            if let isauditionenabel = UserDefaults.standard.object(forKey: "isauditionenabel") as? Bool
+            {
+                return isauditionenabel
+            }
+            return Bool()
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "isauditionenabel")
             UserDefaults.standard.synchronize()
         }
     }

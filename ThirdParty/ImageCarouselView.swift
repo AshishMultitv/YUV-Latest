@@ -118,6 +118,9 @@ class ImageCarouselView: UIView {
           print(textarraydes)
           print(episodearray)
         for i in 0..<imageurlarry.count {
+            
+            
+            
             let imageView = UIImageView(frame: CGRect(x: bounds.width * CGFloat(i), y: 0, width: bounds.width, height: bounds.height))
             print(episodearray)
             if(Common.isNotNull(object: imageurlarry.object(at: i) as AnyObject?))
@@ -209,7 +212,27 @@ class ImageCarouselView: UIView {
             {
                 playerimageview = UIImageView(frame: CGRect.init(x: bounds.width * CGFloat(i) + 25, y: bounds.height-40, width: 20, height: 20))
             }
-            playerimageview.image = UIImage.init(named: "Newplayicon")
+            
+           
+            if(LoginCredentials.Isauditionenabel) {
+         
+                if(i==0)
+                {
+                    playerimageview.image = nil
+
+                }
+                else
+                {
+                    playerimageview.image = UIImage.init(named: "Newplayicon")
+
+                }
+         
+            }
+            else
+            {
+                playerimageview.image = UIImage.init(named: "Newplayicon")
+            }
+           
             let gradiantimageview = UIImageView(frame: CGRect.init(x: bounds.width * CGFloat(i), y: bounds.height-35, width: bounds.width, height: 35))
             gradiantimageview.image = UIImage.init(named:"coresalgradiant")
             

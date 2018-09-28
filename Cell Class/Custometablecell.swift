@@ -58,7 +58,12 @@ class Custometablecell: UITableViewCell {
     @IBOutlet weak var profilesubscriptioncellview: UIView!
     
     
-    override func awakeFromNib() {
+      /////AUdion Viewcontrller
+    
+    @IBOutlet weak var Imagename: UILabel!
+    
+    @IBOutlet weak var deleteimagebutton: UIButton!
+     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
