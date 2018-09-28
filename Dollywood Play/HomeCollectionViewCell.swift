@@ -9,7 +9,6 @@
 import UIKit
 
 class HomeCollectionViewCell: UICollectionViewCell {
-    
     @IBOutlet weak var collectionScroll: UIScrollView!
     @IBOutlet weak var cellbootomconstraint: NSLayoutConstraint!
 }
